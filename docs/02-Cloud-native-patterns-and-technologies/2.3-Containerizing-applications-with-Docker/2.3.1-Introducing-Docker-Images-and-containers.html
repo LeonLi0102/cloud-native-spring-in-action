@@ -1,0 +1,1768 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>2.3.1 Docker 介绍：镜像和容器 · Cloud Native  Spring In Action</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Craig Walls">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-auto-scroll-table/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="2.3.2-Running-a-Spring-application-as-a-container.html" />
+    
+    
+    <link rel="prev" href="Introduction.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    云原生 Spring 实战 （MEAP)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../welcome.html">
+            
+                <a href="../../welcome.html">
+            
+                    
+                    欢迎
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../01-Introduction-to-cloud-native/Introduction.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/Introduction.html">
+            
+                    
+                    第 1 章 云原生简介
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../01-Introduction-to-cloud-native/1.1-What-is-cloud-native/Introduction.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.1-What-is-cloud-native/Introduction.html">
+            
+                    
+                    1.1 什么是云原生
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../../01-Introduction-to-cloud-native/1.1-What-is-cloud-native/1.1.1-The-Three-Ps-of-Cloud-Native.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.1-What-is-cloud-native/1.1.1-The-Three-Ps-of-Cloud-Native.html">
+            
+                    
+                    1.1.1 什么是云原生
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/Introduction.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/Introduction.html">
+            
+                    
+                    1.2 云和云计算模型
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="../../01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.1-Infrastructure-as-a-Service.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.1-Infrastructure-as-a-Service.html">
+            
+                    
+                    1.2.1 基础设施即服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2" data-path="../../01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.2-Container-as-a-Service.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.2-Container-as-a-Service.html">
+            
+                    
+                    1.2.2 容器即服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3" data-path="../../01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.3-Platform-as-a-Service.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.3-Platform-as-a-Service.html">
+            
+                    
+                    1.2.3 平台即服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.4" data-path="../../01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.4-Function-as-a-Service.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.4-Function-as-a-Service.html">
+            
+                    
+                    1.2.4 功能即服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.5" data-path="../../01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.5-Software-as-a-Service.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.5-Software-as-a-Service.html">
+            
+                    
+                    1.2.5 软件即服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/Introduction.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/Introduction.html">
+            
+                    
+                    1.3 云原生应用的特性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="../../01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.1-Scalability.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.1-Scalability.html">
+            
+                    
+                    1.3.1 可扩展性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.2" data-path="../../01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.2-Loose-coupling.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.2-Loose-coupling.html">
+            
+                    
+                    1.3.2 松耦合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.3" data-path="../../01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.3-Resilience.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.3-Resilience.html">
+            
+                    
+                    1.3.3 强适应性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.4" data-path="../../01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.4-Observability.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.4-Observability.html">
+            
+                    
+                    1.3.4 可观测性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3.5" data-path="../../01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.5-Manageability.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.5-Manageability.html">
+            
+                    
+                    1.3.5 可管理性
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../../01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/Introduction.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/Introduction.html">
+            
+                    
+                    1.4 支持云原生的文化和实践
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.4.1" data-path="../../01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/1.4.1-Automation.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/1.4.1-Automation.html">
+            
+                    
+                    1.4.1 自动化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4.2" data-path="../../01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/1.4.2-Continuous-delivery.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/1.4.2-Continuous-delivery.html">
+            
+                    
+                    1.4.2 持续交付
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4.3" data-path="../../01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/1.4.3-DevOps.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/1.4.3-DevOps.html">
+            
+                    
+                    1.4.3 DevOps
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../../01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/Introduction.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/Introduction.html">
+            
+                    
+                    1.5 上云是最好的选择吗？
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.5.1" data-path="../../01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/1.5.1-Speed.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/1.5.1-Speed.html">
+            
+                    
+                    1.5.1 速度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5.2" data-path="../../01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/1.5.2-Resilience.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/1.5.2-Resilience.html">
+            
+                    
+                    1.5.2 韧性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5.3" data-path="../../01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/1.5.3-Scale.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/1.5.3-Scale.html">
+            
+                    
+                    1.5.3 规模
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5.4" data-path="../../01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/1.5.4-Cost.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/1.5.4-Cost.html">
+            
+                    
+                    1.5.4 成本
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../../01-Introduction-to-cloud-native/1.6-Cloud-native-topologies/Introduction.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.6-Cloud-native-topologies/Introduction.html">
+            
+                    
+                    1.6 云原生拓扑
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.6.1" data-path="../../01-Introduction-to-cloud-native/1.6-Cloud-native-topologies/1.6.1-Containers.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.6-Cloud-native-topologies/1.6.1-Containers.html">
+            
+                    
+                    1.6.1 容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6.2" data-path="../../01-Introduction-to-cloud-native/1.6-Cloud-native-topologies/1.6.2-Orchestration.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.6-Cloud-native-topologies/1.6.2-Orchestration.html">
+            
+                    
+                    1.6.2 编排
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6.3" data-path="../../01-Introduction-to-cloud-native/1.6-Cloud-native-topologies/1.6.3-Serverless.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.6-Cloud-native-topologies/1.6.3-Serverless.html">
+            
+                    
+                    1.6.3 无服务器架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../../01-Introduction-to-cloud-native/1.7-Architectures-for-cloud-native-applications/Introduction.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.7-Architectures-for-cloud-native-applications/Introduction.html">
+            
+                    
+                    1.7 云原生应用架构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.7.1" data-path="../../01-Introduction-to-cloud-native/1.7-Architectures-for-cloud-native-applications/1.7.1-From-multi-tiered-to-microservice-architectures-and-beyond.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.7-Architectures-for-cloud-native-applications/1.7.1-From-multi-tiered-to-microservice-architectures-and-beyond.html">
+            
+                    
+                    1.7.1 从分层到微服务到更高级别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7.2" data-path="../../01-Introduction-to-cloud-native/1.7-Architectures-for-cloud-native-applications/1.7.2-Service-based-architecture-for-cloud-native-applications.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/1.7-Architectures-for-cloud-native-applications/1.7.2-Service-based-architecture-for-cloud-native-applications.html">
+            
+                    
+                    1.7.2 基于服务的云原生应用体系结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="../../01-Introduction-to-cloud-native/Summary.html">
+            
+                <a href="../../01-Introduction-to-cloud-native/Summary.html">
+            
+                    
+                    1.8 总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../Introduction.html">
+            
+                <a href="../Introduction.html">
+            
+                    
+                    第 2 章 云原生模式和技术
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/Introduction.html">
+            
+                <a href="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/Introduction.html">
+            
+                    
+                    2.1 云原生开发原则：十二要素及其他
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.1-One-codebase-one-application.html">
+            
+                <a href="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.1-One-codebase-one-application.html">
+            
+                    
+                    2.1.1 一份基准代码对应一个应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.2-API-first.html">
+            
+                <a href="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.2-API-first.html">
+            
+                    
+                    2.1.2 API 优先
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3" data-path="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.3-Dependency-management.html">
+            
+                <a href="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.3-Dependency-management.html">
+            
+                    
+                    2.1.3 依赖管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.4" data-path="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.4-Design-build-release-run.html">
+            
+                <a href="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.4-Design-build-release-run.html">
+            
+                    
+                    2.1.4 设计、构建、发布、运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.5" data-path="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.5-Configuration-credentials-and-code.html">
+            
+                <a href="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.5-Configuration-credentials-and-code.html">
+            
+                    
+                    2.1.5 配置、证书、代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.6" data-path="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.6-Logs.html">
+            
+                <a href="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.6-Logs.html">
+            
+                    
+                    2.1.6 日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.7" data-path="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.7-Disposability.html">
+            
+                <a href="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.7-Disposability.html">
+            
+                    
+                    2.1.7 可丢弃
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.8" data-path="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.8-Backing-services.html">
+            
+                <a href="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.8-Backing-services.html">
+            
+                    
+                    2.1.8 后端服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.9" data-path="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.9-Environment-parity.html">
+            
+                <a href="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.9-Environment-parity.html">
+            
+                    
+                    2.1.9 环境一致性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.10" data-path="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.10-Administrative-processes.html">
+            
+                <a href="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.10-Administrative-processes.html">
+            
+                    
+                    2.1.10 管理员进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.11" data-path="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.11-Port-binding.html">
+            
+                <a href="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.11-Port-binding.html">
+            
+                    
+                    2.1.11 端口绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.12" data-path="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.12-Stateless-processes.html">
+            
+                <a href="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.12-Stateless-processes.html">
+            
+                    
+                    2.1.12 无状态进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.13" data-path="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.13-Concurrency.html">
+            
+                <a href="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.13-Concurrency.html">
+            
+                    
+                    2.1.13 并发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.14" data-path="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.14-Telemetry.html">
+            
+                <a href="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.14-Telemetry.html">
+            
+                    
+                    2.1.14 遥测
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.15" data-path="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.15-Authentication-and-authorization.html">
+            
+                <a href="../2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.15-Authentication-and-authorization.html">
+            
+                    
+                    2.1.15 认证和授权
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../2.2-Building-cloud-native-applications-with-Spring/Introduction.html">
+            
+                <a href="../2.2-Building-cloud-native-applications-with-Spring/Introduction.html">
+            
+                    
+                    2.2 使用 Spring 构建云原生应用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../2.2-Building-cloud-native-applications-with-Spring/2.2.1-Overview-of-the-Spring-landscape.html">
+            
+                <a href="../2.2-Building-cloud-native-applications-with-Spring/2.2.1-Overview-of-the-Spring-landscape.html">
+            
+                    
+                    2.2.1 Spring 全景概览
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="../2.2-Building-cloud-native-applications-with-Spring/2.2.2-Building-a-Spring-Boot-application.html">
+            
+                <a href="../2.2-Building-cloud-native-applications-with-Spring/2.2.2-Building-a-Spring-Boot-application.html">
+            
+                    
+                    2.2.2 创建 Spring Boot 应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Introduction.html">
+            
+                <a href="Introduction.html">
+            
+                    
+                    2.3 使用 Docker 容器化应用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.4.3.1" data-path="2.3.1-Introducing-Docker-Images-and-containers.html">
+            
+                <a href="2.3.1-Introducing-Docker-Images-and-containers.html">
+            
+                    
+                    2.3.1 Docker 介绍：镜像和容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.2" data-path="2.3.2-Running-a-Spring-application-as-a-container.html">
+            
+                <a href="2.3.2-Running-a-Spring-application-as-a-container.html">
+            
+                    
+                    2.3.2 运行 Spring 应用容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../2.4-Managing-containers-with-Kubernetes/Introduction.html">
+            
+                <a href="../2.4-Managing-containers-with-Kubernetes/Introduction.html">
+            
+                    
+                    2.4 使用 Kubernetes 管理容器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.4.1" data-path="../2.4-Managing-containers-with-Kubernetes/2.4.1-Introducing-Kubernetes-Deployments-pods-and-services.html">
+            
+                <a href="../2.4-Managing-containers-with-Kubernetes/2.4.1-Introducing-Kubernetes-Deployments-pods-and-services.html">
+            
+                    
+                    2.4.1 介绍 Kubernetes 的 Deployment、Pod 和 Service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.2" data-path="../2.4-Managing-containers-with-Kubernetes/2.4.2-Running-a-Spring-application-on-Kubernetes.html">
+            
+                <a href="../2.4-Managing-containers-with-Kubernetes/2.4.2-Running-a-Spring-application-on-Kubernetes.html">
+            
+                    
+                    2.4.2 在 Kubernetes 是运行 Spring 应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../2.5-Polar-Bookshop-A-cloud-native-application/Introduction.html">
+            
+                <a href="../2.5-Polar-Bookshop-A-cloud-native-application/Introduction.html">
+            
+                    
+                    2.5 云原生应用 —— 极地书店
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.5.1" data-path="../2.5-Polar-Bookshop-A-cloud-native-application/2.5.1-Understanding-the-requirements-of-the-system.html">
+            
+                <a href="../2.5-Polar-Bookshop-A-cloud-native-application/2.5.1-Understanding-the-requirements-of-the-system.html">
+            
+                    
+                    2.5.1 理解系统需求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5.2" data-path="../2.5-Polar-Bookshop-A-cloud-native-application/2.5.2-Exploring-patterns-and-technologies-used-in-the-project.html">
+            
+                <a href="../2.5-Polar-Bookshop-A-cloud-native-application/2.5.2-Exploring-patterns-and-technologies-used-in-the-project.html">
+            
+                    
+                    2.5.2 工程中用到的技术和模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../Summary.html">
+            
+                <a href="../Summary.html">
+            
+                    
+                    2.6 总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../03-Getting-started-with-cloud-native-development/Introduction.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/Introduction.html">
+            
+                    
+                    第 3 章 进行云原生应用开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../03-Getting-started-with-cloud-native-development/3.1-Bootstrapping-a-cloud-native-project/Introduction.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/3.1-Bootstrapping-a-cloud-native-project/Introduction.html">
+            
+                    
+                    3.1 创建云原生项目
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../../03-Getting-started-with-cloud-native-development/3.1-Bootstrapping-a-cloud-native-project/3.1.1-One-codebase-one-application.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/3.1-Bootstrapping-a-cloud-native-project/3.1.1-One-codebase-one-application.html">
+            
+                    
+                    3.1.1 一份基准代码对应一个应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" data-path="../../03-Getting-started-with-cloud-native-development/3.1-Bootstrapping-a-cloud-native-project/3.1.2-Dependency-management-with-Gradle-and-Maven.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/3.1-Bootstrapping-a-cloud-native-project/3.1.2-Dependency-management-with-Gradle-and-Maven.html">
+            
+                    
+                    3.1.2 使用 Maven 或 Gradel 管理依赖
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../03-Getting-started-with-cloud-native-development/3.2-Working-with-embedded-servers/Introduction.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/3.2-Working-with-embedded-servers/Introduction.html">
+            
+                    
+                    3.2 使用内嵌服务器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="../../03-Getting-started-with-cloud-native-development/3.2-Working-with-embedded-servers/3.2.1-Executable-JARs-and-embedded-servers-Ready-for-the-cloud.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/3.2-Working-with-embedded-servers/3.2.1-Executable-JARs-and-embedded-servers-Ready-for-the-cloud.html">
+            
+                    
+                    3.2.1 可执行 JAR 和内嵌服务：为云做好准备
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="../../03-Getting-started-with-cloud-native-development/3.2-Working-with-embedded-servers/3.2.2-Understanding-the-thread-per-request-model.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/3.2-Working-with-embedded-servers/3.2.2-Understanding-the-thread-per-request-model.html">
+            
+                    
+                    3.2.2 理解 一个请求一个线程 模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.3" data-path="../../03-Getting-started-with-cloud-native-development/3.2-Working-with-embedded-servers/3.2.3-Configuring-the-embedded-Tomcat.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/3.2-Working-with-embedded-servers/3.2.3-Configuring-the-embedded-Tomcat.html">
+            
+                    
+                    3.2.3 配置内嵌 Tomcat
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../../03-Getting-started-with-cloud-native-development/3.3-Building-a-RESTful-application-with-Spring-MVC/Introduction.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/3.3-Building-a-RESTful-application-with-Spring-MVC/Introduction.html">
+            
+                    
+                    3.3 使用 Spring MVC 构建 RESTful 应用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="../../03-Getting-started-with-cloud-native-development/3.3-Building-a-RESTful-application-with-Spring-MVC/3.3.1-REST-API-first-business-logic-later.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/3.3-Building-a-RESTful-application-with-Spring-MVC/3.3.1-REST-API-first-business-logic-later.html">
+            
+                    
+                    3.3.1 REST API 第一，业务逻辑第二
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.2" data-path="../../03-Getting-started-with-cloud-native-development/3.3-Building-a-RESTful-application-with-Spring-MVC/3.3.2-Implementing-a-REST-API-with-Spring-MVC.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/3.3-Building-a-RESTful-application-with-Spring-MVC/3.3.2-Implementing-a-REST-API-with-Spring-MVC.html">
+            
+                    
+                    3.3.2 使用 Spring MVC 实现 REST API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.3" data-path="../../03-Getting-started-with-cloud-native-development/3.3-Building-a-RESTful-application-with-Spring-MVC/3.3.3-Data-validation-and-error-handling.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/3.3-Building-a-RESTful-application-with-Spring-MVC/3.3.3-Data-validation-and-error-handling.html">
+            
+                    
+                    3.3.3 数据校验和出错处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.4" data-path="../../03-Getting-started-with-cloud-native-development/3.3-Building-a-RESTful-application-with-Spring-MVC/3.3.4-Evolving-APIs-for-future-requirements.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/3.3-Building-a-RESTful-application-with-Spring-MVC/3.3.4-Evolving-APIs-for-future-requirements.html">
+            
+                    
+                    3.3.4 为未来需求扩展 API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../../03-Getting-started-with-cloud-native-development/3.4-Testing-a-RESTful-application-with-Spring/Introduction.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/3.4-Testing-a-RESTful-application-with-Spring/Introduction.html">
+            
+                    
+                    3.4 使用 Spring 测试 RESTful 应用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.4.1" data-path="../../03-Getting-started-with-cloud-native-development/3.4-Testing-a-RESTful-application-with-Spring/3.4.1-Unit-tests-with-JUnit-5.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/3.4-Testing-a-RESTful-application-with-Spring/3.4.1-Unit-tests-with-JUnit-5.html">
+            
+                    
+                    3.4.1 使用 JUnit 5 进行单元测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.2" data-path="../../03-Getting-started-with-cloud-native-development/3.4-Testing-a-RESTful-application-with-Spring/3.4.2-Integration-tests-with-SpringBootTest.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/3.4-Testing-a-RESTful-application-with-Spring/3.4.2-Integration-tests-with-SpringBootTest.html">
+            
+                    
+                    3.4.2 使用 @SpringBootTest 进行集成测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.3" data-path="../../03-Getting-started-with-cloud-native-development/3.4-Testing-a-RESTful-application-with-Spring/3.4.3-Testing-REST-controllers-with-WebMvcTest.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/3.4-Testing-a-RESTful-application-with-Spring/3.4.3-Testing-REST-controllers-with-WebMvcTest.html">
+            
+                    
+                    3.4.3 使用 @WebMvcTest 测试 REST 控制器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.4" data-path="../../03-Getting-started-with-cloud-native-development/3.4-Testing-a-RESTful-application-with-Spring/3.4.4-Testing-the-JSON-serialization-with-JsonTest.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/3.4-Testing-a-RESTful-application-with-Spring/3.4.4-Testing-the-JSON-serialization-with-JsonTest.html">
+            
+                    
+                    3.4.4 使用 @JsonTest 测试 JSON 序列化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../../03-Getting-started-with-cloud-native-development/3.5-Continuous-integration-pipelines-with-GitHub-Actions/Introduction.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/3.5-Continuous-integration-pipelines-with-GitHub-Actions/Introduction.html">
+            
+                    
+                    3.5 使用 GitHub Action 进行持续集成
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.5.1" data-path="../../03-Getting-started-with-cloud-native-development/3.5-Continuous-integration-pipelines-with-GitHub-Actions/3.5.1-GitHub-Actions-Automating-builds-and-tests.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/3.5-Continuous-integration-pipelines-with-GitHub-Actions/3.5.1-GitHub-Actions-Automating-builds-and-tests.html">
+            
+                    
+                    3.5.1 使用 GitHub Action 进行自动构建和测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../../03-Getting-started-with-cloud-native-development/Summary.html">
+            
+                <a href="../../03-Getting-started-with-cloud-native-development/Summary.html">
+            
+                    
+                    3.6 总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../04-Externalized-configuration-management/Introduction.html">
+            
+                <a href="../../04-Externalized-configuration-management/Introduction.html">
+            
+                    
+                    第 4 章 配置管理外部化
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/Introduction.html">
+            
+                <a href="../../04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/Introduction.html">
+            
+                    
+                    4.1 Spring 中的配置：properties 和 profiles
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1.1" data-path="../../04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/4.1.1-Properties-Key-value-pairs-for-configuration.html">
+            
+                <a href="../../04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/4.1.1-Properties-Key-value-pairs-for-configuration.html">
+            
+                    
+                    4.1.1 Properties：键值对
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.2" data-path="../../04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/4.1.2-Profiles-Feature-flags-and-configuration-groups.html">
+            
+                <a href="../../04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/4.1.2-Profiles-Feature-flags-and-configuration-groups.html">
+            
+                    
+                    4.1.2 Profiles：特性标志和配置分组
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../04-Externalized-configuration-management/4.2-Externalized-configuration-one-build-multiple-configurations/Introduction.html">
+            
+                <a href="../../04-Externalized-configuration-management/4.2-Externalized-configuration-one-build-multiple-configurations/Introduction.html">
+            
+                    
+                    4.2 外部化配置：一个构建多个配置
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.2.1" data-path="../../04-Externalized-configuration-management/4.2-Externalized-configuration-one-build-multiple-configurations/4.2.1-Configuring-an-application-through-command-line-arguments.html">
+            
+                <a href="../../04-Externalized-configuration-management/4.2-Externalized-configuration-one-build-multiple-configurations/4.2.1-Configuring-an-application-through-command-line-arguments.html">
+            
+                    
+                    4.2.1 命令行参数配置应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.2" data-path="../../04-Externalized-configuration-management/4.2-Externalized-configuration-one-build-multiple-configurations/4.2.2-Configuring-an-application-through-JVM-system-properties.html">
+            
+                <a href="../../04-Externalized-configuration-management/4.2-Externalized-configuration-one-build-multiple-configurations/4.2.2-Configuring-an-application-through-JVM-system-properties.html">
+            
+                    
+                    4.2.2 JVM 系统属性配置应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.3" data-path="../../04-Externalized-configuration-management/4.2-Externalized-configuration-one-build-multiple-configurations/4.2.3-Configuring-an-application-through-environment-variables.html">
+            
+                <a href="../../04-Externalized-configuration-management/4.2-Externalized-configuration-one-build-multiple-configurations/4.2.3-Configuring-an-application-through-environment-variables.html">
+            
+                    
+                    4.2.3 环境变量配置应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/Introduction.html">
+            
+                <a href="../../04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/Introduction.html">
+            
+                    
+                    4.3 用 Spring Config Server 进行集中化配置管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.3.1" data-path="../../04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/4.3.1-Using-Git-to-store-your-configuration-data.html">
+            
+                <a href="../../04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/4.3.1-Using-Git-to-store-your-configuration-data.html">
+            
+                    
+                    4.3.1 使用 Git 存储配置数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.2" data-path="../../04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/4.3.2-Setting-up-a-configuration-server.html">
+            
+                <a href="../../04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/4.3.2-Setting-up-a-configuration-server.html">
+            
+                    
+                    4.3.2 设置 Config Server
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.3" data-path="../../04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/4.3.3-Making-the-configuration-server-resilient.html">
+            
+                <a href="../../04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/4.3.3-Making-the-configuration-server-resilient.html">
+            
+                    
+                    4.3.3 使 Config Server 更有韧性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.4" data-path="../../04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/4.3.4-Understanding-the-configuration-server-REST-API.html">
+            
+                <a href="../../04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/4.3.4-Understanding-the-configuration-server-REST-API.html">
+            
+                    
+                    4.3.4 理解 Config Server 的 Rest API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../../04-Externalized-configuration-management/4.4-Using-a-configuration-server-with-Spring-Cloud-Config-Client/Introduction.html">
+            
+                <a href="../../04-Externalized-configuration-management/4.4-Using-a-configuration-server-with-Spring-Cloud-Config-Client/Introduction.html">
+            
+                    
+                    4.4 通过 Spring Cloud Config Client 使用配置服务
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.4.1" data-path="../../04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/4.4.1-Setting-up-a-configuration-client.html">
+            
+                <a href="../../04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/4.4.1-Setting-up-a-configuration-client.html">
+            
+                    
+                    4.4.1 设置 Config Client
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.2" data-path="../../04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/4.4.2-Making-the-configuration-client-resilient.html">
+            
+                <a href="../../04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/4.4.2-Making-the-configuration-client-resilient.html">
+            
+                    
+                    4.4.2 使 Config Client 更有韧性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.3" data-path="../../04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/4.4.3-Refreshing-configuration-at-runtime.html">
+            
+                <a href="../../04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/4.4.3-Refreshing-configuration-at-runtime.html">
+            
+                    
+                    4.4.3 运行时刷新配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../../04-Externalized-configuration-management/Summary.html">
+            
+                <a href="../../04-Externalized-configuration-management/Summary.html">
+            
+                    
+                    4.4 总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >2.3.1 Docker 介绍：镜像和容器</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="231-docker-&#x4ECB;&#x7ECD;&#xFF1A;&#x955C;&#x50CF;&#x548C;&#x5BB9;&#x5668;">2.3.1 Docker &#x4ECB;&#x7ECD;&#xFF1A;&#x955C;&#x50CF;&#x548C;&#x5BB9;&#x5668;</h3>
+<p>&#x5728;&#x673A;&#x5668;&#x4E0A;&#x5B89;&#x88C5; Docker &#x8F6F;&#x4EF6;&#x65F6;&#xFF0C;&#x60A8;&#x5C06;&#x83B7;&#x5F97; Docker &#x5F15;&#x64CE;&#x5305;&#xFF0C;&#x5176;&#x57FA;&#x4E8E; <code>&#x5BA2;&#x6237;&#x673A;/&#x670D;&#x52A1;&#x5668;</code> &#x4F53;&#x7CFB;&#x7ED3;&#x6784;&#x3002;Docker &#x670D;&#x52A1;&#x5668;&#xFF08;<em>Docker server</em>&#xFF09;&#x5305;&#x542B; Docker &#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#xFF08;<em>Docker daemon</em>&#xFF09;&#xFF0C;j&#x662F;&#x8D1F;&#x8D23;&#x521B;&#x5EFA;&#x548C;&#x7BA1;&#x7406; Docker &#x5BF9;&#x8C61;&#xFF08;&#x5982;&#xFF1A;&#x955C;&#x50CF;&#x3001;&#x5377;&#x3001;&#x7F51;&#x7EDC;&#xFF09;&#x7684;&#x540E;&#x53F0;&#x8FDB;&#x7A0B;&#x3002;Docker &#x670D;&#x52A1;&#x5668;&#x8FD0;&#x884C;&#x7684;&#x673A;&#x5668;&#x79F0;&#x4E3A; Docker &#x4E3B;&#x673A;&#xFF08;<em>Docker Host</em>&#xFF09;&#xFF0C;&#x8981;&#x8FD0;&#x884C;&#x5BB9;&#x5668;&#x670D;&#x52A1;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x90FD;&#x662F; Docker &#x4E3B;&#x673A;&#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x5177;&#x6709;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684; Docker &#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x3002;&#x5BB9;&#x5668;&#x7684;&#x53EF;&#x79FB;&#x690D;&#x6027;&#x662F;&#x901A;&#x8FC7;&#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x5B9E;&#x73B0;&#x7684;&#x3002;&#x540E;&#x7EED;&#x4ECB;&#x7ECD;&#x4E2D;&#xFF0C;&#x6211;&#x53EF;&#x80FD;&#x4F1A;&#x6DF7;&#x7528; Docker &#x670D;&#x52A1;&#x5668;&#x548C; Docker &#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x3002;</p>
+<p>Docker &#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x516C;&#x5F00;&#x4E86;&#x4E00;&#x4E2A; REST API&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5B83;&#x6765;&#x53D1;&#x9001;&#x6307;&#x4EE4;&#x3002;&#x4F8B;&#x5982;&#xFF1A;&#x8FD0;&#x884C;&#x5BB9;&#x5668;&#x6216;&#x521B;&#x5EFA;&#x5377;&#x3002;Docker &#x5BA2;&#x6237;&#x7AEF;&#x901A;&#x8FC7;&#x8BE5; API &#x4E0E;&#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x5BF9;&#x8BDD;&#x3002;&#x8FD9;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x662F;&#x57FA;&#x4E8E;&#x547D;&#x4EE4;&#x884C;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x4E0E; Docker &#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x4EA4;&#x4E92;&#xFF1A;&#x811A;&#x672C;&#xFF08;&#x4F8B;&#x5982; Docker Compose&#xFF09;&#x6216;&#x76F4;&#x63A5;&#x901A;&#x8FC7; Docker CLI&#x3002;</p>
+<p>&#x9664;&#x4E86;&#x4F5C;&#x4E3A; Docker &#x5F15;&#x64CE;&#x7279;&#x5F81;&#x7684;&#x5BA2;&#x6237;&#x673A;&#x548C;&#x670D;&#x52A1;&#x5668;&#x7EC4;&#x4EF6;&#x4E4B;&#x5916;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x5E73;&#x53F0;&#x5143;&#x7D20;&#x662F;&#x955C;&#x50CF;&#x4E2D;&#x5FC3;&#xFF08;container registry&#xFF09;&#xFF0C;&#x5B83;&#x5177;&#x6709;&#x4E0E; Maven &#x5B58;&#x50A8;&#x5E93;&#x7C7B;&#x4F3C;&#x7684;&#x529F;&#x80FD;&#x3002;Maven &#x5B58;&#x50A8;&#x5E93;&#x7528;&#x4E8E;&#x6258;&#x7BA1;&#x548C;&#x5206;&#x53D1; Java &#x5E93;&#xFF0C;&#x800C;&#x955C;&#x50CF;&#x4E2D;&#x5FC3;&#x5BF9;&#x5BB9;&#x5668;&#x955C;&#x50CF;&#x6267;&#x884C;&#x76F8;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x6211;&#x4EEC;&#x533A;&#x5206;&#x516C;&#x5171;&#x548C;&#x79C1;&#x6709;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x3002;Docker &#x516C;&#x53F8;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x540D;&#x4E3A; Docker Hub&#xFF08;<a href="https://hub.docker.com/" target="_blank">Hub.Docker.com</a>&#xFF09;&#x7684;&#x516C;&#x5171;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#xFF0C;&#x8FD9;&#x5728;&#x672C;&#x5730; Docker &#x5B89;&#x88C5;&#x65F6;&#x662F;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x7684;&#xFF0C;&#x5176;&#x4E2D;&#x4E3A;&#x8BB8;&#x591A;&#x5E38;&#x89C1;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6258;&#x7BA1;&#x955C;&#x50CF;&#xFF0C;&#x5982; Ubuntu&#x3001;PostgreSQL &#x548C; OpenJDK&#x3002;</p>
+<p><img src="../../assets/2.8.jpg" alt="">
+<strong>&#x56FE; 2.8 &#x663E;&#x793A;&#x4E86; Docker &#x5BA2;&#x6237;&#x7AEF;&#x3001;Docker &#x670D;&#x52A1;&#x5668;&#x548C;&#x955C;&#x50CF;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x5982;&#x4F55;&#x4EA4;&#x4E92;&#x3002;</strong></p>
+<p>Docker &#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x4E0D;&#x540C;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x5728;&#x672C;&#x8282;&#x4E2D;&#xFF0C;&#x6211;&#x5C06;&#x91CD;&#x70B9;&#x4ECB;&#x7ECD;&#x955C;&#x50CF;&#x548C;&#x5BB9;&#x5668;&#x3002;</p>
+<p>&#x5BB9;&#x5668;&#x955C;&#x50CF;&#xFF08;&#x6216;&#x8005;&#x7B80;&#x5355;&#x5730;&#x8BF4;&#xFF0C;&#x955C;&#x50CF;&#xFF09;&#x662F;&#x4E00;&#x4E2A;&#x8F7B;&#x91CF;&#x7EA7;&#x7684;&#x53EF;&#x6267;&#x884C;&#x5305;&#xFF0C;&#x5305;&#x62EC;&#x8FD0;&#x884C;&#x5185;&#x90E8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6240;&#x9700;&#x7684;&#x4E00;&#x5207;&#x3002;Docker &#x955C;&#x50CF;&#x683C;&#x5F0F;&#x662F;&#x6700;&#x5E38;&#x7528;&#x7684;&#x955C;&#x50CF;&#x683C;&#x5F0F;&#xFF0C;&#x540E;&#x6765;&#x7531;&#x5F00;&#x653E;&#x5BB9;&#x5668;&#x8BA1;&#x5212;&#xFF08;OCI&#xFF09;&#x9879;&#x76EE;&#x6807;&#x51C6;&#x5316;&#x6210;&#x4E86; OCI &#x955C;&#x50CF;&#x3002;&#x901A;&#x8FC7;&#x5728; Dockerfile&#xFF08;&#x4E00;&#x4E2A;&#x5305;&#x542B;&#x751F;&#x6210;&#x955C;&#x50CF;&#x7684;&#x6240;&#x6709;&#x6B65;&#x9AA4;&#x7684;&#xFF0C;&#x57FA;&#x4E8E;&#x6587;&#x672C;&#x7684;&#x6587;&#x4EF6;&#xFF09;&#x4E2D;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;&#xFF0C;&#x53EF;&#x4EE5;&#x4ECE;&#x5934;&#x5F00;&#x59CB;&#x521B;&#x5EFA;&#x955C;&#x50CF;&#x3002;&#x901A;&#x5E38;&#xFF0C;&#x955C;&#x50CF;&#x662F;&#x57FA;&#x4E8E;&#x53E6;&#x4E00;&#x4E2A;&#x955C;&#x50CF;&#x7684;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x5728; OpenJDK &#x7684;&#x57FA;&#x7840;&#x4E0A;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x955C;&#x50CF;&#x3002;&#x60A8;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A; Java &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;&#x521B;&#x5EFA;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x955C;&#x50CF;&#x63A8;&#x9001;&#x5230;&#x50CF; DockerHub &#x8FD9;&#x6837;&#x7684;&#x955C;&#x50CF;&#x4E2D;&#x5FC3;&#x3002;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x540D;&#x79F0;&#x548C;&#x6807;&#x8BB0;&#x7528;&#x4E8E;&#x6807;&#x8BC6;&#x6BCF;&#x4E2A;&#x955C;&#x50CF;&#xFF0C;&#x5176;&#x4E2D;&#x6807;&#x8BB0;&#x901A;&#x5E38;&#x662F;&#x7248;&#x672C;&#x53F7;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x7248;&#x672C; 20.04 &#x7684; Ubuntu &#x955C;&#x50CF;&#x79F0;&#x4E3A; Ubuntu:20.04&#x3002;&#x5192;&#x53F7;&#x7528;&#x4E8E;&#x5206;&#x9694;&#x57FA;&#x672C;&#x540D;&#x79F0;&#x548C;&#x7248;&#x672C;&#x3002;</p>
+<p>&#x5BB9;&#x5668;&#x662F;&#x955C;&#x50CF;&#x7684;&#x53EF;&#x8FD0;&#x884C;&#x5B9E;&#x4F8B;&#x3002;&#x60A8;&#x53EF;&#x4EE5;&#x4ECE; Docker CLI &#x6216; Docker Compose &#x7BA1;&#x7406;&#x5BB9;&#x5668;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF1A;&#x53EF;&#x4EE5;&#x542F;&#x52A8;&#x3001;&#x505C;&#x6B62;&#x3001;&#x66F4;&#x65B0;&#x548C;&#x5220;&#x9664;&#x5BB9;&#x5668;&#x3002;&#x5BB9;&#x5668;&#x7531;&#x5B83;&#x4EEC;&#x6240;&#x57FA;&#x4E8E;&#x7684;&#x57FA;&#x672C;&#x955C;&#x50CF;&#x548C;&#x542F;&#x52A8;&#x65F6;&#x63D0;&#x4F9B;&#x7684;&#x914D;&#x7F6E;&#x5B9A;&#x4E49;&#xFF08;&#x4F8B;&#x5982;&#xFF0C;&#x7528;&#x4E8E;&#x81EA;&#x5B9A;&#x4E49;&#x5BB9;&#x5668;&#x7684;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF09;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5BB9;&#x5668;&#x4E4B;&#x95F4;&#xFF0C;&#x4EE5;&#x53CA;&#x5BB9;&#x5668;&#x548C;&#x4E3B;&#x673A;&#x4E4B;&#x95F4;&#x662F;&#x9694;&#x79BB;&#x7684;&#x3002;&#x4F46;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7279;&#x5B9A;&#x7AEF;&#x53E3;&#x66B4;&#x9732;&#x670D;&#x52A1;&#xFF0C;&#x8FD9;&#x901A;&#x8FC7;&#x7AEF;&#x53E3;&#x8F6C;&#x53D1;&#xFF08;port forwarding&#xFF09;&#x6216;&#x7AEF;&#x53E3;&#x6620;&#x5C04;&#xFF08;port mapping&#xFF09;&#x6765;&#x5B9E;&#x73B0;&#x3002;&#x5BB9;&#x5668;&#x53EF;&#x4EE5;&#x6709;&#x4EFB;&#x610F;&#x540D;&#x79F0;&#x3002;&#x5982;&#x679C;&#x672A;&#x6307;&#x5B9A;&#xFF0C;Docker &#x670D;&#x52A1;&#x5668;&#x5C06;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x7684;&#xFF0C;&#x50CF; bazinga_schrodinger&#x3002;&#x8981;&#x8FD0;&#x884C;&#x5BB9;&#x5668;&#xFF0C;&#x60A8;&#x9700;&#x8981; Docker &#x6216;&#x4EFB;&#x4F55;&#x5176;&#x4ED6;&#x4E0E; OCI &#x6807;&#x51C6;&#x517C;&#x5BB9;&#x7684;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x3002;</p>
+<p>&#x8981;&#x8FD0;&#x884C;&#x65B0;&#x5BB9;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; Docker CLI &#x4E0E; Docker &#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x8FDB;&#x884C;&#x4EA4;&#x4E92;&#xFF0C;&#x5B83;&#x68C0;&#x67E5;&#x6307;&#x5B9A;&#x7684;&#x955C;&#x50CF;&#x662F;&#x5426;&#x5DF2;&#x5B58;&#x5728;&#x4E8E;&#x672C;&#x5730;&#x670D;&#x52A1;&#x5668;&#x4E2D;&#x3002;&#x82E5;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5C06;&#x5728;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x67E5;&#x627E;&#x5E76;&#x4E0B;&#x8F7D;&#x955C;&#x50CF;&#xFF0C;&#x7136;&#x540E;&#x8FD0;&#x884C;&#x3002;&#x6574;&#x4E2A;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#xFF0C;&#x540C;&#x6837;&#xFF0C;&#x5982;&#x56FE; 2.8 &#x6240;&#x793A;&#x3002;</p>
+
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Introduction.html" class="navigation navigation-prev " aria-label="Previous page: 2.3 使用 Docker 容器化应用">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="2.3.2-Running-a-Spring-application-as-a-container.html" class="navigation navigation-next " aria-label="Next page: 2.3.2 运行 Spring 应用容器">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"2.3.1 Docker 介绍：镜像和容器","level":"1.4.3.1","depth":3,"next":{"title":"2.3.2 运行 Spring 应用容器","level":"1.4.3.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.2-Running-a-Spring-application-as-a-container.md","ref":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.2-Running-a-Spring-application-as-a-container.md","articles":[]},"previous":{"title":"2.3 使用 Docker 容器化应用","level":"1.4.3","depth":2,"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/Introduction.md","ref":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/Introduction.md","articles":[{"title":"2.3.1 Docker 介绍：镜像和容器","level":"1.4.3.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.1-Introducing-Docker-Images-and-containers.md","ref":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.1-Introducing-Docker-Images-and-containers.md","articles":[]},{"title":"2.3.2 运行 Spring 应用容器","level":"1.4.3.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.2-Running-a-Spring-application-as-a-container.md","ref":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.2-Running-a-Spring-application-as-a-container.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-search","search-pro","back-to-top-button","chapter-fold","code","copy-code-button","pageview-count","auto-scroll-table","popup","theme-comscore","prism","-highlight","fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/LeonLi0102/cloud-native-spring-in-action-translate.git"},"search-pro":{},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","family":"serif","size":4},"theme-comscore":{},"back-to-top-button":{},"pageview-count":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Craig Walls","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native  Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.1-Introducing-Docker-Images-and-containers.md","mtime":"2021-11-29T10:01:54.310Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-01T08:21:35.273Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-auto-scroll-table/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+
