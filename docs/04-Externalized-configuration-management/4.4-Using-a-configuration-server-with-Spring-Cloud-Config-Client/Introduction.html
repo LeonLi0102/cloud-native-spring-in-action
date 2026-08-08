@@ -1282,7 +1282,90 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="44-通过-spring-cloud-config-client-使用配置服务">4.4 通过 Spring Cloud Config Client 使用配置服务</h1>
+                                <h2 id="44-通过-spring-cloud-config-client-使用配置服务">4.4 通过 Spring Cloud Config Client 使用配置服务</h2>
+<p>在上一节中，您设置了 Config Server 来集中管理配置数据。在本节中，您将学习如何配置 Spring Boot 应用程序作为 Config Client，从 Config Server 获取配置。</p>
+<h3 id="441-设置-config-client">4.4.1 设置 Config Client</h3>
+<p>首先，在应用程序的 <code>bootstrap.yml</code>（或 <code>bootstrap.properties</code>）文件中添加 Config Client 依赖和配置：</p>
+<pre><code class="lang-yaml"><span class="hljs-comment"># bootstrap.yml</span>
+<span class="hljs-attr">spring:</span>
+  <span class="hljs-attr">application:</span>
+    <span class="hljs-attr">name:</span> <span class="hljs-string">catalog-service</span>
+  <span class="hljs-attr">cloud:</span>
+    <span class="hljs-attr">config:</span>
+      <span class="hljs-attr">uri:</span> <span class="hljs-string">http://localhost:8888</span>
+      <span class="hljs-attr">fail-fast:</span> <span class="hljs-literal">true</span>
+      <span class="hljs-attr">retry:</span>
+        <span class="hljs-attr">max-attempts:</span> <span class="hljs-number">5</span>
+        <span class="hljs-attr">initial-interval:</span> <span class="hljs-number">1000</span>
+</code></pre>
+<p>添加 Config Client 依赖：</p>
+<pre><code class="lang-groovy">dependencies {
+    implementation <span class="hljs-string">'org.springframework.cloud:spring-cloud-starter-config'</span>
+}
+</code></pre>
+<h3 id="442-使-config-client-更有韧性">4.4.2 使 Config Client 更有韧性</h3>
+<p>Config Server 可能暂时不可用。为了提高韧性，可以配置重试机制：</p>
+<pre><code class="lang-yaml"><span class="hljs-comment"># bootstrap.yml</span>
+<span class="hljs-attr">spring:</span>
+  <span class="hljs-attr">cloud:</span>
+    <span class="hljs-attr">config:</span>
+      <span class="hljs-attr">uri:</span> <span class="hljs-string">http://localhost:8888</span>
+      <span class="hljs-attr">fail-fast:</span> <span class="hljs-literal">true</span>
+      <span class="hljs-attr">retry:</span>
+        <span class="hljs-attr">max-attempts:</span> <span class="hljs-number">6</span>
+        <span class="hljs-attr">initial-interval:</span> <span class="hljs-number">1000</span>
+        <span class="hljs-attr">max-interval:</span> <span class="hljs-number">2000</span>
+        <span class="hljs-attr">multiplier:</span> <span class="hljs-number">1.1</span>
+</code></pre>
+<p>添加重试依赖：</p>
+<pre><code class="lang-groovy">dependencies {
+    implementation <span class="hljs-string">'org.springframework.retry:spring-retry'</span>
+    implementation <span class="hljs-string">'org.springframework.boot:spring-boot-starter-aop'</span>
+}
+</code></pre>
+<h3 id="443-运行时刷新配置">4.4.3 运行时刷新配置</h3>
+<p>Spring Cloud Config 提供了几种方式在运行时刷新配置而无需重启应用程序：</p>
+<h4 id="使用-refreshscope">使用 @RefreshScope</h4>
+<pre><code class="lang-java"><span class="hljs-meta">@RestController</span>
+<span class="hljs-meta">@RefreshScope</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ConfigController</span> {
+
+    <span class="hljs-meta">@Value("${app.feature.enabled:false}")</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> featureEnabled;
+
+    <span class="hljs-meta">@GetMapping("/config")</span>
+    <span class="hljs-keyword">public</span> Map&lt;String, Object&gt; <span class="hljs-title function_">getConfig</span><span class="hljs-params">()</span> {
+        Map&lt;String, Object&gt; config = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();
+        config.put(<span class="hljs-string">"featureEnabled"</span>, featureEnabled);
+        <span class="hljs-keyword">return</span> config;
+    }
+}
+</code></pre>
+<h4 id="手动刷新">手动刷新</h4>
+<pre><code class="lang-bash">$ curl -X POST http://localhost:9001/actuator/refresh
+</code></pre>
+<h4 id="使用-spring-cloud-bus-自动刷新">使用 Spring Cloud Bus 自动刷新</h4>
+<pre><code class="lang-yaml"><span class="hljs-comment"># application.yml</span>
+<span class="hljs-attr">spring:</span>
+  <span class="hljs-attr">cloud:</span>
+    <span class="hljs-attr">bus:</span>
+      <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+      <span class="hljs-attr">refresh:</span>
+        <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<p>通过 Spring Cloud Bus，当配置仓库中的配置发生变化时，可以自动通知所有连接的客户端刷新配置。</p>
+<h3 id="444-使用-config-server-的加密功能">4.4.4 使用 Config Server 的加密功能</h3>
+<p>Config Server 支持加密敏感配置数据：</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># 加密属性值</span>
+$ curl http://localhost:8888/encrypt -d <span class="hljs-string">'my-secret-password'</span>
+
+<span class="hljs-comment"># 在配置文件中使用加密值</span>
+spring:
+  datasource:
+    password: <span class="hljs-string">'{cipher}加密后的值'</span>
+</code></pre>
+<p>Config Server 还支持使用 HashiCorp Vault 来安全管理密钥。</p>
+<p>通过 Spring Cloud Config，您可以实现配置的集中管理、版本控制和动态更新，同时保持应用程序的可移植性和可维护性。</p>
 
                                 
                                 </section>
@@ -1326,7 +1409,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.4 通过 Config Client 使用配置服务","level":"1.6.4","depth":2,"next":{"title":"第 5 章 云中的数据持久化和管理","level":"1.7","depth":1,"path":"05-Persisting-and-managing-data-in-the-cloud/Introduction.md","ref":"05-Persisting-and-managing-data-in-the-cloud/Introduction.md","articles":[{"title":"5.1 云原生系统的数据库","level":"1.7.1","depth":2,"path":"05-Persisting-and-managing-data-in-the-cloud/5.1-Databases-for-cloud-native-systems/Introduction.md","ref":"05-Persisting-and-managing-data-in-the-cloud/5.1-Databases-for-cloud-native-systems/Introduction.md","articles":[]},{"title":"5.2 使用 Spring Data JDBC 进行数据持久化","level":"1.7.2","depth":2,"path":"05-Persisting-and-managing-data-in-the-cloud/5.2-Data-persistence-with-Spring-Data-JDBC/Introduction.md","ref":"05-Persisting-and-managing-data-in-the-cloud/5.2-Data-persistence-with-Spring-Data-JDBC/Introduction.md","articles":[]},{"title":"5.3 使用 Spring 和 Testcontainers 测试数据持久化","level":"1.7.3","depth":2,"path":"05-Persisting-and-managing-data-in-the-cloud/5.3-Testing-data-persistence.md","ref":"05-Persisting-and-managing-data-in-the-cloud/5.3-Testing-data-persistence.md","articles":[]},{"title":"5.4 使用 Flyway 管理生产环境中的数据库","level":"1.7.4","depth":2,"path":"05-Persisting-and-managing-data-in-the-cloud/5.4-Managing-databases-with-Flyway.md","ref":"05-Persisting-and-managing-data-in-the-cloud/5.4-Managing-databases-with-Flyway.md","articles":[]}]},"previous":{"title":"4.3 使用 Config Server 进行集中化配置管理","level":"1.6.3","depth":2,"path":"04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/Introduction.md","ref":"04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/Introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"04-Externalized-configuration-management/4.4-Using-a-configuration-server-with-Spring-Cloud-Config-Client/Introduction.md","mtime":"2026-08-08T10:25:16.990Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T12:31:28.486Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4.4 通过 Config Client 使用配置服务","level":"1.6.4","depth":2,"next":{"title":"第 5 章 云中的数据持久化和管理","level":"1.7","depth":1,"path":"05-Persisting-and-managing-data-in-the-cloud/Introduction.md","ref":"05-Persisting-and-managing-data-in-the-cloud/Introduction.md","articles":[{"title":"5.1 云原生系统的数据库","level":"1.7.1","depth":2,"path":"05-Persisting-and-managing-data-in-the-cloud/5.1-Databases-for-cloud-native-systems/Introduction.md","ref":"05-Persisting-and-managing-data-in-the-cloud/5.1-Databases-for-cloud-native-systems/Introduction.md","articles":[]},{"title":"5.2 使用 Spring Data JDBC 进行数据持久化","level":"1.7.2","depth":2,"path":"05-Persisting-and-managing-data-in-the-cloud/5.2-Data-persistence-with-Spring-Data-JDBC/Introduction.md","ref":"05-Persisting-and-managing-data-in-the-cloud/5.2-Data-persistence-with-Spring-Data-JDBC/Introduction.md","articles":[]},{"title":"5.3 使用 Spring 和 Testcontainers 测试数据持久化","level":"1.7.3","depth":2,"path":"05-Persisting-and-managing-data-in-the-cloud/5.3-Testing-data-persistence.md","ref":"05-Persisting-and-managing-data-in-the-cloud/5.3-Testing-data-persistence.md","articles":[]},{"title":"5.4 使用 Flyway 管理生产环境中的数据库","level":"1.7.4","depth":2,"path":"05-Persisting-and-managing-data-in-the-cloud/5.4-Managing-databases-with-Flyway.md","ref":"05-Persisting-and-managing-data-in-the-cloud/5.4-Managing-databases-with-Flyway.md","articles":[]}]},"previous":{"title":"4.3 使用 Config Server 进行集中化配置管理","level":"1.6.3","depth":2,"path":"04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/Introduction.md","ref":"04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/Introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"04-Externalized-configuration-management/4.4-Using-a-configuration-server-with-Spring-Cloud-Config-Client/Introduction.md","mtime":"2026-08-08T12:39:54.483Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T12:40:34.697Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

@@ -1282,7 +1282,84 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="43-用-spring-config-server-进行集中化配置管理">4.3 用 Spring Config Server 进行集中化配置管理</h1>
+                                <h2 id="43-使用-spring-cloud-config-server-进行集中化配置管理">4.3 使用 Spring Cloud Config Server 进行集中化配置管理</h2>
+<p>通过环境变量，您可以外部化应用程序的配置并遵循 15 要素方法论。然而，有一些问题它们无法处理：</p>
+<ul>
+<li>配置数据与应用程序代码同样重要，应该以同样的细心和关注来处理。您应该在哪里存储配置数据？</li>
+<li>环境变量不提供细粒度的访问控制功能。如何控制对配置数据的访问？</li>
+<li>配置数据会演进并需要更改，就像应用程序代码一样。如何跟踪配置数据的修订？如何审核发布中使用的配置？</li>
+<li>更改配置数据后，如何让应用程序在运行时读取它而无需完全重启？</li>
+<li>当应用程序实例数量增加时，以分布式方式为每个实例处理配置可能具有挑战性。如何克服这些挑战？</li>
+<li>Spring Boot 属性和环境变量都不支持配置加密，因此您无法安全地存储密码。如何管理密钥？</li>
+</ul>
+<p>Spring 生态系统提供了许多选项来解决这些问题。我们可以将它们分为三组：</p>
+<h3 id="配置服务">配置服务</h3>
+<p>Spring Cloud 项目提供了可用于运行自己的配置服务并配置 Spring Boot 应用程序的模块：</p>
+<ul>
+<li><strong>Spring Cloud Config</strong> — 提供由可插拔数据源支持的配置服务，如 Git 仓库、数据存储或 HashiCorp Vault</li>
+<li><strong>Spring Cloud Consul</strong> — 使用 HashiCorp Consul 作为数据存储的配置服务</li>
+<li><strong>Spring Cloud Vault</strong> — 使用 HashiCorp Vault 作为数据存储的配置服务</li>
+</ul>
+<p>Spring Cloud Config Server 是一个集中式配置服务器，可以从 Git、SVN 或文件系统等后端存储中获取配置数据。</p>
+<h3 id="431-使用-git-存储配置数据">4.3.1 使用 Git 存储配置数据</h3>
+<p>Git 是 Spring Cloud Config 最常用的后端存储。它提供了配置数据的版本控制，可以跟踪更改并回滚到以前的版本。</p>
+<p>配置 Config Server 使用 Git 仓库：</p>
+<pre><code class="lang-yaml"><span class="hljs-comment"># application.yml</span>
+<span class="hljs-attr">server:</span>
+  <span class="hljs-attr">port:</span> <span class="hljs-number">8888</span>
+
+<span class="hljs-attr">spring:</span>
+  <span class="hljs-attr">cloud:</span>
+    <span class="hljs-attr">config:</span>
+      <span class="hljs-attr">server:</span>
+        <span class="hljs-attr">git:</span>
+          <span class="hljs-attr">uri:</span> <span class="hljs-string">https://github.com/your-username/config-repo</span>
+          <span class="hljs-attr">default-label:</span> <span class="hljs-string">main</span>
+          <span class="hljs-attr">clone-on-start:</span> <span class="hljs-literal">true</span>
+          <span class="hljs-attr">search-paths:</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-string">'{application}'</span>
+</code></pre>
+<h3 id="432-设置-config-server">4.3.2 设置 Config Server</h3>
+<pre><code class="lang-java"><span class="hljs-meta">@SpringBootApplication</span>
+<span class="hljs-meta">@EnableConfigServer</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ConfigServerApplication</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        SpringApplication.run(ConfigServerApplication.class, args);
+    }
+}
+</code></pre>
+<h3 id="433-使-config-server-更有韧性">4.3.3 使 Config Server 更有韧性</h3>
+<p>Config Server 可能成为单点故障。为了提高可用性，可以：</p>
+<ol>
+<li>运行多个 Config Server 实例</li>
+<li>使用负载均衡器分发请求</li>
+<li>启用本地缓存</li>
+</ol>
+<pre><code class="lang-yaml"><span class="hljs-attr">spring:</span>
+  <span class="hljs-attr">cloud:</span>
+    <span class="hljs-attr">config:</span>
+      <span class="hljs-attr">server:</span>
+        <span class="hljs-attr">git:</span>
+          <span class="hljs-attr">uri:</span> <span class="hljs-string">https://github.com/your-username/config-repo</span>
+          <span class="hljs-attr">clone-on-start:</span> <span class="hljs-literal">true</span>
+        <span class="hljs-attr">fail-on-access-error:</span> <span class="hljs-literal">false</span>
+</code></pre>
+<h3 id="434-理解-config-server-的-rest-api">4.3.4 理解 Config Server 的 REST API</h3>
+<p>Config Server 暴露了几个 REST 端点来获取配置数据：</p>
+<ul>
+<li><code>/{application}/{profile}</code> — 获取指定应用和环境的配置</li>
+<li><code>/{application}-{profile}.properties</code> — 获取属性文件格式的配置</li>
+<li><code>/{application}-{profile}.yml</code> — 获取 YAML 格式的配置</li>
+</ul>
+<pre><code class="lang-bash">$ http :8888/catalog-service/development
+{
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"catalog-service"</span>,
+    <span class="hljs-string">"profiles"</span>: [<span class="hljs-string">"development"</span>],
+    <span class="hljs-string">"label"</span>: <span class="hljs-string">"main"</span>,
+    <span class="hljs-string">"version"</span>: <span class="hljs-string">"abc123"</span>,
+    <span class="hljs-string">"propertySources"</span>: [...]
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1326,7 +1403,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.3 使用 Config Server 进行集中化配置管理","level":"1.6.3","depth":2,"next":{"title":"4.4 通过 Config Client 使用配置服务","level":"1.6.4","depth":2,"path":"04-Externalized-configuration-management/4.4-Using-a-configuration-server-with-Spring-Cloud-Config-Client/Introduction.md","ref":"04-Externalized-configuration-management/4.4-Using-a-configuration-server-with-Spring-Cloud-Config-Client/Introduction.md","articles":[]},"previous":{"title":"4.2 外部化配置","level":"1.6.2","depth":2,"path":"04-Externalized-configuration-management/4.2-Externalized-configuration-one-build-multiple-configurations/Introduction.md","ref":"04-Externalized-configuration-management/4.2-Externalized-configuration-one-build-multiple-configurations/Introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/Introduction.md","mtime":"2026-08-08T10:25:16.990Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T12:31:28.486Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4.3 使用 Config Server 进行集中化配置管理","level":"1.6.3","depth":2,"next":{"title":"4.4 通过 Config Client 使用配置服务","level":"1.6.4","depth":2,"path":"04-Externalized-configuration-management/4.4-Using-a-configuration-server-with-Spring-Cloud-Config-Client/Introduction.md","ref":"04-Externalized-configuration-management/4.4-Using-a-configuration-server-with-Spring-Cloud-Config-Client/Introduction.md","articles":[]},"previous":{"title":"4.2 外部化配置","level":"1.6.2","depth":2,"path":"04-Externalized-configuration-management/4.2-Externalized-configuration-one-build-multiple-configurations/Introduction.md","ref":"04-Externalized-configuration-management/4.2-Externalized-configuration-one-build-multiple-configurations/Introduction.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/Introduction.md","mtime":"2026-08-08T12:39:44.577Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T12:40:34.697Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
