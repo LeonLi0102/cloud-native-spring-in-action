@@ -1283,13 +1283,28 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="91-边缘服务器和-spring-cloud-gateway">9.1 边缘服务器和 Spring Cloud Gateway</h2>
-<p>边缘服务器是系统边缘的应用程序，实现 API 网关和横切关注点等功能。Spring Cloud Gateway 大大简化了构建边缘服务的过程。</p>
-<h3 id="911-spring-cloud-gateway-入门">9.1.1 Spring Cloud Gateway 入门</h3>
-<p>Spring Cloud Gateway 基于 Spring Boot 和 Spring WebFlux，提供了一种简单的方式来路由到 API。它旨在提供一种简单而有效的方式来路由到 API，并为它们提供横切关注点，例如安全性、监控指标和弹性。</p>
-<p>添加依赖：</p>
+<p>由于 API 网关是系统的入口点，它也是处理横切关注点（如安全性、监控和韧性）的绝佳位置。边缘服务器是系统边缘的应用程序，实现 API 网关和横切关注点等功能。</p>
+<h3 id="911-使用-spring-cloud-gateway-启动边缘服务器">9.1.1 使用 Spring Cloud Gateway 启动边缘服务器</h3>
+<p>Polar Bookshop 系统需要一个边缘服务器将流量路由到内部 API 并解决几个横切关注点。您可以从 Spring Initializr（<a href="https://start.spring.io）初始化新的" target="_blank">https://start.spring.io）初始化新的</a> Edge Service 项目。</p>
+<p>依赖配置：</p>
 <pre><code class="lang-groovy">dependencies {
     implementation <span class="hljs-string">'org.springframework.cloud:spring-cloud-starter-gateway'</span>
+    testImplementation <span class="hljs-string">'org.springframework.boot:spring-boot-starter-test'</span>
 }
+</code></pre>
+<p>配置 Netty 服务器和优雅关闭：</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">server:</span>
+  <span class="hljs-attr">port:</span> <span class="hljs-number">9000</span>
+  <span class="hljs-attr">netty:</span>
+    <span class="hljs-attr">connection-timeout:</span> <span class="hljs-string">2s</span>
+    <span class="hljs-attr">idle-timeout:</span> <span class="hljs-string">15s</span>
+  <span class="hljs-attr">shutdown:</span> <span class="hljs-string">graceful</span>
+
+<span class="hljs-attr">spring:</span>
+  <span class="hljs-attr">application:</span>
+    <span class="hljs-attr">name:</span> <span class="hljs-string">edge-service</span>
+  <span class="hljs-attr">lifecycle:</span>
+    <span class="hljs-attr">timeout-per-shutdown-phase:</span> <span class="hljs-string">15s</span>
 </code></pre>
 <h3 id="912-定义路由和谓词">9.1.2 定义路由和谓词</h3>
 <p>Spring Cloud Gateway 提供三个主要构建块：</p>
@@ -1298,7 +1313,7 @@
 <li><strong>谓词（Predicate）</strong> — 匹配 HTTP 请求的任何内容，包括路径、主机、头、查询参数、cookie 和主体</li>
 <li><strong>过滤器（Filter）</strong> — 在转发请求之前或之后修改 HTTP 请求或响应</li>
 </ul>
-<p>配置路由示例：</p>
+<p>配置路由：</p>
 <pre><code class="lang-yaml"><span class="hljs-attr">spring:</span>
   <span class="hljs-attr">cloud:</span>
     <span class="hljs-attr">gateway:</span>
@@ -1313,14 +1328,7 @@
             <span class="hljs-bullet">-</span> <span class="hljs-string">Path=/orders/**</span>
 </code></pre>
 <h3 id="913-使用过滤器">9.1.3 使用过滤器</h3>
-<p>过滤器可以在请求转发到下游服务之前或之后修改请求。Spring Cloud Gateway 提供了许多内置过滤器：</p>
-<ul>
-<li><strong>AddRequestHeader</strong> — 添加请求头</li>
-<li><strong>AddResponseHeader</strong> — 添加响应头</li>
-<li><strong>RewritePath</strong> — 重写请求路径</li>
-<li><strong>Retry</strong> — 重试失败的请求</li>
-<li><strong>CircuitBreaker</strong> — 集成断路器</li>
-</ul>
+<p>过滤器可以在请求转发到下游服务之前或之后修改请求：</p>
 <pre><code class="lang-yaml"><span class="hljs-attr">spring:</span>
   <span class="hljs-attr">cloud:</span>
     <span class="hljs-attr">gateway:</span>
@@ -1332,6 +1340,11 @@
           <span class="hljs-attr">filters:</span>
             <span class="hljs-bullet">-</span> <span class="hljs-string">AddRequestHeader=X-Source,</span> <span class="hljs-string">gateway</span>
             <span class="hljs-bullet">-</span> <span class="hljs-string">StripPrefix=1</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Retry</span>
+              <span class="hljs-attr">args:</span>
+                <span class="hljs-attr">retries:</span> <span class="hljs-number">3</span>
+                <span class="hljs-attr">statuses:</span> <span class="hljs-string">BAD_GATEWAY</span>
+                <span class="hljs-attr">methods:</span> <span class="hljs-string">GET</span>
 </code></pre>
 
                                 
@@ -1376,7 +1389,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"9.1 边缘服务器和 Spring Cloud Gateway","level":"1.11.1","depth":2,"next":{"title":"9.2 使用 Circuit Breaker 实现容错","level":"1.11.2","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker.md","ref":"09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker.md","articles":[]},"previous":{"title":"第 9 章 API 网关和断路器","level":"1.11","depth":1,"path":"09-API-gateway-and-circuit-breakers/Introduction.md","ref":"09-API-gateway-and-circuit-breakers/Introduction.md","articles":[{"title":"9.1 边缘服务器和 Spring Cloud Gateway","level":"1.11.1","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.1-Edge-servers-and-Spring-Cloud-Gateway.md","ref":"09-API-gateway-and-circuit-breakers/9.1-Edge-servers-and-Spring-Cloud-Gateway.md","articles":[]},{"title":"9.2 使用 Circuit Breaker 实现容错","level":"1.11.2","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker.md","ref":"09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker.md","articles":[]},{"title":"9.3 使用 Redis 实现请求限流","level":"1.11.3","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting.md","ref":"09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting.md","articles":[]},{"title":"9.4 使用 Redis 进行分布式会话管理","level":"1.11.4","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.4-Distributed-session-management.md","ref":"09-API-gateway-and-circuit-breakers/9.4-Distributed-session-management.md","articles":[]},{"title":"9.5 使用 Kubernetes Ingress 管理外部访问","level":"1.11.5","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.5-Managing-external-access-with-Kubernetes-Ingress.md","ref":"09-API-gateway-and-circuit-breakers/9.5-Managing-external-access-with-Kubernetes-Ingress.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"09-API-gateway-and-circuit-breakers/9.1-Edge-servers-and-Spring-Cloud-Gateway.md","mtime":"2026-08-08T11:04:41.282Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T12:40:34.697Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"9.1 边缘服务器和 Spring Cloud Gateway","level":"1.11.1","depth":2,"next":{"title":"9.2 使用 Circuit Breaker 实现容错","level":"1.11.2","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker.md","ref":"09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker.md","articles":[]},"previous":{"title":"第 9 章 API 网关和断路器","level":"1.11","depth":1,"path":"09-API-gateway-and-circuit-breakers/Introduction.md","ref":"09-API-gateway-and-circuit-breakers/Introduction.md","articles":[{"title":"9.1 边缘服务器和 Spring Cloud Gateway","level":"1.11.1","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.1-Edge-servers-and-Spring-Cloud-Gateway.md","ref":"09-API-gateway-and-circuit-breakers/9.1-Edge-servers-and-Spring-Cloud-Gateway.md","articles":[]},{"title":"9.2 使用 Circuit Breaker 实现容错","level":"1.11.2","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker.md","ref":"09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker.md","articles":[]},{"title":"9.3 使用 Redis 实现请求限流","level":"1.11.3","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting.md","ref":"09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting.md","articles":[]},{"title":"9.4 使用 Redis 进行分布式会话管理","level":"1.11.4","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.4-Distributed-session-management.md","ref":"09-API-gateway-and-circuit-breakers/9.4-Distributed-session-management.md","articles":[]},{"title":"9.5 使用 Kubernetes Ingress 管理外部访问","level":"1.11.5","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.5-Managing-external-access-with-Kubernetes-Ingress.md","ref":"09-API-gateway-and-circuit-breakers/9.5-Managing-external-access-with-Kubernetes-Ingress.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"09-API-gateway-and-circuit-breakers/9.1-Edge-servers-and-Spring-Cloud-Gateway.md","mtime":"2026-08-08T12:41:40.801Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T12:45:56.660Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

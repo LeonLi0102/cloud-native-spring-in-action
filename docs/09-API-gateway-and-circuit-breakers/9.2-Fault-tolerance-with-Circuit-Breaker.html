@@ -1283,9 +1283,8 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="92-使用-circuit-breaker-和-resilience4j-实现容错">9.2 使用 Circuit Breaker 和 Resilience4j 实现容错</h2>
-<p>在分布式系统中，服务之间的调用可能会失败。为了防止级联故障，我们需要实现容错模式。</p>
+<p>在分布式系统中，服务之间的调用可能会失败。断路器模式是一种保护机制，当失败率超过阈值时，阻止进一步调用，从而保护下游服务和系统资源。</p>
 <h3 id="921-理解断路器模式">9.2.1 理解断路器模式</h3>
-<p>断路器模式类似于电路断路器：当失败率超过阈值时，断路器打开，阻止进一步调用，从而保护下游服务和系统资源。</p>
 <p>断路器有三种状态：</p>
 <ul>
 <li><strong>关闭（Closed）</strong> — 正常状态，请求正常通过</li>
@@ -1308,17 +1307,7 @@
                 <span class="hljs-attr">name:</span> <span class="hljs-string">catalogService</span>
                 <span class="hljs-attr">fallbackUri:</span> <span class="hljs-string">forward:/fallback/catalog</span>
 </code></pre>
-<p>配置 Resilience4j 断路器：</p>
-<pre><code class="lang-yaml"><span class="hljs-attr">resilience4j:</span>
-  <span class="hljs-attr">circuitbreaker:</span>
-    <span class="hljs-attr">instances:</span>
-      <span class="hljs-attr">catalogService:</span>
-        <span class="hljs-attr">slidingWindowSize:</span> <span class="hljs-number">10</span>
-        <span class="hljs-attr">failureRateThreshold:</span> <span class="hljs-number">50</span>
-        <span class="hljs-attr">waitDurationInOpenState:</span> <span class="hljs-string">10s</span>
-        <span class="hljs-attr">permittedNumberOfCallsInHalfOpenState:</span> <span class="hljs-number">3</span>
-</code></pre>
-<h3 id="923-实现重试">9.2.3 实现重试</h3>
+<h3 id="923-实现重试和超时">9.2.3 实现重试和超时</h3>
 <pre><code class="lang-yaml"><span class="hljs-attr">spring:</span>
   <span class="hljs-attr">cloud:</span>
     <span class="hljs-attr">gateway:</span>
@@ -1333,14 +1322,24 @@
                 <span class="hljs-attr">retries:</span> <span class="hljs-number">3</span>
                 <span class="hljs-attr">statuses:</span> <span class="hljs-string">BAD_GATEWAY</span>
                 <span class="hljs-attr">methods:</span> <span class="hljs-string">GET</span>
-</code></pre>
-<h3 id="924-实现超时">9.2.4 实现超时</h3>
-<pre><code class="lang-yaml"><span class="hljs-attr">spring:</span>
-  <span class="hljs-attr">cloud:</span>
-    <span class="hljs-attr">gateway:</span>
       <span class="hljs-attr">httpclient:</span>
         <span class="hljs-attr">connect-timeout:</span> <span class="hljs-number">5000</span>
         <span class="hljs-attr">response-timeout:</span> <span class="hljs-string">10s</span>
+</code></pre>
+<h3 id="924-使用-resilience4j-配置">9.2.4 使用 Resilience4j 配置</h3>
+<pre><code class="lang-yaml"><span class="hljs-attr">resilience4j:</span>
+  <span class="hljs-attr">circuitbreaker:</span>
+    <span class="hljs-attr">instances:</span>
+      <span class="hljs-attr">catalogService:</span>
+        <span class="hljs-attr">slidingWindowSize:</span> <span class="hljs-number">10</span>
+        <span class="hljs-attr">failureRateThreshold:</span> <span class="hljs-number">50</span>
+        <span class="hljs-attr">waitDurationInOpenState:</span> <span class="hljs-string">10s</span>
+        <span class="hljs-attr">permittedNumberOfCallsInHalfOpenState:</span> <span class="hljs-number">3</span>
+  <span class="hljs-attr">retry:</span>
+    <span class="hljs-attr">instances:</span>
+      <span class="hljs-attr">catalogService:</span>
+        <span class="hljs-attr">maxAttempts:</span> <span class="hljs-number">3</span>
+        <span class="hljs-attr">waitDuration:</span> <span class="hljs-string">500ms</span>
 </code></pre>
 
                                 
@@ -1385,7 +1384,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"9.2 使用 Circuit Breaker 实现容错","level":"1.11.2","depth":2,"next":{"title":"9.3 使用 Redis 实现请求限流","level":"1.11.3","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting.md","ref":"09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting.md","articles":[]},"previous":{"title":"9.1 边缘服务器和 Spring Cloud Gateway","level":"1.11.1","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.1-Edge-servers-and-Spring-Cloud-Gateway.md","ref":"09-API-gateway-and-circuit-breakers/9.1-Edge-servers-and-Spring-Cloud-Gateway.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker.md","mtime":"2026-08-08T11:04:48.039Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T12:40:34.697Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"9.2 使用 Circuit Breaker 实现容错","level":"1.11.2","depth":2,"next":{"title":"9.3 使用 Redis 实现请求限流","level":"1.11.3","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting.md","ref":"09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting.md","articles":[]},"previous":{"title":"9.1 边缘服务器和 Spring Cloud Gateway","level":"1.11.1","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.1-Edge-servers-and-Spring-Cloud-Gateway.md","ref":"09-API-gateway-and-circuit-breakers/9.1-Edge-servers-and-Spring-Cloud-Gateway.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker.md","mtime":"2026-08-08T12:41:51.905Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T12:45:56.660Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

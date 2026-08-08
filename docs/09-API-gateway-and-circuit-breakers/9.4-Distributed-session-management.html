@@ -1285,14 +1285,13 @@
                                 <h2 id="94-使用-redis-进行分布式会话管理">9.4 使用 Redis 进行分布式会话管理</h2>
 <p>在微服务架构中，会话管理是一个挑战。当请求被路由到不同的服务实例时，会话数据需要在所有实例之间共享。</p>
 <h3 id="941-配置-spring-session">9.4.1 配置 Spring Session</h3>
-<p>Spring Session 提供了管理用户会话信息的 API 和实现。它可以将会话存储在 Redis、数据库或其他存储中。</p>
-<p>添加依赖：</p>
+<p>Spring Session 提供了管理用户会话信息的 API 和实现：</p>
 <pre><code class="lang-groovy">dependencies {
     implementation <span class="hljs-string">'org.springframework.session:spring-session-data-redis'</span>
     implementation <span class="hljs-string">'org.springframework.boot:spring-boot-starter-data-redis'</span>
 }
 </code></pre>
-<p>配置 Redis 会话：</p>
+<h3 id="942-配置-redis-会话">9.4.2 配置 Redis 会话</h3>
 <pre><code class="lang-yaml"><span class="hljs-attr">spring:</span>
   <span class="hljs-attr">session:</span>
     <span class="hljs-attr">store-type:</span> <span class="hljs-string">redis</span>
@@ -1301,11 +1300,25 @@
     <span class="hljs-attr">host:</span> <span class="hljs-string">localhost</span>
     <span class="hljs-attr">port:</span> <span class="hljs-number">6379</span>
 </code></pre>
-<h3 id="942-在-edge-service-中使用分布式会话">9.4.2 在 Edge Service 中使用分布式会话</h3>
+<h3 id="943-在-edge-service-中使用分布式会话">9.4.3 在 Edge Service 中使用分布式会话</h3>
 <pre><code class="lang-java"><span class="hljs-meta">@Configuration</span>
 <span class="hljs-meta">@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 1800)</span>
 <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SessionConfig</span> {
 }
+</code></pre>
+<h3 id="944-docker-compose-配置-redis">9.4.4 Docker Compose 配置 Redis</h3>
+<pre><code class="lang-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">'3.8'</span>
+
+<span class="hljs-attr">services:</span>
+  <span class="hljs-attr">redis:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">redis:7-alpine</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">"6379:6379"</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">redis-data:/data</span>
+
+<span class="hljs-attr">volumes:</span>
+  <span class="hljs-attr">redis-data:</span>
 </code></pre>
 <p>这样，无论请求被路由到哪个服务实例，会话数据都可以从 Redis 中获取。</p>
 
@@ -1351,7 +1364,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"9.4 使用 Redis 进行分布式会话管理","level":"1.11.4","depth":2,"next":{"title":"9.5 使用 Kubernetes Ingress 管理外部访问","level":"1.11.5","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.5-Managing-external-access-with-Kubernetes-Ingress.md","ref":"09-API-gateway-and-circuit-breakers/9.5-Managing-external-access-with-Kubernetes-Ingress.md","articles":[]},"previous":{"title":"9.3 使用 Redis 实现请求限流","level":"1.11.3","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting.md","ref":"09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"09-API-gateway-and-circuit-breakers/9.4-Distributed-session-management.md","mtime":"2026-08-08T11:05:00.357Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T12:40:34.697Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"9.4 使用 Redis 进行分布式会话管理","level":"1.11.4","depth":2,"next":{"title":"9.5 使用 Kubernetes Ingress 管理外部访问","level":"1.11.5","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.5-Managing-external-access-with-Kubernetes-Ingress.md","ref":"09-API-gateway-and-circuit-breakers/9.5-Managing-external-access-with-Kubernetes-Ingress.md","articles":[]},"previous":{"title":"9.3 使用 Redis 实现请求限流","level":"1.11.3","depth":2,"path":"09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting.md","ref":"09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"09-API-gateway-and-circuit-breakers/9.4-Distributed-session-management.md","mtime":"2026-08-08T12:42:15.474Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T12:45:56.660Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
