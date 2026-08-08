@@ -3,12 +3,11 @@
 <html lang="zh-hans" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>2.1 云原生开发原则：十二要素及其他 · Cloud Native  Spring In Action</title>
+        <title>2.1 云原生开发原则：十二要素及其他 · Cloud Native Spring In Action</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        <meta name="author" content="Craig Walls">
+        <meta name="generator" content="HonKit 6.2.2">
+        <meta name="author" content="Thomas Vitale">
         
         
     
@@ -17,39 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-auto-scroll-table/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -90,7 +65,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -1608,8 +1583,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本书使用 GitBook 发布
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
         </a>
     </li>
 </ul>
@@ -1647,21 +1622,20 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="21-&#x4E91;&#x539F;&#x751F;&#x5F00;&#x53D1;&#x539F;&#x5219;&#xFF1A;&#x5341;&#x4E8C;&#x8981;&#x7D20;&#x53CA;&#x5176;&#x4ED6;">2.1 &#x4E91;&#x539F;&#x751F;&#x5F00;&#x53D1;&#x539F;&#x5219;&#xFF1A;&#x5341;&#x4E8C;&#x8981;&#x7D20;&#x53CA;&#x5176;&#x4ED6;</h2>
-<p>Heroku &#x4E91;&#x5E73;&#x53F0;&#x7684;&#x5DE5;&#x7A0B;&#x5E08;&#x4EEC;&#x63D0;&#x51FA;&#x4E86; <code>&#x5341;&#x4E8C;&#x8981;&#x7D20;</code>&#xFF0C;&#x4F5C;&#x4E3A;&#x8BBE;&#x8BA1;&#x548C;&#x6784;&#x5EFA;&#x4E91;&#x539F;&#x751F;&#x5E94;&#x7528;&#x7684;&#x5F00;&#x53D1;&#x539F;&#x5219;&#x3002;&#x4ED6;&#x4EEC;&#x5C06;&#x7ECF;&#x9A8C;&#x63D0;&#x70BC;&#x4E3A;&#x6784;&#x5EFA; web &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#xFF0C;&#x5177;&#x6709;&#x4EE5;&#x4E0B;&#x7279;&#x70B9;&#xFF1A;</p>
+                                <h2 id="21-云原生开发原则：十二要素及其他">2.1 云原生开发原则：十二要素及其他</h2>
+<p>Heroku 云平台的工程师们提出了 <code>十二要素</code>，作为设计和构建云原生应用的开发原则。他们将经验提炼为构建 web 应用程序的最佳实践，具有以下特点：</p>
 <ul>
-<li>&#x9002;&#x5408;&#x90E8;&#x7F72;&#x5728;&#x4E91;&#x5E73;&#x53F0;&#x4E0A;&#xFF1B;</li>
-<li>&#x53EF;&#x6269;&#x5C55;&#x7684;&#x8BBE;&#x8BA1;&#xFF1B;</li>
-<li>&#x53EF;&#x8DE8;&#x7CFB;&#x7EDF;&#x79FB;&#x690D;&#xFF1B;</li>
-<li>&#x53EF;&#x5B9E;&#x73B0;&#x8FDE;&#x7EED;&#x90E8;&#x7F72;&#x548C;&#x7075;&#x6D3B;&#x6027;&#x3002;</li>
+<li>适合部署在云平台上；</li>
+<li>可扩展的设计；</li>
+<li>可跨系统移植；</li>
+<li>可实现连续部署和灵活性。</li>
 </ul>
-<p>&#x76EE;&#x6807;&#x662F;&#x5E2E;&#x52A9;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x4E3A;&#x4E91;&#x6784;&#x5EFA;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x7A81;&#x51FA;&#x6700;&#x91CD;&#x8981;&#x7684;&#x56E0;&#x7D20;&#x624D;&#x80FD;&#x8FBE;&#x5230;&#x6700;&#x597D;&#x7684;&#x6548;&#x679C;&#x3002;</p>
-<p>&#x540E;&#x6765;&#xFF0C;Kevin Hoffman &#x5728;&#x300A;Beyond the Twelve-Factor App&#x300B;&#x4E00;&#x4E66;&#x4E2D;&#x5BF9;&#x8BE5;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x4E86;&#x4FEE;&#x8BA2;&#x548C;&#x6269;&#x5C55;&#xFF0C;&#x66F4;&#x65B0;&#x4E86;&#x539F;&#x6765;&#x7684;&#x8981;&#x7D20;&#x5185;&#x5BB9;&#xFF0C;&#x5E76;&#x6DFB;&#x52A0;&#x4E86;&#x4E09;&#x4E2A;&#x989D;&#x5916;&#x8981;&#x7D20;&#x3002;&#x73B0;&#x5728;&#xFF0C;&#x6211;&#x5C06;&#x628A;&#x8FD9;&#x5957;&#x539F;&#x5219;&#x79F0;&#x4E3A; <code>&#x5341;&#x4E94;&#x8981;&#x7D20;</code> &#x65B9;&#x6CD5;&#x3002;</p>
-<p>&#x603B;&#x7684;&#x6765;&#x8BF4;&#xFF0C;&#x8FD9; 15 &#x4E2A;&#x8981;&#x7D20;&#x5C06;&#x672C;&#x4E66;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E2D;&#x65F6;&#x523B;&#x7ED9;&#x60A8;&#x6307;&#x5BFC;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x662F;&#x5F00;&#x53D1;&#x4E91;&#x539F;&#x751F;&#x5E94;&#x7528;&#x7684;&#x4E00;&#x4E2A;&#x826F;&#x597D;&#x7684;&#x5F00;&#x7AEF;&#x3002;&#x5982;&#x679C;&#x60A8;&#x662F;&#x4ECE;&#x5934;&#x5F00;&#x59CB;&#x6784;&#x5EFA;&#x65B0;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x6216;&#x8005;&#x5C06;&#x4F20;&#x7EDF;&#x7CFB;&#x7EDF;&#x8FC1;&#x79FB;&#x5230;&#x4E91;&#x4E0A;&#xFF0C;&#x8FD9;&#x4E9B;&#x539F;&#x5219;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x60A8;&#x5B9E;&#x73B0;&#x8FD9;&#x4E00;&#x8FC7;&#x7A0B;&#x3002;&#x6211;&#x5C06;&#x5728;&#x76F8;&#x5173;&#x90E8;&#x5206;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x5B83;&#x4EEC;&#xFF0C;&#x5E76;&#x8BF4;&#x660E;&#x5982;&#x4F55;&#x5C06;&#x5B83;&#x4EEC;&#x5E94;&#x7528;&#x4E8E; Spring
-&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;&#x4F46;&#x91CD;&#x8981;&#x7684;&#x662F;&#x5148;&#x8981;&#x719F;&#x6089;&#x5B83;&#x4EEC;&#x3002;</p>
-<p>&#x8BA9;&#x6211;&#x4EEC;&#x9010;&#x4E00;&#x6DF1;&#x5165;&#x7814;&#x7A76;&#x3002;</p>
+<p>目标是帮助开发人员为云构建应用程序，突出最重要的因素才能达到最好的效果。</p>
+<p>后来，Kevin Hoffman 在《Beyond the Twelve-Factor App》一书中对该方法进行了修订和扩展，更新了原来的要素内容，并添加了三个额外要素。现在，我将把这套原则称为 <code>十五要素</code> 方法。</p>
+<p>总的来说，这 15 个要素将本书整个过程中时刻给您指导，因为它们是开发云原生应用的一个良好的开端。如果您是从头开始构建新的应用程序，或者将传统系统迁移到云上，这些原则可以帮助您实现这一过程。我将在相关部分详细介绍它们，并说明如何将它们应用于 Spring
+应用程序。但重要的是先要熟悉它们。</p>
+<p>让我们逐一深入研究。</p>
 
-<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
                                 </section>
                             
@@ -1704,49 +1678,65 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2.1 云原生开发原则：十二要素及其他","level":"1.4.1","depth":2,"next":{"title":"2.1.1 一份基准代码对应一个应用","level":"1.4.1.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.1-One-codebase-one-application.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.1-One-codebase-one-application.md","articles":[]},"previous":{"title":"第 2 章 云原生模式和技术","level":"1.4","depth":1,"path":"02-Cloud-native-patterns-and-technologies/Introduction.md","ref":"02-Cloud-native-patterns-and-technologies/Introduction.md","articles":[{"title":"2.1 云原生开发原则：十二要素及其他","level":"1.4.1","depth":2,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/Introduction.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/Introduction.md","articles":[{"title":"2.1.1 一份基准代码对应一个应用","level":"1.4.1.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.1-One-codebase-one-application.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.1-One-codebase-one-application.md","articles":[]},{"title":"2.1.2 API 优先","level":"1.4.1.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.2-API-first.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.2-API-first.md","articles":[]},{"title":"2.1.3 依赖管理","level":"1.4.1.3","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.3-Dependency-management.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.3-Dependency-management.md","articles":[]},{"title":"2.1.4 设计、构建、发布、运行","level":"1.4.1.4","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.4-Design-build-release-run.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.4-Design-build-release-run.md","articles":[]},{"title":"2.1.5 配置、证书、代码","level":"1.4.1.5","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.5-Configuration-credentials-and-code.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.5-Configuration-credentials-and-code.md","articles":[]},{"title":"2.1.6 日志","level":"1.4.1.6","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.6-Logs.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.6-Logs.md","articles":[]},{"title":"2.1.7 可丢弃","level":"1.4.1.7","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.7-Disposability.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.7-Disposability.md","articles":[]},{"title":"2.1.8 后端服务","level":"1.4.1.8","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.8-Backing-services.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.8-Backing-services.md","articles":[]},{"title":"2.1.9 环境一致性","level":"1.4.1.9","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.9-Environment-parity.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.9-Environment-parity.md","articles":[]},{"title":"2.1.10 管理员进程","level":"1.4.1.10","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.10-Administrative-processes.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.10-Administrative-processes.md","articles":[]},{"title":"2.1.11 端口绑定","level":"1.4.1.11","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.11-Port-binding.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.11-Port-binding.md","articles":[]},{"title":"2.1.12 无状态进程","level":"1.4.1.12","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.12-Stateless-processes.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.12-Stateless-processes.md","articles":[]},{"title":"2.1.13 并发","level":"1.4.1.13","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.13-Concurrency.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.13-Concurrency.md","articles":[]},{"title":"2.1.14 遥测","level":"1.4.1.14","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.14-Telemetry.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.14-Telemetry.md","articles":[]},{"title":"2.1.15 认证和授权","level":"1.4.1.15","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.15-Authentication-and-authorization.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.15-Authentication-and-authorization.md","articles":[]}]},{"title":"2.2 使用 Spring 构建云原生应用","level":"1.4.2","depth":2,"path":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/Introduction.md","ref":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/Introduction.md","articles":[{"title":"2.2.1 Spring 全景概览","level":"1.4.2.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.1-Overview-of-the-Spring-landscape.md","ref":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.1-Overview-of-the-Spring-landscape.md","articles":[]},{"title":"2.2.2 创建 Spring Boot 应用","level":"1.4.2.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.2-Building-a-Spring-Boot-application.md","ref":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.2-Building-a-Spring-Boot-application.md","articles":[]}]},{"title":"2.3 使用 Docker 容器化应用","level":"1.4.3","depth":2,"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/Introduction.md","ref":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/Introduction.md","articles":[{"title":"2.3.1 Docker 介绍：镜像和容器","level":"1.4.3.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.1-Introducing-Docker-Images-and-containers.md","ref":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.1-Introducing-Docker-Images-and-containers.md","articles":[]},{"title":"2.3.2 运行 Spring 应用容器","level":"1.4.3.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.2-Running-a-Spring-application-as-a-container.md","ref":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.2-Running-a-Spring-application-as-a-container.md","articles":[]}]},{"title":"2.4 使用 Kubernetes 管理容器","level":"1.4.4","depth":2,"path":"02-Cloud-native-patterns-and-technologies/2.4-Managing-containers-with-Kubernetes/Introduction.md","ref":"02-Cloud-native-patterns-and-technologies/2.4-Managing-containers-with-Kubernetes/Introduction.md","articles":[{"title":"2.4.1 介绍 Kubernetes 的 Deployment、Pod 和 Service","level":"1.4.4.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.4-Managing-containers-with-Kubernetes/2.4.1-Introducing-Kubernetes-Deployments-pods-and-services.md","ref":"02-Cloud-native-patterns-and-technologies/2.4-Managing-containers-with-Kubernetes/2.4.1-Introducing-Kubernetes-Deployments-pods-and-services.md","articles":[]},{"title":"2.4.2 在 Kubernetes 是运行 Spring 应用","level":"1.4.4.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.4-Managing-containers-with-Kubernetes/2.4.2-Running-a-Spring-application-on-Kubernetes.md","ref":"02-Cloud-native-patterns-and-technologies/2.4-Managing-containers-with-Kubernetes/2.4.2-Running-a-Spring-application-on-Kubernetes.md","articles":[]}]},{"title":"2.5 云原生应用 —— 极地书店","level":"1.4.5","depth":2,"path":"02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/Introduction.md","ref":"02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/Introduction.md","articles":[{"title":"2.5.1 理解系统需求","level":"1.4.5.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/2.5.1-Understanding-the-requirements-of-the-system.md","ref":"02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/2.5.1-Understanding-the-requirements-of-the-system.md","articles":[]},{"title":"2.5.2 工程中用到的技术和模式","level":"1.4.5.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/2.5.2-Exploring-patterns-and-technologies-used-in-the-project.md","ref":"02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/2.5.2-Exploring-patterns-and-technologies-used-in-the-project.md","articles":[]}]},{"title":"2.6 总结","level":"1.4.6","depth":2,"path":"02-Cloud-native-patterns-and-technologies/Summary.md","ref":"02-Cloud-native-patterns-and-technologies/Summary.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-search","search-pro","back-to-top-button","chapter-fold","code","copy-code-button","pageview-count","auto-scroll-table","popup","theme-comscore","prism","-highlight","fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/LeonLi0102/cloud-native-spring-in-action-translate.git"},"search-pro":{},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","family":"serif","size":4},"theme-comscore":{},"back-to-top-button":{},"pageview-count":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Craig Walls","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native  Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/Introduction.md","mtime":"2021-11-20T07:19:59.105Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-01T08:21:35.273Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.1 云原生开发原则：十二要素及其他","level":"1.4.1","depth":2,"next":{"title":"2.1.1 一份基准代码对应一个应用","level":"1.4.1.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.1-One-codebase-one-application.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.1-One-codebase-one-application.md","articles":[]},"previous":{"title":"第 2 章 云原生模式和技术","level":"1.4","depth":1,"path":"02-Cloud-native-patterns-and-technologies/Introduction.md","ref":"02-Cloud-native-patterns-and-technologies/Introduction.md","articles":[{"title":"2.1 云原生开发原则：十二要素及其他","level":"1.4.1","depth":2,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/Introduction.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/Introduction.md","articles":[{"title":"2.1.1 一份基准代码对应一个应用","level":"1.4.1.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.1-One-codebase-one-application.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.1-One-codebase-one-application.md","articles":[]},{"title":"2.1.2 API 优先","level":"1.4.1.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.2-API-first.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.2-API-first.md","articles":[]},{"title":"2.1.3 依赖管理","level":"1.4.1.3","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.3-Dependency-management.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.3-Dependency-management.md","articles":[]},{"title":"2.1.4 设计、构建、发布、运行","level":"1.4.1.4","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.4-Design-build-release-run.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.4-Design-build-release-run.md","articles":[]},{"title":"2.1.5 配置、证书、代码","level":"1.4.1.5","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.5-Configuration-credentials-and-code.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.5-Configuration-credentials-and-code.md","articles":[]},{"title":"2.1.6 日志","level":"1.4.1.6","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.6-Logs.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.6-Logs.md","articles":[]},{"title":"2.1.7 可丢弃","level":"1.4.1.7","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.7-Disposability.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.7-Disposability.md","articles":[]},{"title":"2.1.8 后端服务","level":"1.4.1.8","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.8-Backing-services.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.8-Backing-services.md","articles":[]},{"title":"2.1.9 环境一致性","level":"1.4.1.9","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.9-Environment-parity.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.9-Environment-parity.md","articles":[]},{"title":"2.1.10 管理员进程","level":"1.4.1.10","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.10-Administrative-processes.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.10-Administrative-processes.md","articles":[]},{"title":"2.1.11 端口绑定","level":"1.4.1.11","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.11-Port-binding.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.11-Port-binding.md","articles":[]},{"title":"2.1.12 无状态进程","level":"1.4.1.12","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.12-Stateless-processes.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.12-Stateless-processes.md","articles":[]},{"title":"2.1.13 并发","level":"1.4.1.13","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.13-Concurrency.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.13-Concurrency.md","articles":[]},{"title":"2.1.14 遥测","level":"1.4.1.14","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.14-Telemetry.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.14-Telemetry.md","articles":[]},{"title":"2.1.15 认证和授权","level":"1.4.1.15","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.15-Authentication-and-authorization.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.15-Authentication-and-authorization.md","articles":[]}]},{"title":"2.2 使用 Spring 构建云原生应用","level":"1.4.2","depth":2,"path":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/Introduction.md","ref":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/Introduction.md","articles":[{"title":"2.2.1 Spring 全景概览","level":"1.4.2.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.1-Overview-of-the-Spring-landscape.md","ref":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.1-Overview-of-the-Spring-landscape.md","articles":[]},{"title":"2.2.2 创建 Spring Boot 应用","level":"1.4.2.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.2-Building-a-Spring-Boot-application.md","ref":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.2-Building-a-Spring-Boot-application.md","articles":[]}]},{"title":"2.3 使用 Docker 容器化应用","level":"1.4.3","depth":2,"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/Introduction.md","ref":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/Introduction.md","articles":[{"title":"2.3.1 Docker 介绍：镜像和容器","level":"1.4.3.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.1-Introducing-Docker-Images-and-containers.md","ref":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.1-Introducing-Docker-Images-and-containers.md","articles":[]},{"title":"2.3.2 运行 Spring 应用容器","level":"1.4.3.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.2-Running-a-Spring-application-as-a-container.md","ref":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.2-Running-a-Spring-application-as-a-container.md","articles":[]}]},{"title":"2.4 使用 Kubernetes 管理容器","level":"1.4.4","depth":2,"path":"02-Cloud-native-patterns-and-technologies/2.4-Managing-containers-with-Kubernetes/Introduction.md","ref":"02-Cloud-native-patterns-and-technologies/2.4-Managing-containers-with-Kubernetes/Introduction.md","articles":[{"title":"2.4.1 介绍 Kubernetes 的 Deployment、Pod 和 Service","level":"1.4.4.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.4-Managing-containers-with-Kubernetes/2.4.1-Introducing-Kubernetes-Deployments-pods-and-services.md","ref":"02-Cloud-native-patterns-and-technologies/2.4-Managing-containers-with-Kubernetes/2.4.1-Introducing-Kubernetes-Deployments-pods-and-services.md","articles":[]},{"title":"2.4.2 在 Kubernetes 是运行 Spring 应用","level":"1.4.4.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.4-Managing-containers-with-Kubernetes/2.4.2-Running-a-Spring-application-on-Kubernetes.md","ref":"02-Cloud-native-patterns-and-technologies/2.4-Managing-containers-with-Kubernetes/2.4.2-Running-a-Spring-application-on-Kubernetes.md","articles":[]}]},{"title":"2.5 云原生应用 —— 极地书店","level":"1.4.5","depth":2,"path":"02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/Introduction.md","ref":"02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/Introduction.md","articles":[{"title":"2.5.1 理解系统需求","level":"1.4.5.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/2.5.1-Understanding-the-requirements-of-the-system.md","ref":"02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/2.5.1-Understanding-the-requirements-of-the-system.md","articles":[]},{"title":"2.5.2 工程中用到的技术和模式","level":"1.4.5.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/2.5.2-Exploring-patterns-and-technologies-used-in-the-project.md","ref":"02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/2.5.2-Exploring-patterns-and-technologies-used-in-the-project.md","articles":[]}]},{"title":"2.6 总结","level":"1.4.6","depth":2,"path":"02-Cloud-native-patterns-and-technologies/Summary.md","ref":"02-Cloud-native-patterns-and-technologies/Summary.md","articles":[]}]},"articles":[{"title":"2.1.1 一份基准代码对应一个应用","level":"1.4.1.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.1-One-codebase-one-application.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.1-One-codebase-one-application.md","articles":[]},{"title":"2.1.2 API 优先","level":"1.4.1.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.2-API-first.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.2-API-first.md","articles":[]},{"title":"2.1.3 依赖管理","level":"1.4.1.3","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.3-Dependency-management.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.3-Dependency-management.md","articles":[]},{"title":"2.1.4 设计、构建、发布、运行","level":"1.4.1.4","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.4-Design-build-release-run.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.4-Design-build-release-run.md","articles":[]},{"title":"2.1.5 配置、证书、代码","level":"1.4.1.5","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.5-Configuration-credentials-and-code.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.5-Configuration-credentials-and-code.md","articles":[]},{"title":"2.1.6 日志","level":"1.4.1.6","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.6-Logs.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.6-Logs.md","articles":[]},{"title":"2.1.7 可丢弃","level":"1.4.1.7","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.7-Disposability.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.7-Disposability.md","articles":[]},{"title":"2.1.8 后端服务","level":"1.4.1.8","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.8-Backing-services.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.8-Backing-services.md","articles":[]},{"title":"2.1.9 环境一致性","level":"1.4.1.9","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.9-Environment-parity.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.9-Environment-parity.md","articles":[]},{"title":"2.1.10 管理员进程","level":"1.4.1.10","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.10-Administrative-processes.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.10-Administrative-processes.md","articles":[]},{"title":"2.1.11 端口绑定","level":"1.4.1.11","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.11-Port-binding.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.11-Port-binding.md","articles":[]},{"title":"2.1.12 无状态进程","level":"1.4.1.12","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.12-Stateless-processes.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.12-Stateless-processes.md","articles":[]},{"title":"2.1.13 并发","level":"1.4.1.13","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.13-Concurrency.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.13-Concurrency.md","articles":[]},{"title":"2.1.14 遥测","level":"1.4.1.14","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.14-Telemetry.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.14-Telemetry.md","articles":[]},{"title":"2.1.15 认证和授权","level":"1.4.1.15","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.15-Authentication-and-authorization.md","ref":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/2.1.15-Authentication-and-authorization.md","articles":[]}],"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/Introduction.md","mtime":"2026-08-08T10:25:16.909Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T11:32:22.227Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-auto-scroll-table/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
         
     
         
@@ -1758,11 +1748,7 @@
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

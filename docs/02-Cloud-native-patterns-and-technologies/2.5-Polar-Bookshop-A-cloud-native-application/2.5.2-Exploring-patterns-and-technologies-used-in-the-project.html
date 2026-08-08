@@ -3,12 +3,11 @@
 <html lang="zh-hans" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>2.5.2 工程中用到的技术和模式 · Cloud Native  Spring In Action</title>
+        <title>2.5.2 工程中用到的技术和模式 · Cloud Native Spring In Action</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        <meta name="author" content="Craig Walls">
+        <meta name="generator" content="HonKit 6.2.2">
+        <meta name="author" content="Thomas Vitale">
         
         
     
@@ -17,39 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-auto-scroll-table/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -90,7 +65,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -1608,8 +1583,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本书使用 GitBook 发布
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
         </a>
     </li>
 </ul>
@@ -1647,44 +1622,43 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="252-&#x5DE5;&#x7A0B;&#x4E2D;&#x7528;&#x5230;&#x7684;&#x6280;&#x672F;&#x548C;&#x6A21;&#x5F0F;">2.5.2 &#x5DE5;&#x7A0B;&#x4E2D;&#x7528;&#x5230;&#x7684;&#x6280;&#x672F;&#x548C;&#x6A21;&#x5F0F;</h3>
-<p>&#x6BCF;&#x5F53;&#x6211;&#x5728;&#x4E66;&#x4E2D;&#x4ECB;&#x7ECD;&#x4E00;&#x4E2A;&#x65B0;&#x8BDD;&#x9898;&#x65F6;&#xFF0C;&#x5C06;&#x5411;&#x60A8;&#x5C55;&#x793A;&#x5982;&#x4F55;&#x5C06;&#x524D;&#x9762;&#x8BB2;&#x8FC7;&#x7684;&#x6280;&#x672F;&#x6216;&#x6A21;&#x5F0F;&#x5E94;&#x7528;&#x4E8E; <code>&#x6781;&#x5730;&#x4E66;&#x5E97;</code> &#x9879;&#x76EE;&#x3002;&#x5728;&#x672C;&#x8282;&#x4E2D;&#xFF0C;&#x6211;&#x6982;&#x8FF0;&#x4E00;&#x4E0B;&#x6211;&#x4EEC;&#x5C06;&#x8981;&#x89E3;&#x51B3;&#x7684;&#x4E3B;&#x8981;&#x95EE;&#x9898;&#xFF0C;&#x4EE5;&#x53CA;&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528;&#x54EA;&#x4E9B;&#x6280;&#x672F;&#x548C;&#x6A21;&#x5F0F;&#x6765;&#x89E3;&#x51B3;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x3002;</p>
-<h4 id="&#x7F51;&#x7EDC;&#x4EA4;&#x4E92;">&#x7F51;&#x7EDC;&#x4EA4;&#x4E92;</h4>
-<p><code>&#x6781;&#x5730;&#x4E66;&#x5E97;</code> &#x5305;&#x542B;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#xFF0C;&#x8FD9;&#x4E9B;&#x670D;&#x52A1;&#x5FC5;&#x987B;&#x76F8;&#x4E92;&#x901A;&#x4FE1;&#x624D;&#x80FD;&#x5B9E;&#x73B0;&#x5B83;&#x4EEC;&#x7684;&#x529F;&#x80FD;&#x3002;&#x60A8;&#x5C06;&#x6784;&#x5EFA;&#x901A;&#x8FC7; HTTP &#x540C;&#x6B65;&#x4EA4;&#x4E92;&#x7684; RESTful &#x670D;&#x52A1;&#x3002;&#x65E0;&#x8BBA;&#x662F;&#x4EE5;&#x963B;&#x585E;&#x65B9;&#x5F0F;&#xFF08;&#x4F20;&#x7EDF; servlet&#xFF09;&#x8FD8;&#x662F;&#x4EE5;&#x975E;&#x963B;&#x585E;&#x65B9;&#x5F0F;&#xFF08;&#x54CD;&#x5E94;&#x5F0F;&#x7F16;&#x7A0B;&#xFF09;&#x3002;&#x800C;&#x4E14; SpringMVC &#x548C; Spring WebFlux &#xFF08;&#x5728; Project Reactor &#x57FA;&#x7840;&#x4E0A;&#xFF09;&#x5C06;&#x662F;&#x60A8;&#x5B9E;&#x73B0;&#x8FD9;&#x4E00;&#x7ED3;&#x679C;&#x7684;&#x4E3B;&#x8981;&#x5DE5;&#x5177;&#x3002;</p>
-<p>&#x5728;&#x6784;&#x5EFA;&#x4E91;&#x539F;&#x751F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x65F6;&#xFF0C;&#x5E94;&#x8BE5;&#x8BB0;&#x4F4F;&#x8BBE;&#x8BA1;&#x677E;&#x6563;&#x8026;&#x5408;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x670D;&#x52A1;&#xFF0C;&#x5E76;&#x8003;&#x8651;&#x5982;&#x4F55;&#x5728;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x4E0A;&#x4E0B;&#x6587;&#x4E2D;&#x4FDD;&#x6301;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;&#x3002;&#x5728;&#x9700;&#x8981;&#x5B8C;&#x6210;&#x4E00;&#x9879;&#x590D;&#x6742;&#x529F;&#x80FD;&#x65F6;&#xFF0C;&#x4F1A;&#x6D89;&#x53CA;&#x5F88;&#x591A;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x540C;&#x6B65;&#x901A;&#x4FE1;&#x53EF;&#x80FD;&#x4F1A;&#x4EA7;&#x751F;&#x95EE;&#x9898;&#x3002;&#x8FD9;&#x5C31;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x4E8B;&#x4EF6;&#x9A71;&#x52A8;&#x7F16;&#x7A0B;&#x5728;&#x4E91;&#x4E2D;&#x8D8A;&#x6765;&#x8D8A;&#x6D41;&#x884C;&#x7684;&#x539F;&#x56E0;&#xFF1A;&#x5B83;&#x8BA9;&#x60A8;&#x514B;&#x670D;&#x4E86;&#x540C;&#x6B65;&#x901A;&#x4FE1;&#x7684;&#x96BE;&#x9898;&#x3002;</p>
-<p>&#x6211;&#x5C06;&#x5411;&#x60A8;&#x5C55;&#x793A;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x4E8B;&#x4EF6;&#x548C;&#x6D88;&#x606F;&#xFF0C;&#x6765;&#x89E3;&#x8026;&#x670D;&#x52A1;&#x5E76;&#x786E;&#x4FDD;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;&#x3002;&#x60A8;&#x5C06;&#x4F7F;&#x7528; Spring Cloud Stream &#x5B9E;&#x73B0;&#x670D;&#x52A1;&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x636E;&#x6D41;&#xFF0C;&#x4EE5;&#x53CA;
-Spring Cloud Function &#x5C06;&#x6D88;&#x606F;&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#x5B9A;&#x4E49;&#x4E3A;&#x51FD;&#x6570;&#x3002;&#x540E;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x81EA;&#x7136;&#x5730;&#x5728;&#x90E8;&#x7F72;&#x5230;&#x652F;&#x6301;&#x65E0;&#x670D;&#x52A1;&#x7684;&#x5E73;&#x53F0;&#xFF0C;&#x5982; Azure Function&#x3001;AWS Lambda&#x3001;Knative &#x7B49;&#x3002;</p>
-<h4 id="&#x6570;&#x636E;">&#x6570;&#x636E;</h4>
-<p>&#x6570;&#x636E;&#x662F;&#x8F6F;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x91CD;&#x8981;&#x7EC4;&#x6210;&#x90E8;&#x5206;&#x3002;&#x5728; <code>&#x6781;&#x5730;&#x4E66;&#x5E97;</code> &#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x60A8;&#x5C06;&#x4F7F;&#x7528;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93; PostgreSQL &#x5B58;&#x50A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6570;&#x636E;&#x3002;&#x6211;&#x4F1A;&#x6F14;&#x793A;&#x5982;&#x4F55;&#x4F7F;&#x7528; Spring Data JDBC &#xFF08;&#x88AB;&#x52A8;&#x5F0F;&#xFF09;&#x548C; Spring Data R2DBC&#xFF08;&#x54CD;&#x5E94;&#x5F0F;&#xFF09;&#x5C06;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E0E;&#x6570;&#x636E;&#x6E90;&#x96C6;&#x6210;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x60A8;&#x5C06;&#x770B;&#x5230;&#x5982;&#x4F55;&#x8FDB;&#x4E00;&#x6B65;&#x4F18;&#x5316;&#x6570;&#x636E;&#x6E90;&#x5E76;&#x4F7F;&#x7528; Flyway &#x7BA1;&#x7406;&#x8FC1;&#x79FB;&#x811A;&#x672C;&#x3002;</p>
-<p>&#x4E91;&#x539F;&#x751F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5E94;&#x8BE5;&#x662F;&#x65E0;&#x72B6;&#x6001;&#x7684;&#xFF0C;&#x4F46;&#x72B6;&#x6001;&#x9700;&#x8981;&#x5B58;&#x50A8;&#x5728;&#x67D0;&#x4E2A;&#x5730;&#x65B9;&#x3002;&#x5728; <code>&#x6781;&#x5730;&#x4E66;&#x5E97;</code> &#x4E2D;&#xFF0C;&#x60A8;&#x5C06;&#x4F7F;&#x7528; Redis &#x5C06;&#x4F1A;&#x8BDD;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x5916;&#x90E8;&#x5B58;&#x50A8;&#xFF0C;&#x4FDD;&#x7559;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x65E0;&#x72B6;&#x6001;&#x4E14;&#x53EF;&#x6269;&#x5C55;&#x3002;Spring Session &#x4F7F;&#x5B9E;&#x73B0;&#x96C6;&#x7FA4;&#x7528;&#x6237;&#x4F20;&#x8BDD;&#x53D8;&#x5F97;&#x5BB9;&#x6613;&#x3002;&#x7279;&#x522B;&#x662F;&#xFF0C;&#x6211;&#x5C06;&#x5411;&#x60A8;&#x5C55;&#x793A;&#x5982;&#x4F55;&#x4F7F;&#x7528; Spring Session Data Redis &#x96C6;&#x6210; web &#x4F1A;&#x8BDD;&#x7BA1;&#x7406;&#x3002;</p>
-<p>&#x9664;&#x4E86;&#x6301;&#x4E45;&#x5316;&#x6570;&#x636E;&#x548C;&#x4F1A;&#x8BDD;&#x4E4B;&#x5916;&#xFF0C;&#x60A8;&#x8FD8;&#x5C06;&#x5B9E;&#x73B0;&#x4E8B;&#x4EF6;&#x9A71;&#x52A8;&#x7F16;&#x7A0B;&#x6A21;&#x5F0F;&#x3002;Spring AMQP &#x548C; RabbitMQ &#x5C06;&#x662F;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x6280;&#x672F;&#x3002;</p>
-<p>&#x5728;&#x672C;&#x5730;&#xFF0C;&#x60A8;&#x5C06;&#x5728; Docker &#x5BB9;&#x5668;&#x4E2D;&#x8FD0;&#x884C;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x670D;&#x52A1;&#x3002;&#x5728;&#x751F;&#x4EA7;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528; Azure Kubernetes Service&#xFF08;AKS&#xFF09;&#xFF0C;&#x60A8;&#x5C06;&#x4F9D;&#x8D56;&#x4E91;&#x670D;&#x52A1;&#x5546;&#x63D0;&#x4F9B;&#x7684;&#x6258;&#x7BA1;&#x670D;&#x52A1;&#xFF0C;&#x5B83;&#x89E3;&#x51B3;&#x4E86;&#x9AD8;&#x53EF;&#x7528;&#x6027;&#x3001;&#x96C6;&#x7FA4;&#x3001;&#x5B58;&#x50A8;&#x548C;&#x6570;&#x636E;&#x590D;&#x5236;&#x7B49;&#x5173;&#x952E;&#x95EE;&#x9898;&#x3002;</p>
-<h4 id="&#x914D;&#x7F6E;">&#x914D;&#x7F6E;</h4>
-<p>&#x5728;&#x672C;&#x4E66;&#x4E2D;&#xFF0C;&#x6211;&#x5C06;&#x5411;&#x60A8;&#x5C55;&#x793A;&#x5982;&#x4F55;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x73AF;&#x5883;&#x4E2D;&#x914D;&#x7F6E; <code>&#x6781;&#x5730;&#x4E66;&#x5E97;</code> &#x4E2D;&#x7684;&#x670D;&#x52A1;&#x3002;&#x9996;&#x5148;&#xFF0C;&#x6211;&#x5C06;&#x63A2;&#x8BA8; Spring Boot &#x63D0;&#x4F9B;&#x7684; properties &#x548C; profile&#xFF0C;&#x4EE5;&#x53CA;&#x4F55;&#x65F6;&#x4F7F;&#x7528;&#x5B83;&#x4EEC;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x60A8;&#x5C06;&#x5B66;&#x4E60;&#x5C06; Spring &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4F5C;&#x4E3A; JAR &#x5728;&#x5BB9;&#x5668;&#x91CC;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x4F5C;&#x4E3A;&#x5916;&#x90E8;&#x914D;&#x7F6E;&#x3002;&#x6700;&#x540E;&#xFF0C;&#x6211;&#x6765;&#x6559;&#x60A8;&#x5982;&#x4F55;&#x5728; Kubernetes &#x4E2D;&#x4F7F;&#x7528; ConfigMaps &#x548C; Secrets&#x3002;&#x60A8;&#x8FD8;&#x5C06;&#x770B;&#x5230;&#x5982;&#x4F55;&#x901A;&#x8FC7; Spring Cloud Config &#x8FDB;&#x884C;&#x96C6;&#x4E2D;&#x914D;&#x7F6E;&#x7BA1;&#x7406;&#xFF0C;&#x4EE5;&#x53CA;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x4F7F;&#x7528; Spring Cloud Bus &#x66F4;&#x65B0;&#x914D;&#x7F6E;&#x3002;</p>
-<h4 id="&#x8DEF;&#x7531;">&#x8DEF;&#x7531;</h4>
-<p><code>&#x6781;&#x5730;&#x4E66;&#x5E97;</code> &#x662F;&#x4E00;&#x4E2A;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#xFF0C;&#x9700;&#x8981;&#x4E00;&#x4E9B;&#x8DEF;&#x7531;&#x914D;&#x7F6E;&#x3002;Kubernetes &#x5177;&#x6709;&#x5185;&#x7F6E;&#x7684;&#x670D;&#x52A1;&#x53D1;&#x73B0;&#x529F;&#x80FD;&#xFF0C;&#x53EF;&#x5E2E;&#x52A9;&#x60A8;&#x5C06;&#x670D;&#x52A1;&#x4E0E;&#x7269;&#x7406;&#x5730;&#x5740;&#x548C;&#x4E3B;&#x673A;&#x540D;&#x5206;&#x79BB;&#x3002;&#x4E91;&#x539F;&#x751F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x662F;&#x53EF;&#x4F38;&#x7F29;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x670D;&#x52A1;&#x4E4B;&#x95F4;&#x7684;&#x4EA4;&#x4E92;&#x5E94;&#x8BE5;&#x8003;&#x8651;&#x5230;&#xFF1A;&#x8981;&#x8C03;&#x7528;&#x54EA;&#x4E2A;&#x5B9E;&#x4F8B;&#x5462;&#xFF1F;&#x518D;&#x4E00;&#x6B21;&#xFF0C;Kubernetes &#x4E3A;&#x60A8;&#x63D0;&#x4F9B;&#x4E86;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x529F;&#x80FD;&#xFF0C;&#x56E0;&#x6B64;&#x60A8;&#x65E0;&#x9700;&#x5728;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x518D;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x4E86;&#x3002;</p>
-<p>&#x6211;&#x5C06;&#x6307;&#x5BFC;&#x60A8;&#x4F7F;&#x7528; Spring Cloud Gateway &#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#xFF0C;&#x8BE5;&#x670D;&#x52A1;&#x5C06;&#x5145;&#x5F53; API &#x7F51;&#x5173;&#xFF0C;&#x7528;&#x4E8E;&#x628A;&#x4EFB;&#x4F55;&#x5185;&#x90E8; API &#x53D8;&#x5316;&#x4E0E;&#x5916;&#x90E8;&#x9694;&#x79BB;&#x3002;&#x5B83;&#x8FD8;&#x5C06;&#x662F;&#x4E00;&#x79CD;&#x8FB9;&#x7F18;&#x670D;&#x52A1;&#xFF0C;&#x5C06;&#x4E00;&#x6B21;&#x6027;&#x89E3;&#x51B3;&#x8DE8;&#x9886;&#x57DF;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x5982;&#x5B89;&#x5168;&#x6027;&#x548C;&#x97E7;&#x6027;&#x3002;&#x8FD9;&#x6837;&#x7684;&#x670D;&#x52A1;&#x5C06;&#x662F; <code>&#x6781;&#x5730;&#x4E66;&#x5E97;</code> &#x7684;&#x5165;&#x53E3;&#xFF0C;&#x5FC5;&#x987B;&#x9AD8;&#x53EF;&#x7528;&#x3001;&#x6027;&#x80FD;&#x826F;&#x597D;&#xFF0C;&#x5E76;&#x4E14;&#x5177;&#x6709;&#x5BB9;&#x9519;&#x80FD;&#x529B;&#x3002;</p>
-<h4 id="&#x53EF;&#x89C2;&#x6D4B;&#x6027;">&#x53EF;&#x89C2;&#x6D4B;&#x6027;</h4>
-<p><code>&#x6781;&#x5730;&#x4E66;&#x5E97;</code> &#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x670D;&#x52A1;&#x5FC5;&#x987B;&#x662F;&#x53EF;&#x89C2;&#x6D4B;&#x7684;&#xFF0C;&#x8FD9;&#x624D;&#x662F;&#x4E91;&#x539F;&#x751F;&#x670D;&#x52A1;&#x3002;&#x6211;&#x5C06;&#x5411;&#x60A8;&#x5C55;&#x793A;&#x5982;&#x4F55;&#x4F7F;&#x7528; Spring Boot Actuator &#x8BBE;&#x7F6E;&#x5065;&#x5EB7;&#x548C;&#x4FE1;&#x606F;&#x7AEF;&#x70B9;&#xFF0C;&#x5E76;&#x516C;&#x5F00;&#x76F8;&#x5173;&#x5EA6;&#x91CF;&#x7ED9; Prometheus &#x8FDB;&#x884C;&#x63D0;&#x53D6;&#x5E76;&#x5904;&#x7406;&#x3002;&#x7136;&#x540E;&#x60A8;&#x5C06;&#x4F7F;&#x7528; Grafana &#x53EF;&#x89C6;&#x5316;&#x6700;&#x5173;&#x952E;&#x7684;&#x6307;&#x6807;&#xFF0C;&#x5E76;&#x663E;&#x793A;&#x5728;&#x4EEA;&#x8868;&#x677F;&#x4E2D;&#x3002;</p>
-<p>&#x8BF7;&#x6C42;&#x53EF;&#x4EE5;&#x7531;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x5904;&#x7406;&#xFF0C;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x5206;&#x5E03;&#x5F0F;&#x94FE;&#x8DEF;&#x8DDF;&#x8E2A;&#xFF0C;&#x8DDF;&#x8E2A;&#x4ECE;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x7684;&#x8BF7;&#x6C42;&#x6D41;&#x3002;&#x60A8;&#x4F1A;&#x548C;&#x6211;&#x4E00;&#x8D77;&#x8BBE;&#x7F6E; Spring Cloud Sleuth&#x3002;&#x7136;&#x540E;&#xFF0C;Grafana Tempo &#x5C06;&#x63D0;&#x53D6;&#x3001;&#x5904;&#x7406;&#x5E76;&#x53EF;&#x89C6;&#x5316;&#x6574;&#x4E2A;&#x94FE;&#x8DEF;&#xFF0C;&#x8BA9;&#x60A8;&#x53EF;&#x4EE5;&#x5B8C;&#x6574;&#x5730;&#x4E86;&#x89E3;&#x7CFB;&#x7EDF;&#x662F;&#x5982;&#x4F55;&#x5B8C;&#x6210;&#x5176;&#x529F;&#x80FD;&#x7684;&#x3002;</p>
-<p>&#x6700;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x9002;&#x5F53;&#x7684;&#x65E5;&#x5FD7;&#x7B56;&#x7565;&#x3002;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x5C06;&#x65E5;&#x5FD7;&#x4F5C;&#x4E3A;&#x4E8B;&#x4EF6;&#x6D41;&#x5904;&#x7406;&#xFF0C;&#x56E0;&#x6B64;&#x8BA9;&#x60A8;&#x7684; Spring &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5C06;&#x65E5;&#x5FD7;&#x4E8B;&#x4EF6;&#x6D41;&#x5316;&#x4E3A;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#xFF0C;&#x800C;&#x4E0D;&#x8003;&#x8651;&#x5B83;&#x4EEC;&#x662F;&#x5982;&#x4F55;&#x5904;&#x7406;&#x6216;&#x5B58;&#x50A8;&#x7684;&#x3002;Fluent Bit &#x5C06;&#x8D1F;&#x8D23;&#x4ECE;&#x6240;&#x6709;&#x670D;&#x52A1;&#x6536;&#x96C6;&#x65E5;&#x5FD7;&#xFF0C;Grafana Loki &#x5C06;&#x5B58;&#x50A8;&#x548C;&#x5904;&#x7406;&#x5B83;&#x4EEC;&#xFF0C;Grafana &#x5C06;&#x5141;&#x8BB8;&#x60A8;&#x67E5;&#x8BE2;&#x65E5;&#x5FD7;&#x3002;</p>
-<h4 id="&#x97E7;&#x6027;">&#x97E7;&#x6027;</h4>
-<p>&#x4E91;&#x539F;&#x751F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5E94;&#x8BE5;&#x5177;&#x6709;&#x97E7;&#x6027;&#x3002;&#x5BF9;&#x4E8E; <code>&#x6781;&#x5730;&#x4E66;&#x5E97;</code> &#x9879;&#x76EE;&#xFF0C;&#x6211;&#x5C06;&#x5411;&#x60A8;&#x5C55;&#x793A;&#x4F7F;&#x7528; Project Reactor&#x3001;Spring Cloud Circuit Breaker &#x4EE5;&#x53CA; Resilience4J &#x7B49;&#x4F7F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5177;&#x6709;&#x97E7;&#x6027;&#x7684;&#x5404;&#x79CD;&#x6280;&#x672F;&#xFF0C;&#x7528;&#x4E8E;&#x5B9E;&#x65BD;&#x65AD;&#x8DEF;&#x5668;&#x3001;&#x91CD;&#x8BD5;&#x3001;&#x8D85;&#x65F6;&#x548C;&#x5176;&#x4ED6;&#x6A21;&#x5F0F;&#x3002;</p>
-<h4 id="&#x5B89;&#x5168;">&#x5B89;&#x5168;</h4>
-<p>&#x5B89;&#x5168;&#x662F;&#x4E00;&#x4E2A;&#x5E7F;&#x6CDB;&#x7684;&#x4E3B;&#x9898;&#xFF0C;&#x6211;&#x5728;&#x672C;&#x4E66;&#x4E2D;&#x65E0;&#x6CD5;&#x6DF1;&#x5165;&#x8BA8;&#x8BBA;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x6211;&#x8FD8;&#x662F;&#x4F1A;&#x7B80;&#x5355;&#x8BA8;&#x8BBA;&#x8FD9;&#x4E2A;&#x4E3B;&#x9898;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x662F;&#x5F53;&#x4ECA;&#x6700;&#x5173;&#x952E;&#x7684;&#x8F6F;&#x4EF6;&#x5173;&#x6CE8;&#x70B9;&#x4E4B;&#x4E00;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x4ECE;&#x9879;&#x76EE;&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x5E94;&#x6301;&#x7EED;&#x5173;&#x6CE8;&#x5E76;&#x89E3;&#x51B3;&#x7684;&#x666E;&#x904D;&#x95EE;&#x9898;&#xFF0C;&#x5E76;&#x4E14;&#x4E0D;&#x80FD;&#x6389;&#x4EE5;&#x8F7B;&#x5FC3;&#x3002;</p>
-<p>&#x5BF9;&#x4E8E; <code>&#x6781;&#x5730;&#x4E66;&#x5E97;</code>&#xFF0C;&#x6211;&#x5C06;&#x5411;&#x60A8;&#x5C55;&#x793A;&#x5982;&#x4F55;&#x5C06;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x548C;&#x6388;&#x6743;&#x529F;&#x80FD;&#x6DFB;&#x52A0;&#x5230;&#x4E91;&#x539F;&#x751F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x3002;&#x60A8;&#x5C06;&#x770B;&#x5230;&#x5982;&#x4F55;&#x4FDD;&#x62A4;&#x670D;&#x52A1;&#x4E4B;&#x95F4;&#xFF0C;&#x4EE5;&#x53CA;&#x7528;&#x6237;&#x548C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x95F4;&#x7684;&#x901A;&#x4FE1;&#x3002;&#x60A8;&#x5C06;&#x4F9D;&#x9760; OAuth 2.0 &#x548C; OpenID Connect &#x6765;&#x5B9E;&#x73B0;&#x8FD9;&#x4E9B;&#x529F;&#x80FD;&#x3002;Spring Security &#x652F;&#x6301;&#x8FD9;&#x4E9B;&#x6807;&#x51C6;&#xFF0C;&#x53EF;&#x4EE5;&#x65E0;&#x7F1D;&#x96C6;&#x6210;&#x4EE5;&#x63D0;&#x4F9B;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x548C;&#x6388;&#x6743;&#x3002;&#x60A8;&#x5C06;&#x4F7F;&#x7528; Keycloak &#x8FDB;&#x884C;&#x8EAB;&#x4EFD;&#x548C;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#x7BA1;&#x7406;&#x3002;</p>
-<p>&#x6B64;&#x5916;&#xFF0C;&#x6211;&#x8FD8;&#x5C06;&#x4ECB;&#x7ECD;&#x5BC6;&#x94A5;&#x7BA1;&#x7406;&#x548C;&#x52A0;&#x5BC6;&#x7684;&#x6982;&#x5FF5;&#x3002;&#x5F53;&#x7136;&#x4E5F;&#x4E0D;&#x80FD;&#x975E;&#x5E38;&#x6DF1;&#x5165;&#x8BA8;&#x8BBA;&#x8FD9;&#x4E9B;&#x4E3B;&#x9898;&#x3002;&#x4F46;&#x6211;&#x5C06;&#x5411;&#x60A8;&#x5C55;&#x793A;&#x5982;&#x4F55;&#x7BA1;&#x7406;&#x673A;&#x5BC6;&#x6765;&#x914D;&#x7F6E; Spring &#x670D;&#x52A1;&#xFF08;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x914D;&#x7F6E;&#x670D;&#x52A1;&#x5668;&#x548C; Kubernetes &#x65F6;&#xFF09;&#x3002;</p>
-<h4 id="&#x6D4B;&#x8BD5;">&#x6D4B;&#x8BD5;</h4>
-<p>&#x81EA;&#x52A8;&#x5316;&#x6D4B;&#x8BD5;&#x5BF9;&#x4E8E;&#x4E91;&#x539F;&#x751F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x6210;&#x529F;&#x81F3;&#x5173;&#x91CD;&#x8981;&#x3002;&#x81EA;&#x52A8;&#x5316;&#x6D4B;&#x8BD5;&#x5C06;&#x5728;&#x51E0;&#x4E2A;&#x7EA7;&#x522B;&#x8986;&#x76D6; <code>&#x6781;&#x5730;&#x4E66;&#x5E97;</code> &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;&#x6211;&#x5C06;&#x5411;&#x60A8;&#x5C55;&#x793A;&#x5982;&#x4F55;&#x4F7F;&#x7528; JUnit5 
-&#x7F16;&#x5199;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x3002;Spring Boot &#x6DFB;&#x52A0;&#x4E86;&#x8BB8;&#x591A;&#x65B9;&#x4FBF;&#x7684;&#x5B9E;&#x7528;&#x7A0B;&#x5E8F;&#x6765;&#x6539;&#x8FDB;&#x96C6;&#x6210;&#x6D4B;&#x8BD5;&#xFF0C;&#x60A8;&#x5C06;&#x4F7F;&#x7528;&#x5B83;&#x4EEC;&#x6765;&#x786E;&#x4FDD;&#x60A8;&#x7684;&#x670D;&#x52A1;&#x8D28;&#x91CF;&#x3002;&#x60A8;&#x5C06;&#x4E3A;&#x5404;&#x79CD; <code>&#x6781;&#x5730;&#x4E66;&#x5E97;</code> &#x529F;&#x80FD;&#x7F16;&#x5199;&#x6D4B;&#x8BD5;&#x7C7B;&#xFF0C;&#x5305;&#x62EC; REST &#x7AEF;&#x70B9;&#x3001;&#x6D88;&#x606F;&#x6D41;&#x548C;&#x6570;&#x636E;&#x96C6;&#x6210;&#x548C;&#x5B89;&#x5168;&#x6027;&#x3002;</p>
-<p>&#x4FDD;&#x6301;&#x8DE8;&#x73AF;&#x5883;&#x7684;&#x5BF9;&#x7B49;&#x6027;&#xFF0C;&#x5BF9;&#x4E8E;&#x786E;&#x4FDD;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x8D28;&#x91CF;&#x81F3;&#x5173;&#x91CD;&#x8981;&#x3002;&#x5C24;&#x5176;&#x662F;&#x5728;&#x652F;&#x6301;&#x670D;&#x52A1;&#x65B9;&#x9762;&#x3002;&#x5728;&#x751F;&#x4EA7;&#x4E2D;&#xFF0C;&#x60A8;&#x5C06;&#x4F7F;&#x7528;&#x7684;&#x670D;&#x52A1;&#x662F; PostgreSQL &#x548C; Redis&#x3002;&#x5728;&#x6D4B;&#x8BD5;&#x671F;&#x95F4;&#xFF0C;&#x60A8;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;&#x7C7B;&#x4F3C;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6A21;&#x62DF;&#x6216;&#x8005;&#x7279;&#x5B9A;&#x4E8E;&#x6D4B;&#x8BD5;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x5982;&#x5185;&#x5B58;&#x4E2D;&#x7684; H2 &#x6570;&#x636E;&#x5E93;&#x3002;Testcontainers &#x6846;&#x67B6;&#x5C06;&#x5E2E;&#x52A9;&#x60A8;&#x4F7F;&#x7528;&#x771F;&#x5B9E;&#x670D;&#x52A1;&#x8FDB;&#x884C;&#x81EA;&#x52A8;&#x5316;&#x6D4B;&#x8BD5;&#x3002;</p>
-<h4 id="&#x6784;&#x5EFA;&#x548C;&#x90E8;&#x7F72;">&#x6784;&#x5EFA;&#x548C;&#x90E8;&#x7F72;</h4>
-<p><code>&#x6781;&#x5730;&#x4E66;&#x5E97;</code> &#x7684;&#x4E3B;&#x8981;&#x670D;&#x52A1;&#x662F;&#x4F7F;&#x7528; Spring&#x3002;&#x60A8;&#x5C06;&#x770B;&#x5230;&#x5982;&#x4F55;&#x6253;&#x5305; Spring &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x5C06;&#x5176;&#x4F5C;&#x4E3A; JAR &#x6587;&#x4EF6;&#x8FD0;&#x884C;&#xFF0C;&#x4F7F;&#x7528; Cloud Native Buildpacks &#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x5BB9;&#x5668;&#x5316;&#xFF0C;&#x4F7F;&#x7528; Docker &#x8FD0;&#x884C;&#xFF0C;&#x6700;&#x540E;&#xFF0C;&#x60A8;&#x5C06;&#x4F7F;&#x7528; Kubernetes &#x90E8;&#x7F72;&#x5BB9;&#x5668;&#x3002;&#x60A8;&#x8FD8;&#x5C06;&#x770B;&#x5230;&#x5982;&#x4F55;&#x4F7F;&#x7528; Spring Native &#x548C; GraalVM &#x5C06; Spring &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7F16;&#x8BD1;&#x4E3A;&#x672C;&#x673A;&#x955C;&#x50CF;&#xFF0C;&#x5E76;&#x5728;&#x65E0;&#x670D;&#x52A1;&#x5668;&#x67B6;&#x6784;&#x4E2D;&#x4F7F;&#x7528;&#x5B83;&#x4EEC;&#x3002;&#x5229;&#x7528;&#x65E0;&#x670D;&#x52A1;&#x5668;&#x7684;&#x5373;&#x65F6;&#x542F;&#x52A8;&#x3001;&#x5373;&#x65F6;&#x5CF0;&#x503C;&#x6027;&#x80FD;&#x3001;&#x51CF;&#x5C11;&#x5185;&#x5B58;&#x6D88;&#x8017;&#x3001;&#x51CF;&#x5C11;&#x56FE;&#x50CF;&#x5927;&#x5C0F;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x60A8;&#x5C06;&#x5728;&#x6258;&#x7BA1;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x90E8;&#x7F72;&#x5B83;&#x4EEC;&#xFF0C;&#x57FA;&#x4E8E; Knative&#xFF08;Google Cloud Run&#xFF09;&#x7684;&#x65E0;&#x670D;&#x52A1;&#x5668;&#x5E73;&#x53F0;&#x3002;</p>
-<p>&#x6211;&#x5C06;&#x5411;&#x60A8;&#x5C55;&#x793A;&#x5982;&#x4F55;&#x901A;&#x8FC7; GitHub Actions &#x8BBE;&#x7F6E;&#x90E8;&#x7F72;&#x6D41;&#x6C34;&#x7EBF;&#xFF08;CI/CD&#xFF09;&#x6765;&#x81EA;&#x52A8;&#x5316;&#x6784;&#x5EFA;&#x3002;&#x6D41;&#x6C34;&#x7EBF;&#x5C06;&#x5728;&#x6BCF;&#x6B21;&#x63D0;&#x4EA4;&#x65F6;&#x6784;&#x5EFA;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x8FD0;&#x884C;&#x6D4B;&#x8BD5;&#xFF0C;&#x7136;&#x540E;&#x6253;&#x5305;&#x4EE5;&#x5907;&#x90E8;&#x7F72;&#x3002;&#x8FD9;&#x79CD;&#x81EA;&#x52A8;&#x5316;&#x5C06;&#x662F;&#x5411;&#x5BA2;&#x6237;&#x6301;&#x7EED;&#x4EA4;&#x4ED8;&#x6587;&#x5316;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x5FEB;&#x901F;&#x53EF;&#x9760;&#x5730;&#x4E3A;&#x5BA2;&#x6237;&#x5E26;&#x6765;&#x4EF7;&#x503C;&#x3002;&#x6700;&#x540E;&#xFF0C;&#x60A8;&#x8FD8;&#x5C06;&#x4F7F;&#x7528; GitOps &#x5728; Azure Kubernetes &#x670D;&#x52A1;&#xFF08;AKS&#xFF09;&#x4E0A;&#x81EA;&#x52A8;&#x90E8;&#x7F72; <code>&#x6781;&#x5730;&#x4E66;&#x5E97;</code> &#x5230; Kubernetes &#x7FA4;&#x96C6;&#x3002;</p>
+                                <h3 id="252-工程中用到的技术和模式">2.5.2 工程中用到的技术和模式</h3>
+<p>每当我在书中介绍一个新话题时，将向您展示如何将前面讲过的技术或模式应用于 <code>极地书店</code> 项目。在本节中，我概述一下我们将要解决的主要问题，以及我们将使用哪些技术和模式来解决这些问题。</p>
+<h4 id="网络交互">网络交互</h4>
+<p><code>极地书店</code> 包含多个服务，这些服务必须相互通信才能实现它们的功能。您将构建通过 HTTP 同步交互的 RESTful 服务。无论是以阻塞方式（传统 servlet）还是以非阻塞方式（响应式编程）。而且 SpringMVC 和 Spring WebFlux （在 Project Reactor 基础上）将是您实现这一结果的主要工具。</p>
+<p>在构建云原生应用程序时，应该记住设计松散耦合的应用程序服务，并考虑如何在分布式系统上下文中保持数据一致性。在需要完成一项复杂功能时，会涉及很多的服务，同步通信可能会产生问题。这就是为什么事件驱动编程在云中越来越流行的原因：它让您克服了同步通信的难题。</p>
+<p>我将向您展示如何使用事件和消息，来解耦服务并确保数据一致性。您将使用 Spring Cloud Stream 实现服务之间的数据流，以及
+Spring Cloud Function 将消息处理程序定义为函数。后一种方法可以自然地在部署到支持无服务的平台，如 Azure Function、AWS Lambda、Knative 等。</p>
+<h4 id="数据">数据</h4>
+<p>数据是软件系统的重要组成部分。在 <code>极地书店</code> 系统中，您将使用关系型数据库 PostgreSQL 存储应用程序数据。我会演示如何使用 Spring Data JDBC （被动式）和 Spring Data R2DBC（响应式）将应用程序与数据源集成。然后，您将看到如何进一步优化数据源并使用 Flyway 管理迁移脚本。</p>
+<p>云原生应用程序应该是无状态的，但状态需要存储在某个地方。在 <code>极地书店</code> 中，您将使用 Redis 将会话信息进行外部存储，保留应用程序无状态且可扩展。Spring Session 使实现集群用户传话变得容易。特别是，我将向您展示如何使用 Spring Session Data Redis 集成 web 会话管理。</p>
+<p>除了持久化数据和会话之外，您还将实现事件驱动编程模式。Spring AMQP 和 RabbitMQ 将是要使用的技术。</p>
+<p>在本地，您将在 Docker 容器中运行这些数据服务。在生产中，使用 Azure Kubernetes Service（AKS），您将依赖云服务商提供的托管服务，它解决了高可用性、集群、存储和数据复制等关键问题。</p>
+<h4 id="配置">配置</h4>
+<p>在本书中，我将向您展示如何在不同的环境中配置 <code>极地书店</code> 中的服务。首先，我将探讨 Spring Boot 提供的 properties 和 profile，以及何时使用它们。然后，您将学习将 Spring 应用程序作为 JAR 在容器里运行时，如何使用环境变量作为外部配置。最后，我来教您如何在 Kubernetes 中使用 ConfigMaps 和 Secrets。您还将看到如何通过 Spring Cloud Config 进行集中配置管理，以及在运行时使用 Spring Cloud Bus 更新配置。</p>
+<h4 id="路由">路由</h4>
+<p><code>极地书店</code> 是一个分布式系统，需要一些路由配置。Kubernetes 具有内置的服务发现功能，可帮助您将服务与物理地址和主机名分离。云原生应用程序是可伸缩的，因此服务之间的交互应该考虑到：要调用哪个实例呢？再一次，Kubernetes 为您提供了负载均衡功能，因此您无需在应用程序中再进行处理了。</p>
+<p>我将指导您使用 Spring Cloud Gateway 实现一个服务，该服务将充当 API 网关，用于把任何内部 API 变化与外部隔离。它还将是一种边缘服务，将一次性解决跨领域的问题，如安全性和韧性。这样的服务将是 <code>极地书店</code> 的入口，必须高可用、性能良好，并且具有容错能力。</p>
+<h4 id="可观测性">可观测性</h4>
+<p><code>极地书店</code> 系统中的服务必须是可观测的，这才是云原生服务。我将向您展示如何使用 Spring Boot Actuator 设置健康和信息端点，并公开相关度量给 Prometheus 进行提取并处理。然后您将使用 Grafana 可视化最关键的指标，并显示在仪表板中。</p>
+<p>请求可以由多个服务处理，因此需要分布式链路跟踪，跟踪从一个服务到另一个服务的请求流。您会和我一起设置 Spring Cloud Sleuth。然后，Grafana Tempo 将提取、处理并可视化整个链路，让您可以完整地了解系统是如何完成其功能的。</p>
+<p>最后，我们需要一个适当的日志策略。我们应该将日志作为事件流处理，因此让您的 Spring 应用程序将日志事件流化为标准输出，而不考虑它们是如何处理或存储的。Fluent Bit 将负责从所有服务收集日志，Grafana Loki 将存储和处理它们，Grafana 将允许您查询日志。</p>
+<h4 id="韧性">韧性</h4>
+<p>云原生应用程序应该具有韧性。对于 <code>极地书店</code> 项目，我将向您展示使用 Project Reactor、Spring Cloud Circuit Breaker 以及 Resilience4J 等使应用程序具有韧性的各种技术，用于实施断路器、重试、超时和其他模式。</p>
+<h4 id="安全">安全</h4>
+<p>安全是一个广泛的主题，我在本书中无法深入讨论。不过，我还是会简单讨论这个主题，因为它是当今最关键的软件关注点之一。这是一个从项目一开始就应持续关注并解决的普遍问题，并且不能掉以轻心。</p>
+<p>对于 <code>极地书店</code>，我将向您展示如何将身份验证和授权功能添加到云原生应用程序中。您将看到如何保护服务之间，以及用户和应用程序间的通信。您将依靠 OAuth 2.0 和 OpenID Connect 来实现这些功能。Spring Security 支持这些标准，可以无缝集成以提供身份验证和授权。您将使用 Keycloak 进行身份和访问控制管理。</p>
+<p>此外，我还将介绍密钥管理和加密的概念。当然也不能非常深入讨论这些主题。但我将向您展示如何管理机密来配置 Spring 服务（直接使用配置服务器和 Kubernetes 时）。</p>
+<h4 id="测试">测试</h4>
+<p>自动化测试对于云原生应用程序的成功至关重要。自动化测试将在几个级别覆盖 <code>极地书店</code> 应用程序。我将向您展示如何使用 JUnit5 
+编写单元测试。Spring Boot 添加了许多方便的实用程序来改进集成测试，您将使用它们来确保您的服务质量。您将为各种 <code>极地书店</code> 功能编写测试类，包括 REST 端点、消息流和数据集成和安全性。</p>
+<p>保持跨环境的对等性，对于确保应用程序的质量至关重要。尤其是在支持服务方面。在生产中，您将使用的服务是 PostgreSQL 和 Redis。在测试期间，您应该使用类似的服务，而不是模拟或者特定于测试的工具，如内存中的 H2 数据库。Testcontainers 框架将帮助您使用真实服务进行自动化测试。</p>
+<h4 id="构建和部署">构建和部署</h4>
+<p><code>极地书店</code> 的主要服务是使用 Spring。您将看到如何打包 Spring 应用程序，将其作为 JAR 文件运行，使用 Cloud Native Buildpacks 对其进行容器化，使用 Docker 运行，最后，您将使用 Kubernetes 部署容器。您还将看到如何使用 Spring Native 和 GraalVM 将 Spring 应用程序编译为本机镜像，并在无服务器架构中使用它们。利用无服务器的即时启动、即时峰值性能、减少内存消耗、减少图像大小。然后，您将在托管服务器上部署它们，基于 Knative（Google Cloud Run）的无服务器平台。</p>
+<p>我将向您展示如何通过 GitHub Actions 设置部署流水线（CI/CD）来自动化构建。流水线将在每次提交时构建应用程序，运行测试，然后打包以备部署。这种自动化将是向客户持续交付文化的一部分，快速可靠地为客户带来价值。最后，您还将使用 GitOps 在 Azure Kubernetes 服务（AKS）上自动部署 <code>极地书店</code> 到 Kubernetes 群集。</p>
 <h4 id="ui">UI</h4>
-<p>&#x8FD9;&#x672C;&#x4E66;&#x7684;&#x91CD;&#x70B9;&#x662F;&#x540E;&#x7AEF;&#x6280;&#x672F;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4E0D;&#x4F1A;&#x6559;&#x60A8;&#x4EFB;&#x4F55;&#x524D;&#x7AEF;&#x5185;&#x5BB9;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x524D;&#x7AEF;&#xFF0C;&#x4EE5;&#x4FBF;&#x7528;&#x6237;&#x4E0E;&#x4E4B;&#x4EA4;&#x4E92;&#x3002; <code>&#x6781;&#x5730;&#x4E66;&#x5E97;</code> &#x5C06;&#x4F9D;&#x8D56;&#x4F7F;&#x7528; Angular &#x6846;&#x67B6;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;&#x6211;&#x4E0D;&#x4F1A;&#x5728;&#x672C;&#x4E66;&#x4E2D;&#x5C55;&#x793A; UI &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4EE3;&#x7801;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x8D85;&#x51FA;&#x4E86;&#x672C;&#x4E66;&#x7684;&#x8303;&#x56F4;&#xFF0C;&#x4F46;&#x6211;&#x4F1A;&#x5C06;&#x76F8;&#x5173;&#x4EE3;&#x7801;&#x653E;&#x5728;&#x672C;&#x4E66;&#x9644;&#x5E26;&#x7684;&#x4EE3;&#x7801;&#x5B58;&#x50A8;&#x5E93;&#x4E2D;&#x3002;</p>
+<p>这本书的重点是后端技术，所以我不会教您任何前端内容。当然，您的应用程序需要一个前端，以便用户与之交互。 <code>极地书店</code> 将依赖使用 Angular 框架的客户端应用程序。我不会在本书中展示 UI 应用程序代码，因为它超出了本书的范围，但我会将相关代码放在本书附带的代码存储库中。</p>
 
-<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
                                 </section>
                             
@@ -1727,49 +1701,65 @@ Spring Cloud Function &#x5C06;&#x6D88;&#x606F;&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2.5.2 工程中用到的技术和模式","level":"1.4.5.2","depth":3,"next":{"title":"2.6 总结","level":"1.4.6","depth":2,"path":"02-Cloud-native-patterns-and-technologies/Summary.md","ref":"02-Cloud-native-patterns-and-technologies/Summary.md","articles":[]},"previous":{"title":"2.5.1 理解系统需求","level":"1.4.5.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/2.5.1-Understanding-the-requirements-of-the-system.md","ref":"02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/2.5.1-Understanding-the-requirements-of-the-system.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","search-pro","back-to-top-button","chapter-fold","code","copy-code-button","pageview-count","auto-scroll-table","popup","theme-comscore","prism","-highlight","fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/LeonLi0102/cloud-native-spring-in-action-translate.git"},"search-pro":{},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","family":"serif","size":4},"theme-comscore":{},"back-to-top-button":{},"pageview-count":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Craig Walls","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native  Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/2.5.2-Exploring-patterns-and-technologies-used-in-the-project.md","mtime":"2021-12-01T06:05:16.791Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-01T08:21:35.273Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.5.2 工程中用到的技术和模式","level":"1.4.5.2","depth":3,"next":{"title":"2.6 总结","level":"1.4.6","depth":2,"path":"02-Cloud-native-patterns-and-technologies/Summary.md","ref":"02-Cloud-native-patterns-and-technologies/Summary.md","articles":[]},"previous":{"title":"2.5.1 理解系统需求","level":"1.4.5.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/2.5.1-Understanding-the-requirements-of-the-system.md","ref":"02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/2.5.1-Understanding-the-requirements-of-the-system.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/2.5.2-Exploring-patterns-and-technologies-used-in-the-project.md","mtime":"2026-08-08T10:25:16.930Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T11:32:22.227Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-auto-scroll-table/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
         
     
         
@@ -1781,11 +1771,7 @@ Spring Cloud Function &#x5C06;&#x6D88;&#x606F;&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

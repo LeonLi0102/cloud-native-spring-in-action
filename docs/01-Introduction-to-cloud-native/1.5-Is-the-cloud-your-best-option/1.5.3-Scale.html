@@ -3,12 +3,11 @@
 <html lang="zh-hans" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>1.5.3 规模 · Cloud Native  Spring In Action</title>
+        <title>1.5.3 规模 · Cloud Native Spring In Action</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        <meta name="author" content="Craig Walls">
+        <meta name="generator" content="HonKit 6.2.2">
+        <meta name="author" content="Thomas Vitale">
         
         
     
@@ -17,39 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-auto-scroll-table/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -90,7 +65,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -1608,8 +1583,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本书使用 GitBook 发布
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
         </a>
     </li>
 </ul>
@@ -1647,12 +1622,11 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="153-&#x89C4;&#x6A21;">1.5.3 &#x89C4;&#x6A21;</h3>
-<p>&#x5F39;&#x6027;&#x662F;&#x6307;&#x80FD;&#x591F;&#x6839;&#x636E;&#x8D1F;&#x8F7D;&#x8FDB;&#x884C;&#x6269;&#x5C55;&#x3002;&#x60A8;&#x53EF;&#x4EE5;&#x7F29;&#x653E;&#x4E00;&#x4E2A;&#x5F39;&#x6027;&#x7CFB;&#x7EDF;&#xFF0C;&#x786E;&#x4FDD;&#x4E3A;&#x6240;&#x6709;&#x5BA2;&#x6237;&#x63D0;&#x4F9B;&#x9002;&#x5F53;&#x7684;&#x670D;&#x52A1;&#x7EA7;&#x522B;&#x3002;&#x8D1F;&#x8F7D;&#x6BD4;&#x5E73;&#x65F6;&#x8981;&#x5927;&#x65F6;&#xFF0C;&#x60A8;&#x9700;&#x8981;&#x542F;&#x52A8;&#x66F4;&#x591A;&#x7684;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x6765;&#x652F;&#x6301;&#x989D;&#x5916;&#x7684;&#x8D1F;&#x8F7D;&#x3002;&#x5F53;&#x53D1;&#x751F;&#x4E86;&#x4E00;&#x4E9B;&#x6781;&#x7AEF;&#x53EF;&#x6015;&#x7684;&#x72B6;&#x51B5;&#x65F6;&#xFF0C;&#x670D;&#x52A1;&#x5931;&#x8D25;&#x4E86;&#xFF0C;&#x60A8;&#x9700;&#x8981;&#x80FD;&#x591F;&#x542F;&#x52A8;&#x65B0;&#x5B9E;&#x4F8B;&#x66FF;&#x6362;&#x5B83;&#x4EEC;&#x3002;</p>
-<p>&#x95EE;&#x9898;&#x662F;&#xFF0C;&#x9884;&#x6D4B;&#x672A;&#x6765;&#x4F1A;&#x53D1;&#x751F;&#x4EC0;&#x4E48;&#x662F;&#x56F0;&#x96BE;&#x7684;&#x3002;&#x6784;&#x5EFA;&#x53EF;&#x4F38;&#x7F29;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8FD8;&#x4E0D;&#x591F;&#x3002;&#x60A8;&#x9700;&#x8981;&#x5B83;&#x4EEC;&#x80FD;&#x591F;&#x52A8;&#x6001;&#x7F29;&#x653E;&#x3002;&#x6BCF;&#x5F53;&#x6709;&#x9AD8;&#x8D1F;&#x8F7D;&#x65F6;&#xFF0C;&#x60A8;&#x7684;&#x7CFB;&#x7EDF;&#x5E94;&#x8BE5;&#x52A8;&#x6001;&#x3001;&#x5FEB;&#x901F;&#x3001;&#x8F7B;&#x677E;&#x5730;&#x6269;&#x5C55;&#x3002;&#x968F;&#x7740;&#x65F6;&#x95F4;&#x7684;&#x63A8;&#x79FB;&#xFF0C;&#x5F53;&#x9AD8;&#x5CF0;&#x6765;&#x4E34;&#x65F6;&#x5B83;&#x5E94;&#x8BE5;&#x4F1A;&#x518D;&#x6B21;&#x6269;&#x5927;&#x3002;</p>
-<p>&#x5982;&#x679C;&#x60A8;&#x7684;&#x4E1A;&#x52A1;&#x9700;&#x8981;&#x5FEB;&#x901F;&#x3001;&#x9AD8;&#x6548;&#x5730;&#x9002;&#x5E94;&#x65B0;&#x5BA2;&#x6237;&#xFF0C;&#x6216;&#x8005;&#x9700;&#x8981;&#x7075;&#x6D3B;&#x6027;&#x6765;&#x652F;&#x6301;&#x65B0;&#x7C7B;&#x578B;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#xFF08;&#x8FD9;&#x4F1A;&#x589E;&#x52A0;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x7684;&#x5DE5;&#x4F5C;&#x8D1F;&#x8F7D;&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x4E91;&#x7684;&#x672C;&#x8D28;&#x53EF;&#x4EE5;&#x4E3A;&#x60A8;&#x63D0;&#x4F9B;&#x6240;&#x9700;&#x7684;&#x6240;&#x6709;&#x5F39;&#x6027;&#xFF0C;&#x4E0E;&#x4E91;&#x539F;&#x751F;&#x76F8;&#x7ED3;&#x5408;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x6309;&#x914D;&#x7F6E;&#x8FDB;&#x884C;&#x6269;&#x5C55;&#x3002;</p>
+                                <h3 id="153-规模">1.5.3 规模</h3>
+<p>弹性是指能够根据负载进行扩展。您可以缩放一个弹性系统，确保为所有客户提供适当的服务级别。负载比平时要大时，您需要启动更多的服务实例来支持额外的负载。当发生了一些极端可怕的状况时，服务失败了，您需要能够启动新实例替换它们。</p>
+<p>问题是，预测未来会发生什么是困难的。构建可伸缩的应用程序还不够。您需要它们能够动态缩放。每当有高负载时，您的系统应该动态、快速、轻松地扩展。随着时间的推移，当高峰来临时它应该会再次扩大。</p>
+<p>如果您的业务需要快速、高效地适应新客户，或者需要灵活性来支持新类型的客户端（这会增加服务器上的工作负载），那么云的本质可以为您提供所需的所有弹性，与云原生相结合的应用程序可以按配置进行扩展。</p>
 
-<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
                                 </section>
                             
@@ -1695,49 +1669,65 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.5.3 规模","level":"1.3.5.3","depth":3,"next":{"title":"1.5.4 成本","level":"1.3.5.4","depth":3,"path":"01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/1.5.4-Cost.md","ref":"01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/1.5.4-Cost.md","articles":[]},"previous":{"title":"1.5.2 韧性","level":"1.3.5.2","depth":3,"path":"01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/1.5.2-Resilience.md","ref":"01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/1.5.2-Resilience.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","search-pro","back-to-top-button","chapter-fold","code","copy-code-button","pageview-count","auto-scroll-table","popup","theme-comscore","prism","-highlight","fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/LeonLi0102/cloud-native-spring-in-action-translate.git"},"search-pro":{},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","family":"serif","size":4},"theme-comscore":{},"back-to-top-button":{},"pageview-count":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Craig Walls","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native  Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/1.5.3-Scale.md","mtime":"2021-11-23T07:29:14.783Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-01T08:21:35.273Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.5.3 规模","level":"1.3.5.3","depth":3,"next":{"title":"1.5.4 成本","level":"1.3.5.4","depth":3,"path":"01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/1.5.4-Cost.md","ref":"01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/1.5.4-Cost.md","articles":[]},"previous":{"title":"1.5.2 韧性","level":"1.3.5.2","depth":3,"path":"01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/1.5.2-Resilience.md","ref":"01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/1.5.2-Resilience.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/1.5.3-Scale.md","mtime":"2026-08-08T10:25:16.860Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T11:32:22.227Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-auto-scroll-table/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
         
     
         
@@ -1749,11 +1739,7 @@
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

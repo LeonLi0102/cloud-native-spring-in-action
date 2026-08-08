@@ -3,12 +3,11 @@
 <html lang="zh-hans" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>1.3.5 可管理性 · Cloud Native  Spring In Action</title>
+        <title>1.3.5 可管理性 · Cloud Native Spring In Action</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        <meta name="author" content="Craig Walls">
+        <meta name="generator" content="HonKit 6.2.2">
+        <meta name="author" content="Thomas Vitale">
         
         
     
@@ -17,39 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-auto-scroll-table/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -90,7 +65,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -1608,8 +1583,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本书使用 GitBook 发布
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
         </a>
     </li>
 </ul>
@@ -1647,13 +1622,12 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="135-&#x53EF;&#x7BA1;&#x7406;&#x6027;">1.3.5 &#x53EF;&#x7BA1;&#x7406;&#x6027;</h3>
-<p>&#x5728;&#x63A7;&#x5236;&#x7406;&#x8BBA;&#x4E2D;&#xFF0C;&#x53EF;&#x89C2;&#x6D4B;&#x6027;&#x7684;&#x5BF9;&#x5076;&#x6982;&#x5FF5;&#x662F;&#x53EF;&#x63A7;&#x6027;&#x3002;&#x53EF;&#x7BA1;&#x7406;&#x6027;&#x4EE3;&#x8868;&#x4E86;&#x5916;&#x90E8;&#x8F93;&#x5165;&#x6539;&#x53D8;&#x7CFB;&#x7EDF;&#x72B6;&#x6001;&#x6216;&#x6709;&#x9650;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x5185;&#x8F93;&#x51FA;&#x7684;&#x80FD;&#x529B;&#x3002;&#x8FD9;&#x4E2A;&#x6982;&#x5FF5;&#x5F15;&#x51FA;&#x4E91;&#x539F;&#x751F;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x4E3B;&#x8981;&#x7279;&#x6027;&#xFF1A;&#x53EF;&#x7BA1;&#x7406;&#x6027;&#x3002;</p>
-<p>&#x518D;&#x6B21;&#x501F;&#x9274;&#x63A7;&#x5236;&#x7406;&#x8BBA;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BF4;&#x53EF;&#x7BA1;&#x7406;&#x6027;&#x662F;&#x4E00;&#x79CD;&#x8861;&#x91CF;&#x5916;&#x90E8;&#x8F93;&#x5165;&#x6539;&#x53D8;&#x7CFB;&#x7EDF;&#x72B6;&#x6001;&#x6216;&#x7CFB;&#x7EDF;&#x8F93;&#x51FA;&#x6709;&#x591A;&#x5BB9;&#x6613;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x66F4;&#x76F4;&#x767D;&#x4E00;&#x70B9;&#x6765;&#x8BF4;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x79CD;&#x65E0;&#x9700;&#x66F4;&#x6539;&#x4EE3;&#x7801;&#x5373;&#x53EF;&#x4FEE;&#x6539;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x884C;&#x4E3A;&#x7684;&#x80FD;&#x529B;&#x3002;&#x4E0D;&#x8981;&#x4E0E;&#x53EF;&#x7EF4;&#x62A4;&#x6027;&#x76F8;&#x6DF7;&#x6DC6;&#xFF0C;&#x53EF;&#x7EF4;&#x62A4;&#x6027;&#x662F;&#x4E00;&#x4E2A;&#x8861;&#x91CF;&#x4ECE;&#x5185;&#x90E8;&#x9AD8;&#x6548;&#x5730;&#x66F4;&#x6539;&#x7CFB;&#x7EDF;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x901A;&#x8FC7;&#x66F4;&#x6539;&#x5176;&#x4EE3;&#x7801;&#x6709;&#x591A;&#x5BB9;&#x6613;&#x7684;&#x6307;&#x6807;&#x3002;&#x56FE;&#x5F62; 1.6 &#x5C55;&#x793A;&#x4E86;&#x53EF;&#x7BA1;&#x7406;&#x6027;&#x662F;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;&#x7684;&#x3002;</p>
-<p>&#x53EF;&#x7BA1;&#x7406;&#x6027;&#x7684;&#x4E00;&#x4E2A;&#x65B9;&#x9762;&#x662F;&#x90E8;&#x7F72;&#x548C;&#x66F4;&#x65B0;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x540C;&#x65F6;&#x4FDD;&#x6301;&#x6574;&#x4E2A;&#x7CFB;&#x7EDF;&#x662F;&#x542F;&#x7528;&#x7684;&#x3001;&#x6301;&#x7EED;&#x8FD0;&#x884C;&#x7684;&#x3002;&#x53E6;&#x4E00;&#x4E2A;&#x56E0;&#x7D20;&#x662F;&#x914D;&#x7F6E;&#xFF0C;&#x6574;&#x672C;&#x4E2D;&#x5C06;&#x6DF1;&#x5165;&#x8BA8;&#x8BBA;&#x5B83;&#x3002;&#x60A8;&#x5E0C;&#x671B;&#x4F7F;&#x4E91;&#x539F;&#x751F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x53EF;&#x914D;&#x7F6E;&#xFF0C;&#x4EE5;&#x4FBF;&#x5728;&#x4E0D;&#x66F4;&#x6539;&#x4EE3;&#x7801;&#x548C;&#x6784;&#x5EFA;&#x65B0;&#x7248;&#x672C;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x4FEE;&#x6539;&#x5176;&#x884C;&#x4E3A;&#x3002;&#x8FDB;&#x884C;&#x914D;&#x7F6E;&#x4FEE;&#x6539;&#x5F88;&#x5E38;&#x89C1;&#xFF0C;&#x5982;&#x4FEE;&#x6539;&#x6570;&#x636E;&#x6E90; URL&#x3001;&#x670D;&#x52A1;&#x51ED;&#x636E;&#x548C;&#x8BC1;&#x4E66;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x6839;&#x636E;&#x73AF;&#x5883;&#x7684;&#x4E0D;&#x540C;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x6E90;&#xFF1A;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x5F00;&#x53D1;&#xFF0C;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x6D4B;&#x8BD5;&#xFF0C;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x751F;&#x4EA7;&#x3002;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x7C7B;&#x578B;&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x7528;&#x4E8E;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x5E94;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x542F;&#x7528;&#x7279;&#x5B9A;&#x529F;&#x80FD;&#x7684;&#x6807;&#x5FD7;&#x3002;</p>
-<p>&#x53EF;&#x7BA1;&#x7406;&#x6027;&#x4E0D;&#x4EC5;&#x5173;&#x7CFB;&#x5230;&#x53D8;&#x66F4;&#x672C;&#x8EAB;&#xFF0C;&#x8FD8;&#x5173;&#x7CFB;&#x5230;&#x60A8;&#x5E94;&#x7528;&#x8FD9;&#x4E00;&#x4FEE;&#x6539;&#x662F;&#x5426;&#x8F7B;&#x677E;&#x3001;&#x9AD8;&#x6548;&#x3002;&#x4E91;&#x539F;&#x751F;&#x7CFB;&#x7EDF;&#x975E;&#x5E38;&#x590D;&#x6742;&#xFF0C;&#x56E0;&#x6B64;&#x8BBE;&#x8BA1;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x9002;&#x5E94;&#x529F;&#x80FD;&#x3001;&#x73AF;&#x5883;&#x548C;&#x5B89;&#x5168;&#x65B9;&#x9762;&#x4E0D;&#x65AD;&#x53D8;&#x5316;&#x7684;&#x9700;&#x6C42;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x3002;&#x8003;&#x8651;&#x5230;&#x590D;&#x6742;&#x6027;&#xFF0C;&#x60A8;&#x5E94;&#x8BE5;&#x81F4;&#x529B;&#x4E8E;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x5730;&#x901A;&#x8FC7;&#x81EA;&#x52A8;&#x5316;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#xFF0C;&#x8FD9;&#x8BA9;&#x6211;&#x4EEC;&#x8FDB;&#x5165;&#x4E91;&#x539F;&#x751F;&#x7684;&#x4E09;&#x4E2A; P &#x4E2D;&#x7684;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#xFF1A;&#x5B9E;&#x8DF5;&#xFF08;Practices&#xFF09;&#x3002;</p>
+                                <h3 id="135-可管理性">1.3.5 可管理性</h3>
+<p>在控制理论中，可观测性的对偶概念是可控性。可管理性代表了外部输入改变系统状态或有限时间间隔内输出的能力。这个概念引出云原生的最后一个主要特性：可管理性。</p>
+<p>再次借鉴控制理论，我们可以说可管理性是一种衡量外部输入改变系统状态或系统输出有多容易的方法。更直白一点来说，它是一种无需更改代码即可修改应用程序行为的能力。不要与可维护性相混淆，可维护性是一个衡量从内部高效地更改系统，也就是说通过更改其代码有多容易的指标。图形 1.6 展示了可管理性是如何工作的。</p>
+<p>可管理性的一个方面是部署和更新应用程序，同时保持整个系统是启用的、持续运行的。另一个因素是配置，整本中将深入讨论它。您希望使云原生应用程序可配置，以便在不更改代码和构建新版本的情况下修改其行为。进行配置修改很常见，如修改数据源 URL、服务凭据和证书。比如，根据环境的不同，您可以使用不同的数据源：一个用于开发，一个用于测试，一个用于生产。还可以使用其他类型的配置，用于决定是否应在运行时启用特定功能的标志。</p>
+<p>可管理性不仅关系到变更本身，还关系到您应用这一修改是否轻松、高效。云原生系统非常复杂，因此设计应用程序可以适应功能、环境和安全方面不断变化的需求非常重要。考虑到复杂性，您应该致力于尽可能多地通过自动化进行管理，这让我们进入云原生的三个 P 中的最后一个：实践（Practices）。</p>
 
-<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
                                 </section>
                             
@@ -1696,49 +1670,65 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.3.5 可管理性","level":"1.3.3.5","depth":3,"next":{"title":"1.4 支持云原生的文化和实践","level":"1.3.4","depth":2,"path":"01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/Introduction.md","ref":"01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/Introduction.md","articles":[{"title":"1.4.1 自动化","level":"1.3.4.1","depth":3,"path":"01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/1.4.1-Automation.md","ref":"01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/1.4.1-Automation.md","articles":[]},{"title":"1.4.2 持续交付","level":"1.3.4.2","depth":3,"path":"01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/1.4.2-Continuous-delivery.md","ref":"01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/1.4.2-Continuous-delivery.md","articles":[]},{"title":"1.4.3 DevOps","level":"1.3.4.3","depth":3,"path":"01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/1.4.3-DevOps.md","ref":"01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/1.4.3-DevOps.md","articles":[]}]},"previous":{"title":"1.3.4 可观测性","level":"1.3.3.4","depth":3,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.4-Observability.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.4-Observability.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","search-pro","back-to-top-button","chapter-fold","code","copy-code-button","pageview-count","auto-scroll-table","popup","theme-comscore","prism","-highlight","fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/LeonLi0102/cloud-native-spring-in-action-translate.git"},"search-pro":{},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","family":"serif","size":4},"theme-comscore":{},"back-to-top-button":{},"pageview-count":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Craig Walls","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native  Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.5-Manageability.md","mtime":"2021-11-15T07:06:43.954Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-01T08:21:35.273Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.3.5 可管理性","level":"1.3.3.5","depth":3,"next":{"title":"1.4 支持云原生的文化和实践","level":"1.3.4","depth":2,"path":"01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/Introduction.md","ref":"01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/Introduction.md","articles":[{"title":"1.4.1 自动化","level":"1.3.4.1","depth":3,"path":"01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/1.4.1-Automation.md","ref":"01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/1.4.1-Automation.md","articles":[]},{"title":"1.4.2 持续交付","level":"1.3.4.2","depth":3,"path":"01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/1.4.2-Continuous-delivery.md","ref":"01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/1.4.2-Continuous-delivery.md","articles":[]},{"title":"1.4.3 DevOps","level":"1.3.4.3","depth":3,"path":"01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/1.4.3-DevOps.md","ref":"01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/1.4.3-DevOps.md","articles":[]}]},"previous":{"title":"1.3.4 可观测性","level":"1.3.3.4","depth":3,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.4-Observability.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.4-Observability.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.5-Manageability.md","mtime":"2026-08-08T10:25:16.845Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T11:32:22.227Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-auto-scroll-table/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
         
     
         
@@ -1750,11 +1740,7 @@
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

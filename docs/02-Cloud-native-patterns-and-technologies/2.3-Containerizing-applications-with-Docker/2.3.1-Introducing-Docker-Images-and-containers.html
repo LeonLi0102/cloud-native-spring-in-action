@@ -3,12 +3,11 @@
 <html lang="zh-hans" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>2.3.1 Docker 介绍：镜像和容器 · Cloud Native  Spring In Action</title>
+        <title>2.3.1 Docker 介绍：镜像和容器 · Cloud Native Spring In Action</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        <meta name="author" content="Craig Walls">
+        <meta name="generator" content="HonKit 6.2.2">
+        <meta name="author" content="Thomas Vitale">
         
         
     
@@ -17,39 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-auto-scroll-table/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -90,7 +65,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -1608,8 +1583,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本书使用 GitBook 发布
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
         </a>
     </li>
 </ul>
@@ -1647,18 +1622,17 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="231-docker-&#x4ECB;&#x7ECD;&#xFF1A;&#x955C;&#x50CF;&#x548C;&#x5BB9;&#x5668;">2.3.1 Docker &#x4ECB;&#x7ECD;&#xFF1A;&#x955C;&#x50CF;&#x548C;&#x5BB9;&#x5668;</h3>
-<p>&#x5728;&#x673A;&#x5668;&#x4E0A;&#x5B89;&#x88C5; Docker &#x8F6F;&#x4EF6;&#x65F6;&#xFF0C;&#x60A8;&#x5C06;&#x83B7;&#x5F97; Docker &#x5F15;&#x64CE;&#x5305;&#xFF0C;&#x5176;&#x57FA;&#x4E8E; <code>&#x5BA2;&#x6237;&#x673A;/&#x670D;&#x52A1;&#x5668;</code> &#x4F53;&#x7CFB;&#x7ED3;&#x6784;&#x3002;Docker &#x670D;&#x52A1;&#x5668;&#xFF08;<em>Docker server</em>&#xFF09;&#x5305;&#x542B; Docker &#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#xFF08;<em>Docker daemon</em>&#xFF09;&#xFF0C;j&#x662F;&#x8D1F;&#x8D23;&#x521B;&#x5EFA;&#x548C;&#x7BA1;&#x7406; Docker &#x5BF9;&#x8C61;&#xFF08;&#x5982;&#xFF1A;&#x955C;&#x50CF;&#x3001;&#x5377;&#x3001;&#x7F51;&#x7EDC;&#xFF09;&#x7684;&#x540E;&#x53F0;&#x8FDB;&#x7A0B;&#x3002;Docker &#x670D;&#x52A1;&#x5668;&#x8FD0;&#x884C;&#x7684;&#x673A;&#x5668;&#x79F0;&#x4E3A; Docker &#x4E3B;&#x673A;&#xFF08;<em>Docker Host</em>&#xFF09;&#xFF0C;&#x8981;&#x8FD0;&#x884C;&#x5BB9;&#x5668;&#x670D;&#x52A1;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x90FD;&#x662F; Docker &#x4E3B;&#x673A;&#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x5177;&#x6709;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684; Docker &#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x3002;&#x5BB9;&#x5668;&#x7684;&#x53EF;&#x79FB;&#x690D;&#x6027;&#x662F;&#x901A;&#x8FC7;&#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x5B9E;&#x73B0;&#x7684;&#x3002;&#x540E;&#x7EED;&#x4ECB;&#x7ECD;&#x4E2D;&#xFF0C;&#x6211;&#x53EF;&#x80FD;&#x4F1A;&#x6DF7;&#x7528; Docker &#x670D;&#x52A1;&#x5668;&#x548C; Docker &#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x3002;</p>
-<p>Docker &#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x516C;&#x5F00;&#x4E86;&#x4E00;&#x4E2A; REST API&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5B83;&#x6765;&#x53D1;&#x9001;&#x6307;&#x4EE4;&#x3002;&#x4F8B;&#x5982;&#xFF1A;&#x8FD0;&#x884C;&#x5BB9;&#x5668;&#x6216;&#x521B;&#x5EFA;&#x5377;&#x3002;Docker &#x5BA2;&#x6237;&#x7AEF;&#x901A;&#x8FC7;&#x8BE5; API &#x4E0E;&#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x5BF9;&#x8BDD;&#x3002;&#x8FD9;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x662F;&#x57FA;&#x4E8E;&#x547D;&#x4EE4;&#x884C;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x4E0E; Docker &#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x4EA4;&#x4E92;&#xFF1A;&#x811A;&#x672C;&#xFF08;&#x4F8B;&#x5982; Docker Compose&#xFF09;&#x6216;&#x76F4;&#x63A5;&#x901A;&#x8FC7; Docker CLI&#x3002;</p>
-<p>&#x9664;&#x4E86;&#x4F5C;&#x4E3A; Docker &#x5F15;&#x64CE;&#x7279;&#x5F81;&#x7684;&#x5BA2;&#x6237;&#x673A;&#x548C;&#x670D;&#x52A1;&#x5668;&#x7EC4;&#x4EF6;&#x4E4B;&#x5916;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x5E73;&#x53F0;&#x5143;&#x7D20;&#x662F;&#x955C;&#x50CF;&#x4E2D;&#x5FC3;&#xFF08;container registry&#xFF09;&#xFF0C;&#x5B83;&#x5177;&#x6709;&#x4E0E; Maven &#x5B58;&#x50A8;&#x5E93;&#x7C7B;&#x4F3C;&#x7684;&#x529F;&#x80FD;&#x3002;Maven &#x5B58;&#x50A8;&#x5E93;&#x7528;&#x4E8E;&#x6258;&#x7BA1;&#x548C;&#x5206;&#x53D1; Java &#x5E93;&#xFF0C;&#x800C;&#x955C;&#x50CF;&#x4E2D;&#x5FC3;&#x5BF9;&#x5BB9;&#x5668;&#x955C;&#x50CF;&#x6267;&#x884C;&#x76F8;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x6211;&#x4EEC;&#x533A;&#x5206;&#x516C;&#x5171;&#x548C;&#x79C1;&#x6709;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x3002;Docker &#x516C;&#x53F8;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x540D;&#x4E3A; Docker Hub&#xFF08;<a href="https://hub.docker.com/" target="_blank">Hub.Docker.com</a>&#xFF09;&#x7684;&#x516C;&#x5171;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#xFF0C;&#x8FD9;&#x5728;&#x672C;&#x5730; Docker &#x5B89;&#x88C5;&#x65F6;&#x662F;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x7684;&#xFF0C;&#x5176;&#x4E2D;&#x4E3A;&#x8BB8;&#x591A;&#x5E38;&#x89C1;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6258;&#x7BA1;&#x955C;&#x50CF;&#xFF0C;&#x5982; Ubuntu&#x3001;PostgreSQL &#x548C; OpenJDK&#x3002;</p>
-<p><img src="../../assets/2.8.jpg" alt="">
-<strong>&#x56FE; 2.8 &#x663E;&#x793A;&#x4E86; Docker &#x5BA2;&#x6237;&#x7AEF;&#x3001;Docker &#x670D;&#x52A1;&#x5668;&#x548C;&#x955C;&#x50CF;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x5982;&#x4F55;&#x4EA4;&#x4E92;&#x3002;</strong></p>
-<p>Docker &#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x7BA1;&#x7406;&#x4E0D;&#x540C;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x5728;&#x672C;&#x8282;&#x4E2D;&#xFF0C;&#x6211;&#x5C06;&#x91CD;&#x70B9;&#x4ECB;&#x7ECD;&#x955C;&#x50CF;&#x548C;&#x5BB9;&#x5668;&#x3002;</p>
-<p>&#x5BB9;&#x5668;&#x955C;&#x50CF;&#xFF08;&#x6216;&#x8005;&#x7B80;&#x5355;&#x5730;&#x8BF4;&#xFF0C;&#x955C;&#x50CF;&#xFF09;&#x662F;&#x4E00;&#x4E2A;&#x8F7B;&#x91CF;&#x7EA7;&#x7684;&#x53EF;&#x6267;&#x884C;&#x5305;&#xFF0C;&#x5305;&#x62EC;&#x8FD0;&#x884C;&#x5185;&#x90E8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6240;&#x9700;&#x7684;&#x4E00;&#x5207;&#x3002;Docker &#x955C;&#x50CF;&#x683C;&#x5F0F;&#x662F;&#x6700;&#x5E38;&#x7528;&#x7684;&#x955C;&#x50CF;&#x683C;&#x5F0F;&#xFF0C;&#x540E;&#x6765;&#x7531;&#x5F00;&#x653E;&#x5BB9;&#x5668;&#x8BA1;&#x5212;&#xFF08;OCI&#xFF09;&#x9879;&#x76EE;&#x6807;&#x51C6;&#x5316;&#x6210;&#x4E86; OCI &#x955C;&#x50CF;&#x3002;&#x901A;&#x8FC7;&#x5728; Dockerfile&#xFF08;&#x4E00;&#x4E2A;&#x5305;&#x542B;&#x751F;&#x6210;&#x955C;&#x50CF;&#x7684;&#x6240;&#x6709;&#x6B65;&#x9AA4;&#x7684;&#xFF0C;&#x57FA;&#x4E8E;&#x6587;&#x672C;&#x7684;&#x6587;&#x4EF6;&#xFF09;&#x4E2D;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;&#xFF0C;&#x53EF;&#x4EE5;&#x4ECE;&#x5934;&#x5F00;&#x59CB;&#x521B;&#x5EFA;&#x955C;&#x50CF;&#x3002;&#x901A;&#x5E38;&#xFF0C;&#x955C;&#x50CF;&#x662F;&#x57FA;&#x4E8E;&#x53E6;&#x4E00;&#x4E2A;&#x955C;&#x50CF;&#x7684;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x5728; OpenJDK &#x7684;&#x57FA;&#x7840;&#x4E0A;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x955C;&#x50CF;&#x3002;&#x60A8;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A; Java &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;&#x521B;&#x5EFA;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x955C;&#x50CF;&#x63A8;&#x9001;&#x5230;&#x50CF; DockerHub &#x8FD9;&#x6837;&#x7684;&#x955C;&#x50CF;&#x4E2D;&#x5FC3;&#x3002;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x540D;&#x79F0;&#x548C;&#x6807;&#x8BB0;&#x7528;&#x4E8E;&#x6807;&#x8BC6;&#x6BCF;&#x4E2A;&#x955C;&#x50CF;&#xFF0C;&#x5176;&#x4E2D;&#x6807;&#x8BB0;&#x901A;&#x5E38;&#x662F;&#x7248;&#x672C;&#x53F7;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x7248;&#x672C; 20.04 &#x7684; Ubuntu &#x955C;&#x50CF;&#x79F0;&#x4E3A; Ubuntu:20.04&#x3002;&#x5192;&#x53F7;&#x7528;&#x4E8E;&#x5206;&#x9694;&#x57FA;&#x672C;&#x540D;&#x79F0;&#x548C;&#x7248;&#x672C;&#x3002;</p>
-<p>&#x5BB9;&#x5668;&#x662F;&#x955C;&#x50CF;&#x7684;&#x53EF;&#x8FD0;&#x884C;&#x5B9E;&#x4F8B;&#x3002;&#x60A8;&#x53EF;&#x4EE5;&#x4ECE; Docker CLI &#x6216; Docker Compose &#x7BA1;&#x7406;&#x5BB9;&#x5668;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF1A;&#x53EF;&#x4EE5;&#x542F;&#x52A8;&#x3001;&#x505C;&#x6B62;&#x3001;&#x66F4;&#x65B0;&#x548C;&#x5220;&#x9664;&#x5BB9;&#x5668;&#x3002;&#x5BB9;&#x5668;&#x7531;&#x5B83;&#x4EEC;&#x6240;&#x57FA;&#x4E8E;&#x7684;&#x57FA;&#x672C;&#x955C;&#x50CF;&#x548C;&#x542F;&#x52A8;&#x65F6;&#x63D0;&#x4F9B;&#x7684;&#x914D;&#x7F6E;&#x5B9A;&#x4E49;&#xFF08;&#x4F8B;&#x5982;&#xFF0C;&#x7528;&#x4E8E;&#x81EA;&#x5B9A;&#x4E49;&#x5BB9;&#x5668;&#x7684;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF09;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5BB9;&#x5668;&#x4E4B;&#x95F4;&#xFF0C;&#x4EE5;&#x53CA;&#x5BB9;&#x5668;&#x548C;&#x4E3B;&#x673A;&#x4E4B;&#x95F4;&#x662F;&#x9694;&#x79BB;&#x7684;&#x3002;&#x4F46;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7279;&#x5B9A;&#x7AEF;&#x53E3;&#x66B4;&#x9732;&#x670D;&#x52A1;&#xFF0C;&#x8FD9;&#x901A;&#x8FC7;&#x7AEF;&#x53E3;&#x8F6C;&#x53D1;&#xFF08;port forwarding&#xFF09;&#x6216;&#x7AEF;&#x53E3;&#x6620;&#x5C04;&#xFF08;port mapping&#xFF09;&#x6765;&#x5B9E;&#x73B0;&#x3002;&#x5BB9;&#x5668;&#x53EF;&#x4EE5;&#x6709;&#x4EFB;&#x610F;&#x540D;&#x79F0;&#x3002;&#x5982;&#x679C;&#x672A;&#x6307;&#x5B9A;&#xFF0C;Docker &#x670D;&#x52A1;&#x5668;&#x5C06;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x7684;&#xFF0C;&#x50CF; bazinga_schrodinger&#x3002;&#x8981;&#x8FD0;&#x884C;&#x5BB9;&#x5668;&#xFF0C;&#x60A8;&#x9700;&#x8981; Docker &#x6216;&#x4EFB;&#x4F55;&#x5176;&#x4ED6;&#x4E0E; OCI &#x6807;&#x51C6;&#x517C;&#x5BB9;&#x7684;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x3002;</p>
-<p>&#x8981;&#x8FD0;&#x884C;&#x65B0;&#x5BB9;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; Docker CLI &#x4E0E; Docker &#x5B88;&#x62A4;&#x8FDB;&#x7A0B;&#x8FDB;&#x884C;&#x4EA4;&#x4E92;&#xFF0C;&#x5B83;&#x68C0;&#x67E5;&#x6307;&#x5B9A;&#x7684;&#x955C;&#x50CF;&#x662F;&#x5426;&#x5DF2;&#x5B58;&#x5728;&#x4E8E;&#x672C;&#x5730;&#x670D;&#x52A1;&#x5668;&#x4E2D;&#x3002;&#x82E5;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5C06;&#x5728;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x67E5;&#x627E;&#x5E76;&#x4E0B;&#x8F7D;&#x955C;&#x50CF;&#xFF0C;&#x7136;&#x540E;&#x8FD0;&#x884C;&#x3002;&#x6574;&#x4E2A;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#xFF0C;&#x540C;&#x6837;&#xFF0C;&#x5982;&#x56FE; 2.8 &#x6240;&#x793A;&#x3002;</p>
+                                <h3 id="231-docker-介绍：镜像和容器">2.3.1 Docker 介绍：镜像和容器</h3>
+<p>在机器上安装 Docker 软件时，您将获得 Docker 引擎包，其基于 <code>客户机/服务器</code> 体系结构。Docker 服务器（<em>Docker server</em>）包含 Docker 守护进程（<em>Docker daemon</em>），j是负责创建和管理 Docker 对象（如：镜像、卷、网络）的后台进程。Docker 服务器运行的机器称为 Docker 主机（<em>Docker Host</em>），要运行容器服务的计算机都是 Docker 主机，因此它具有正在运行的 Docker 守护进程。容器的可移植性是通过守护进程实现的。后续介绍中，我可能会混用 Docker 服务器和 Docker 守护进程。</p>
+<p>Docker 守护进程公开了一个 REST API，您可以使用它来发送指令。例如：运行容器或创建卷。Docker 客户端通过该 API 与守护进程对话。这个客户端是基于命令行的，可以通过以下两种方式与 Docker 守护进程交互：脚本（例如 Docker Compose）或直接通过 Docker CLI。</p>
+<p>除了作为 Docker 引擎特征的客户机和服务器组件之外，另一个重要的平台元素是镜像中心（container registry），它具有与 Maven 存储库类似的功能。Maven 存储库用于托管和分发 Java 库，而镜像中心对容器镜像执行相同的操作。我们区分公共和私有注册中心。Docker 公司提供一个名为 Docker Hub（<a href="https://hub.docker.com/" target="_blank">Hub.Docker.com</a>）的公共注册中心，这在本地 Docker 安装时是默认配置的，其中为许多常见的应用程序托管镜像，如 Ubuntu、PostgreSQL 和 OpenJDK。</p>
+<p><img src="../../assets/2.8.jpg" alt=""></img>
+<strong>图 2.8 显示了 Docker 客户端、Docker 服务器和镜像注册中心如何交互。</strong></p>
+<p>Docker 守护进程管理不同的对象。在本节中，我将重点介绍镜像和容器。</p>
+<p>容器镜像（或者简单地说，镜像）是一个轻量级的可执行包，包括运行内部应用程序所需的一切。Docker 镜像格式是最常用的镜像格式，后来由开放容器计划（OCI）项目标准化成了 OCI 镜像。通过在 Dockerfile（一个包含生成镜像的所有步骤的，基于文本的文件）中定义指令，可以从头开始创建镜像。通常，镜像是基于另一个镜像的。例如，您可以在 OpenJDK 的基础上构建一个镜像。您可以添加一个 Java 应用程序。创建后，可以将镜像推送到像 DockerHub 这样的镜像中心。一个基本名称和标记用于标识每个镜像，其中标记通常是版本号。例如，版本 20.04 的 Ubuntu 镜像称为 Ubuntu:20.04。冒号用于分隔基本名称和版本。</p>
+<p>容器是镜像的可运行实例。您可以从 Docker CLI 或 Docker Compose 管理容器生命周期：可以启动、停止、更新和删除容器。容器由它们所基于的基本镜像和启动时提供的配置定义（例如，用于自定义容器的环境变量）。默认情况下，容器之间，以及容器和主机之间是隔离的。但可以通过特定端口暴露服务，这通过端口转发（port forwarding）或端口映射（port mapping）来实现。容器可以有任意名称。如果未指定，Docker 服务器将分配一个随机的，像 bazinga_schrodinger。要运行容器，您需要 Docker 或任何其他与 OCI 标准兼容的容器运行时。</p>
+<p>要运行新容器，可以使用 Docker CLI 与 Docker 守护进程进行交互，它检查指定的镜像是否已存在于本地服务器中。若不存在，将在注册中心查找并下载镜像，然后运行。整个工作流程，同样，如图 2.8 所示。</p>
 
-<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
                                 </section>
                             
@@ -1701,49 +1675,65 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2.3.1 Docker 介绍：镜像和容器","level":"1.4.3.1","depth":3,"next":{"title":"2.3.2 运行 Spring 应用容器","level":"1.4.3.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.2-Running-a-Spring-application-as-a-container.md","ref":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.2-Running-a-Spring-application-as-a-container.md","articles":[]},"previous":{"title":"2.3 使用 Docker 容器化应用","level":"1.4.3","depth":2,"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/Introduction.md","ref":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/Introduction.md","articles":[{"title":"2.3.1 Docker 介绍：镜像和容器","level":"1.4.3.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.1-Introducing-Docker-Images-and-containers.md","ref":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.1-Introducing-Docker-Images-and-containers.md","articles":[]},{"title":"2.3.2 运行 Spring 应用容器","level":"1.4.3.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.2-Running-a-Spring-application-as-a-container.md","ref":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.2-Running-a-Spring-application-as-a-container.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-search","search-pro","back-to-top-button","chapter-fold","code","copy-code-button","pageview-count","auto-scroll-table","popup","theme-comscore","prism","-highlight","fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/LeonLi0102/cloud-native-spring-in-action-translate.git"},"search-pro":{},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","family":"serif","size":4},"theme-comscore":{},"back-to-top-button":{},"pageview-count":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Craig Walls","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native  Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.1-Introducing-Docker-Images-and-containers.md","mtime":"2021-11-29T10:01:54.310Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-01T08:21:35.273Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.3.1 Docker 介绍：镜像和容器","level":"1.4.3.1","depth":3,"next":{"title":"2.3.2 运行 Spring 应用容器","level":"1.4.3.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.2-Running-a-Spring-application-as-a-container.md","ref":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.2-Running-a-Spring-application-as-a-container.md","articles":[]},"previous":{"title":"2.3 使用 Docker 容器化应用","level":"1.4.3","depth":2,"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/Introduction.md","ref":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/Introduction.md","articles":[{"title":"2.3.1 Docker 介绍：镜像和容器","level":"1.4.3.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.1-Introducing-Docker-Images-and-containers.md","ref":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.1-Introducing-Docker-Images-and-containers.md","articles":[]},{"title":"2.3.2 运行 Spring 应用容器","level":"1.4.3.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.2-Running-a-Spring-application-as-a-container.md","ref":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.2-Running-a-Spring-application-as-a-container.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/2.3.1-Introducing-Docker-Images-and-containers.md","mtime":"2026-08-08T10:25:16.918Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T11:32:22.227Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-auto-scroll-table/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
         
     
         
@@ -1755,11 +1745,7 @@
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

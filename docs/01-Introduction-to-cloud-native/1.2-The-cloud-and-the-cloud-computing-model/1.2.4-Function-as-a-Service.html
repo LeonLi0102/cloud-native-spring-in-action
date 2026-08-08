@@ -3,12 +3,11 @@
 <html lang="zh-hans" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>1.2.4 功能即服务 · Cloud Native  Spring In Action</title>
+        <title>1.2.4 功能即服务 · Cloud Native Spring In Action</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        <meta name="author" content="Craig Walls">
+        <meta name="generator" content="HonKit 6.2.2">
+        <meta name="author" content="Thomas Vitale">
         
         
     
@@ -17,39 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-auto-scroll-table/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -90,7 +65,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -1608,8 +1583,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本书使用 GitBook 发布
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
         </a>
     </li>
 </ul>
@@ -1647,10 +1622,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="124-&#x529F;&#x80FD;&#x5373;&#x670D;&#x52A1;">1.2.4 &#x529F;&#x80FD;&#x5373;&#x670D;&#x52A1;</h3>
-<p>&#x529F;&#x80FD;&#x5373;&#x670D;&#x52A1;&#xFF08;FaaS&#xFF09;&#x6A21;&#x578B;&#x5229;&#x7528;&#x65E0;&#x670D;&#x52A1;&#x5668;&#x8BA1;&#x7B97;&#x8BA9;&#x6D88;&#x8D39;&#x8005;&#x7BA1;&#x7406;&#x7531;&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x7684;&#x529F;&#x80FD;&#x3002;&#x4E91;&#x63D0;&#x4F9B;&#x5904;&#x7406;&#x6240;&#x6709;&#x5176;&#x4F59;&#x4E8B;&#x60C5;&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x6A21;&#x578B;&#x4E2D;&#xFF0C;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x6784;&#x5EFA;&#x5355;&#x4E2A;&#x529F;&#x80FD;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6574;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;FaaS &#x5E73;&#x53F0;&#x914D;&#x7F6E;&#x4F55;&#x65F6;&#x5E94;&#x6267;&#x884C;&#x6B64;&#x7C7B;&#x529F;&#x80FD;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x5728;&#x6D88;&#x606F;&#x961F;&#x5217;&#x53EF;&#x7528;&#x65F6;&#x5206;&#x6790;&#x6570;&#x636E;&#x96C6;&#x5E76;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x3002;FaaS &#x4EA7;&#x54C1;&#x7684;&#x4F8B;&#x5B50;&#x6709; Amazon AWS Lambda&#x3001;Microsoft Azure Functions &#x548C; Google Cloud Functions&#x3002;</p>
+                                <h3 id="124-功能即服务">1.2.4 功能即服务</h3>
+<p>功能即服务（FaaS）模型利用无服务器计算让消费者管理由事件触发的功能。云提供商会处理所有其余事情。在这个模型中，开发人员构建单个功能，而不是整个应用程序。FaaS 平台配置何时应执行此类功能。例如，您可以编写一个函数，该函数在消息队列可用时分析数据集并计算结果。FaaS 产品的例子有 Amazon AWS Lambda、Microsoft Azure Functions 和 Google Cloud Functions。</p>
 
-<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
                                 </section>
                             
@@ -1693,49 +1667,65 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.2.4 功能即服务","level":"1.3.2.4","depth":3,"next":{"title":"1.2.5 软件即服务","level":"1.3.2.5","depth":3,"path":"01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.5-Software-as-a-Service.md","ref":"01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.5-Software-as-a-Service.md","articles":[]},"previous":{"title":"1.2.3 平台即服务","level":"1.3.2.3","depth":3,"path":"01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.3-Platform-as-a-Service.md","ref":"01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.3-Platform-as-a-Service.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","search-pro","back-to-top-button","chapter-fold","code","copy-code-button","pageview-count","auto-scroll-table","popup","theme-comscore","prism","-highlight","fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/LeonLi0102/cloud-native-spring-in-action-translate.git"},"search-pro":{},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","family":"serif","size":4},"theme-comscore":{},"back-to-top-button":{},"pageview-count":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Craig Walls","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native  Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.4-Function-as-a-Service.md","mtime":"2021-11-11T07:35:51.961Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-01T08:21:35.273Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.2.4 功能即服务","level":"1.3.2.4","depth":3,"next":{"title":"1.2.5 软件即服务","level":"1.3.2.5","depth":3,"path":"01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.5-Software-as-a-Service.md","ref":"01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.5-Software-as-a-Service.md","articles":[]},"previous":{"title":"1.2.3 平台即服务","level":"1.3.2.3","depth":3,"path":"01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.3-Platform-as-a-Service.md","ref":"01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.3-Platform-as-a-Service.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/1.2.4-Function-as-a-Service.md","mtime":"2026-08-08T10:25:28.851Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T11:32:22.227Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-auto-scroll-table/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
         
     
         
@@ -1747,11 +1737,7 @@
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

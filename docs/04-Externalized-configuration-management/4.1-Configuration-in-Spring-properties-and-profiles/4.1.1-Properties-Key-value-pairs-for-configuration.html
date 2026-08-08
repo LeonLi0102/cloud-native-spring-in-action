@@ -3,12 +3,11 @@
 <html lang="zh-hans" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>4.1.1 Properties：键值对 · Cloud Native  Spring In Action</title>
+        <title>4.1.1 Properties：键值对 · Cloud Native Spring In Action</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        <meta name="author" content="Craig Walls">
+        <meta name="generator" content="HonKit 6.2.2">
+        <meta name="author" content="Thomas Vitale">
         
         
     
@@ -17,39 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-auto-scroll-table/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -90,7 +65,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -1608,8 +1583,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本书使用 GitBook 发布
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
         </a>
     </li>
 </ul>
@@ -1647,9 +1622,131 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="411-properties&#xFF1A;&#x952E;&#x503C;&#x5BF9;">4.1.1 Properties&#xFF1A;&#x952E;&#x503C;&#x5BF9;</h1>
+                                <h3 id="411-properties：键值对">4.1.1 Properties：键值对</h3>
+<p>Properties （属性）是 Java 支持的键/值对，是 <code>java.util.Properties</code> 的一等公民。它们在 Java 应用程序中扮演着重要角色，可以在编译的 Java 代码之外存储配置参数，还可以从 Spring Boot 不同来源自动加载。当在多个来源中都定义了同一属性时，有规则决定哪一个优先。例如，如果在属性文件和命令行参数中，都指定了 server.port 属性，则后者优先于前者。以下是一些属性来源的优先级列表，从具有最高优先级的来源开始。完整的列表您可以参考 Spring Boot 文档（<a href="https://spring.io/projects/spring-boot" target="_blank">Spring.io/projects/Spring-boot</a>）。</p>
+<ol>
+<li>添加了 @TestPropertySource 的测试类。</li>
+<li>命令行参数。</li>
+<li>来自 System.getProperties() 的 JVM 系统属性。</li>
+<li>来自 System.getenv() 的 OS 环境变量。</li>
+<li>配置数据文件。</li>
+<li><code>@Configuration</code> 类上的 PropertySource 注解。</li>
+<li>SpringApplication.setDefaultProperties 的默认属性。</li>
+</ol>
+<p>配置数据文件可以进一步划分优先级，从优先级最高的开始。</p>
+<ol>
+<li>JAR 文件外，application-{profile}.properties 和 application-{profile}.yml 中，特定于配置文件的属性。</li>
+<li>JAR 文件外，application.properties 和 application.yml 中的应用程序属性。</li>
+<li>JAR 文件内，application-{profile}.properties 和 application-{profile}.yml 中，特定于配置文件的属性。</li>
+<li>JAR 文件内，application.properties 和 application.yml 中的应用程序属性。</li>
+</ol>
+<p>Spring 中属性处理的美妙之处在于，您不需要从特定来源获取值。Environment 抽象允许您通过统一的接口，访问任何源中定义的任何属性。如果在多个源中定义了相同的属性，则返回优先级最高的。您甚至可以添加自己的自定义源并为其指定优先级。</p>
+<blockquote>
+<p>注意：Spring 内置了使用 Properties 格式定义属性的支持。除此之外，Spring Boot 还支持使用 YAML 格式。YAML 是 JSON 的超集，提供了比 Properties 更灵活的格式。官方网站（<a href="https://yaml.org/" target="_blank">yaml.org</a>）将 YAML 描述为“适用于所有编程语言的，人性化的数据序列化标准”。在您的应用程序中，您可以随意选择其中一种。本书中的所有示例都将使用 YAML。</p>
+</blockquote>
+<h4 id="使用应用程序属性">使用应用程序属性</h4>
+<p>有几种方法可以从 Java 类访问属性，如图 4.3 所示。最通用的方法基于 Environment 接口，当您需要访问应用程序属性时可以自动注入。例如，您可以使用它来访问 server.port 属性，按如下所示。</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Autowired</span>
+<span class="hljs-keyword">private</span> Environment environment;
 
-<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+<span class="hljs-keyword">public</span> String <span class="hljs-title function_">getServerPort</span><span class="hljs-params">()</span> {
+  <span class="hljs-keyword">return</span> environment.getProperty(<span class="hljs-string">"server.port"</span>);
+}
+</code></pre>
+<p><img src="../../assets/4.3.jpg" alt=""></img>
+<strong>图 4.3 您可以通过不同的方式访问 Spring 属性。</strong></p>
+<p>也可以注入属性，而无需显式调用 Environment 对象。就像使用 @Autowired 注解注入 Spring bean 一样，您可以应用 <code>@Value</code> 注解以插入属性值。</p>
+<pre><code class="lang-java"><span class="hljs-meta">@Value("${server.port}")</span>
+<span class="hljs-keyword">private</span> String serverPort;
+
+<span class="hljs-keyword">public</span> String <span class="hljs-title function_">getServerPort</span><span class="hljs-params">()</span> {
+  <span class="hljs-keyword">return</span> serverPort;
+}
+</code></pre>
+<p>您可以使用属性配置应用程序，而无需在代码中硬编码属性值，这是我们的目标之一。但在使用 Environment 对象或 <code>@Value</code> 注解时，仍然有一个难以管理的硬编码值：属性的键。更健壮的可维护选项（也是 Spring 团队推荐的选项）是使用特殊的，用注解 <code>@ConfigurationProperties</code> 标记的 bean 保存配置数据。在学习如何定义自定义属性的同时，您将在下一节中探索此功能。</p>
+<h4 id="定义自定义属性">定义自定义属性</h4>
+<p>Spring Boot 附带了大量属性来配置应用程序的各个方面，取决于您在项目中导入的 starter 依赖项。不过，迟早您会需要定义自己的属性。</p>
+<p>让我们考虑一直在做的 Catalog Service。在第 2 章中，您定义了 HTTP 端点向用户返回欢迎消息。我们现在有一个新的需求：欢迎消息应该是可配置的。这可能不是非常有用的功能，但它将帮助我向您展示不同的配置选项。</p>
+<p>要做的第一件事，是告诉 Spring Boot 扫描应用程序上下文中的配置数据 Bean。您可以通过将 <code>@ConfigurationPropertiesScan</code> 注解添加到 Catalog Service 工程的 CatalogServiceApplication 类上。</p>
+<p><strong>清单 4.1 启用扫描配置数据 bean（CatalogServiceApplication.java）</strong></p>
+<pre><code class="lang-java"><span class="hljs-meta">@SpringBootApplication</span>
+<span class="hljs-meta">@ConfigurationPropertiesScan</span>  ❶
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CatalogServiceApplication</span> {
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+    SpringApplication.run(CatalogServiceApplication.class, args);
+  }
+}
+</code></pre>
+<p>❶ 在Spring上 下文中加载配置数据 bean。</p>
+<p>然后，定义一个新的 com.polarbookshop.catalogservice.config 包，并创建一个 PolarProperties 记录（record）并添加 <code>@ConfigurationProperties</code> 注解，以将其标记为配置数据。<code>@ConfigurationProperties</code> 注解可配置前缀参数，前缀与字段名组合形成完整属性键。Spring Boot 将尝试映射所有具有该前缀的属性到类中的字段上。在本例中，只映射了一个属性：polar.greeting。</p>
+<p><strong>清单 4.2 在 Spring bean 中定义自定义属性（PolarProperties.java）</strong></p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.polarbookshop.catalogservice.config;
+
+<span class="hljs-keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;
+
+<span class="hljs-meta">@ConfigurationProperties(prefix = "polar")</span>  ❶
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">record</span> <span class="hljs-title class_">PolarProperties</span><span class="hljs-params">(
+  String greeting  ❷
+)</span>{}
+</code></pre>
+<p>❶ 将该类标记为以前缀 “polar”开头的配置属性源。</p>
+<p>❷ 自定义“polar.greeting”（前缀+字段名）属性字段，会解析为字符串。</p>
+<p>或者，您可以在 build.gradle 文件中添加对 Spring Boot Configuration Processor 的新依赖项。这将在构建时自动为新属性生成元数据，并存储在 META-INF/spring-configuration-metadata.json 中。IDE 可以提取它们，并帮助您进行自动补全和类型检查。记住在新添加后 刷新/重新导入 Gradle 依赖项。</p>
+<pre><code class="lang-gradle"><span class="hljs-keyword">configurations</span> {  ❶
+  compileOnly {
+  extendsFrom annotationProcessor
+  }
+}
+
+<span class="hljs-keyword">dependencies</span> {
+  ...
+  annotationProcessor <span class="hljs-string">'org.springframework.boot:spring-boot-configuration-processor'</span>  ❷
+}
+</code></pre>
+<p>❶ 将 Gradle 配置为在生成项目时使用注解处理器。</p>
+<p>❷ 从自定义属性生成元数据。</p>
+<p>然后，您可以通过构建项目（./gradlew build）触发元数据生成。这时，可以在 application.yml 为 polar.greeting 定义默认值。当插入新属性时，IDE 应为您提供自动补全和类型检查。</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">polar:</span>
+  <span class="hljs-attr">greeting:</span> <span class="hljs-string">Welcome</span> <span class="hljs-string">to</span> <span class="hljs-string">the</span> <span class="hljs-string">local</span> <span class="hljs-string">book</span> <span class="hljs-string">catalog!</span>
+</code></pre>
+<p>在清单 4.2 中， greeting 字段将映射到 polar.greeting，这是您刚刚在 application.yml 中自定义的值。</p>
+<h4 id="使用自定义属性">使用自定义属性</h4>
+<p>用 <code>@ConfigurationProperties</code> 注解的类或记录（record）是标准的 Spring bean，所以可以在任何需要的地方直接注入。Spring Boot 初始化所有配置 bean，并使用任何支持的配置来源数据填充它们。对于 Catalog Service，数据来源于 application.yml 文件。</p>
+<p>Catalog Service 的新要求是，使根端点返回的欢迎消息。可通过 polar.greeting 属性进行配置。打开 HomeController 类，并更新处理方法，以从自定义属性而不是使用固定值来获取消息。</p>
+<p><strong>清单 4.3 使用配置 bean 中的自定义属性（HomeController.java）</strong></p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.polarbookshop.catalogservice.web;
+
+<span class="hljs-keyword">import</span> com.polarbookshop.catalogservice.config.PolarProperties;
+<span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.GetMapping;
+<span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RestController;
+
+<span class="hljs-meta">@RestController</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HomeController</span> {
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> PolarProperties polarProperties;  ❶
+
+  <span class="hljs-keyword">public</span> <span class="hljs-title function_">HomeController</span><span class="hljs-params">(PolarProperties polarProperties)</span> {
+    <span class="hljs-built_in">this</span>.polarProperties = polarProperties;
+  }
+
+  <span class="hljs-meta">@GetMapping("/")</span>
+  <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getGreeting</span><span class="hljs-params">()</span> {
+    <span class="hljs-keyword">return</span> polarProperties.greeting();  ❷
+  }
+}
+</code></pre>
+<p>❶ 注入 bean 以访问自定义属性。</p>
+<p>❷ 使用来自配置数据 bean 的欢迎消息。</p>
+<p>您现在可以构建并运行应用程序，以验证它是否按预期工作（./gradlew bootRun）。然后，打开一个终端窗口，向 Catalog Service 公开的根端点发送 GET 请求。</p>
+<pre><code class="lang-bash">$ http :9001/
+</code></pre>
+<p>结果应该是您在 application.yml 中为属性 polar.greeting 配置的消息。</p>
+<pre><code class="lang-text">Welcome to the local book catalog!
+</code></pre>
+<blockquote>
+<p>注意：与应用程序一起打包的属性文件，对于定义合理的默认值是非常有用的。它们还可以作为应用程序支持哪些配置属性的规范文件。</p>
+</blockquote>
+<p>以下部分将介绍 Spring Environment 抽像类、profiles，以及如何将它们用于云原生应用程序。在继续后续内容之前，您可以使用 <code>Ctrl + C</code> 停止应用程序。</p>
+
                                 
                                 </section>
                             
@@ -1692,49 +1789,65 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.1.1 Properties：键值对","level":"1.6.1.1","depth":3,"next":{"title":"4.1.2 Profiles：特性标志和配置分组","level":"1.6.1.2","depth":3,"path":"04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/4.1.2-Profiles-Feature-flags-and-configuration-groups.md","ref":"04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/4.1.2-Profiles-Feature-flags-and-configuration-groups.md","articles":[]},"previous":{"title":"4.1 Spring 中的配置：properties 和 profiles","level":"1.6.1","depth":2,"path":"04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/Introduction.md","ref":"04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/Introduction.md","articles":[{"title":"4.1.1 Properties：键值对","level":"1.6.1.1","depth":3,"path":"04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/4.1.1-Properties-Key-value-pairs-for-configuration.md","ref":"04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/4.1.1-Properties-Key-value-pairs-for-configuration.md","articles":[]},{"title":"4.1.2 Profiles：特性标志和配置分组","level":"1.6.1.2","depth":3,"path":"04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/4.1.2-Profiles-Feature-flags-and-configuration-groups.md","ref":"04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/4.1.2-Profiles-Feature-flags-and-configuration-groups.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-search","search-pro","back-to-top-button","chapter-fold","code","copy-code-button","pageview-count","auto-scroll-table","popup","theme-comscore","prism","-highlight","fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/LeonLi0102/cloud-native-spring-in-action-translate.git"},"search-pro":{},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","family":"serif","size":4},"theme-comscore":{},"back-to-top-button":{},"pageview-count":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Craig Walls","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native  Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/4.1.1-Properties-Key-value-pairs-for-configuration.md","mtime":"2021-12-01T06:58:50.788Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-01T08:21:35.273Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4.1.1 Properties：键值对","level":"1.6.1.1","depth":3,"next":{"title":"4.1.2 Profiles：特性标志和配置分组","level":"1.6.1.2","depth":3,"path":"04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/4.1.2-Profiles-Feature-flags-and-configuration-groups.md","ref":"04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/4.1.2-Profiles-Feature-flags-and-configuration-groups.md","articles":[]},"previous":{"title":"4.1 Spring 中的配置：properties 和 profiles","level":"1.6.1","depth":2,"path":"04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/Introduction.md","ref":"04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/Introduction.md","articles":[{"title":"4.1.1 Properties：键值对","level":"1.6.1.1","depth":3,"path":"04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/4.1.1-Properties-Key-value-pairs-for-configuration.md","ref":"04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/4.1.1-Properties-Key-value-pairs-for-configuration.md","articles":[]},{"title":"4.1.2 Profiles：特性标志和配置分组","level":"1.6.1.2","depth":3,"path":"04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/4.1.2-Profiles-Feature-flags-and-configuration-groups.md","ref":"04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/4.1.2-Profiles-Feature-flags-and-configuration-groups.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/4.1.1-Properties-Key-value-pairs-for-configuration.md","mtime":"2026-08-08T10:25:16.965Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T11:32:22.227Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-auto-scroll-table/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
         
     
         
@@ -1746,11 +1859,7 @@
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

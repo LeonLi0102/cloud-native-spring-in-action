@@ -3,12 +3,11 @@
 <html lang="zh-hans" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>1.3.3 强适应性 · Cloud Native  Spring In Action</title>
+        <title>1.3.3 强适应性 · Cloud Native Spring In Action</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        <meta name="author" content="Craig Walls">
+        <meta name="generator" content="HonKit 6.2.2">
+        <meta name="author" content="Thomas Vitale">
         
         
     
@@ -17,39 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-auto-scroll-table/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -90,7 +65,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -1608,8 +1583,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本书使用 GitBook 发布
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
         </a>
     </li>
 </ul>
@@ -1647,20 +1622,19 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="133-&#x97E7;&#x6027;">1.3.3 &#x97E7;&#x6027;</h3>
-<p>&#x5982;&#x679C;&#x7CFB;&#x7EDF;&#x5373;&#x4F7F;&#x5728;&#x51FA;&#x73B0;&#x6545;&#x969C;&#x6216;&#x73AF;&#x5883;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x4E5F;&#x80FD;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#xFF0C;&#x5219;&#x7CFB;&#x7EDF;&#x662F;&#x6709;&#x97E7;&#x6027;&#x7684;&#x3002;&#x97E7;&#x6027;&#x662F;&#x201C;&#x9762;&#x5BF9;&#x6545;&#x969C;&#x6216;&#x6311;&#x6218;&#x6027;&#x64CD;&#x4F5C;&#xFF0C;&#x8F6F;&#x786C;&#x4EF6;&#x7F51;&#x7EDC;&#x4ECD;&#x80FD;&#x63D0;&#x4F9B;&#x548C;&#x7EF4;&#x6301;&#x4E00;&#x4E2A;&#x53EF;&#x63A5;&#x53D7;&#x7684;&#x670D;&#x52A1;&#x6C34;&#x5E73;&#x201D;&#x3002;</p>
-<p>&#x4E91;&#x539F;&#x751F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5728;&#x52A8;&#x6001;&#x73AF;&#x5883;&#x4E2D;&#x8FD0;&#x884C;&#xFF0C;&#x5176;&#x4E2D;&#x6240;&#x6709;&#x5185;&#x5BB9;&#x90FD;&#x5728;&#x4E0D;&#x65AD;&#x53D8;&#x5316;&#xFF0C;&#x5E76;&#x4E14;&#x6545;&#x969C;&#x53EF;&#x80FD;&#x968F;&#x65F6;&#x4F1A;&#x53D1;&#x751F;&#x3002;&#x8FD9;&#x662F;&#x65E0;&#x6CD5;&#x963B;&#x6B62;&#x7684;&#x3002;&#x8FC7;&#x53BB;&#xFF0C;&#x6211;&#x4EEC;&#x4E60;&#x60EF;&#x4E8E;&#x628A;&#x53D8;&#x5316;&#x548C;&#x6545;&#x969C;&#x4F5C;&#x4E3A;&#x5F02;&#x5E38;&#x3002;&#x4F46;&#x5BF9;&#x4E8E;&#x9AD8;&#x5EA6;&#x5206;&#x5E03;&#x5F0F;&#x7684;&#x7CFB;&#x7EDF;&#xFF0C;&#x5982;&#x4E91;&#x539F;&#x751F;&#x7CFB;&#x7EDF;&#xFF0C;&#x53D8;&#x5316;&#x4E0D;&#x662F;&#x5F02;&#x5E38;&#xFF1A;&#x5B83;&#x4EEC;&#x662F;&#x5E38;&#x6001;&#x3002;</p>
-<p>&#x60A8;&#x7684;&#x76EE;&#x6807;&#x5E94;&#x8BE5;&#x662F;&#xFF1A;&#x65E0;&#x8BBA;&#x57FA;&#x7840;&#x67B6;&#x6784;&#x6216;&#x8F6F;&#x4EF6;&#x4E2D;&#x662F;&#x5426;&#x51FA;&#x73B0;&#x6545;&#x969C;&#xFF0C;&#x90FD;&#x8981;&#x786E;&#x4FDD;&#x60A8;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x53EF;&#x7528;&#x3002;</p>
-<p>&#x5728;&#x8BA8;&#x8BBA;&#x97E7;&#x6027;&#x65F6;&#xFF0C;&#x6709;&#x5FC5;&#x8981;&#x5B9A;&#x4E49;&#x4E09;&#x4E2A;&#x57FA;&#x672C;&#x6982;&#x5FF5;&#xFF1A;&#x6545;&#x969C;&#x3001;&#x9519;&#x8BEF;&#x548C;&#x5931;&#x6548;&#x3002;</p>
+                                <h3 id="133-韧性">1.3.3 韧性</h3>
+<p>如果系统即使在出现故障或环境发生变化的情况下也能提供服务，则系统是有韧性的。韧性是“面对故障或挑战性操作，软硬件网络仍能提供和维持一个可接受的服务水平”。</p>
+<p>云原生应用程序在动态环境中运行，其中所有内容都在不断变化，并且故障可能随时会发生。这是无法阻止的。过去，我们习惯于把变化和故障作为异常。但对于高度分布式的系统，如云原生系统，变化不是异常：它们是常态。</p>
+<p>您的目标应该是：无论基础架构或软件中是否出现故障，都要确保您的应用程序可用。</p>
+<p>在讨论韧性时，有必要定义三个基本概念：故障、错误和失效。</p>
 <ul>
-<li><strong>&#x6545;&#x969C;&#xFF08;Fault&#xFF09;</strong>&#x3002;&#x662F;&#x8F6F;&#x4EF6;&#x6216;&#x57FA;&#x7840;&#x8BBE;&#x65BD;&#x4E2D;&#x4F1A;&#x4EA7;&#x751F;&#x9519;&#x8BEF;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x7684;&#x7F3A;&#x9677;&#x3002;&#x793A;&#x4F8B;&#xFF1A;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x8FD4;&#x56DE;&#x7A7A;&#x503C;&#xFF0C;&#x5373;&#x4F7F;&#x5176;&#x89C4;&#x8303;&#x8981;&#x6C42;&#x8FD4;&#x56DE;&#x975E; null &#x503C;&#x3002;</li>
-<li><strong>&#x9519;&#x8BEF;&#xFF08;Error&#xFF09;</strong>&#x3002;&#x662F;&#x6307;&#x7CFB;&#x7EDF;&#x7684;&#x9884;&#x671F;&#x884C;&#x4E3A;&#x4E0E;&#x5B9E;&#x9645;&#x884C;&#x4E3A;&#x7684;&#x5DEE;&#x5F02;&#x3002;&#x793A;&#x4F8B;&#xFF1A;&#x7531;&#x4E8E;&#x4E0A;&#x9762;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x5C06;&#x5F15;&#x53D1;&#x629B;&#x51FA; NullPointerException&#x3002;</li>
-<li><strong>&#x5931;&#x6548;&#xFF08;Failure&#xFF09;</strong>&#x3002;&#x5F53;&#x89E6;&#x53D1;&#x6545;&#x969C;&#x5E76;&#x5BFC;&#x81F4;&#x9519;&#x8BEF;&#x65F6;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x53D1;&#x751F;&#x5931;&#x6548;&#xFF0C;&#x5BFC;&#x81F4;&#x7CFB;&#x7EDF;&#x6CA1;&#x6709;&#x54CD;&#x5E94;&#xFF0C;&#x65E0;&#x6CD5;&#x6309;&#x7167;&#x5176;&#x89C4;&#x8303;&#x8FD0;&#x884C;&#x3002;&#x793A;&#x4F8B;&#xFF1A;&#x5982;&#x679C;&#x672A;&#x6355;&#x83B7; NullPointerException&#xFF0C;&#x5219;&#x9519;&#x8BEF;&#x4F1A;&#x5F15;&#x53D1;&#x5931;&#x6548;&#xFF0C;&#x7CFB;&#x7EDF;&#x5C06;&#x5BF9;&#x4EFB;&#x4F55;&#x8BF7;&#x6C42;&#x8FD4;&#x56DE; 500 &#x54CD;&#x5E94;&#x3002;</li>
+<li><strong>故障（Fault）</strong>。是软件或基础设施中会产生错误内部状态的缺陷。示例：方法调用返回空值，即使其规范要求返回非 null 值。</li>
+<li><strong>错误（Error）</strong>。是指系统的预期行为与实际行为的差异。示例：由于上面的错误，将引发抛出 NullPointerException。</li>
+<li><strong>失效（Failure）</strong>。当触发故障并导致错误时，可能会发生失效，导致系统没有响应，无法按照其规范运行。示例：如果未捕获 NullPointerException，则错误会引发失效，系统将对任何请求返回 500 响应。</li>
 </ul>
-<p>&#x6545;&#x969C;&#x53EF;&#x80FD;&#x4F1A;&#x53D8;&#x6210;&#x9519;&#x8BEF;&#xFF0C;&#x8FD9;&#x53EF;&#x80FD;&#x4F1A;&#x5F15;&#x53D1;&#x5931;&#x6548;&#xFF0C;&#x56E0;&#x6B64;&#x60A8;&#x5E94;&#x8BE5;&#x5C06;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x4E3A;&#x80FD;&#x591F; <code>&#x5BB9;&#x9519;&#xFF08;fault tolerant&#xFF09;</code>&#x3002;&#x97E7;&#x6027;&#x7684;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x90E8;&#x5206;&#x662F;&#x786E;&#x4FDD;&#x5931;&#x6548;&#x4E0D;&#x4F1A;&#x6CE2;&#x53CA;&#x5230;&#x5176;&#x4ED6;&#x7CFB;&#x7EDF;&#x7EC4;&#x4EF6;&#xFF0C;&#x800C;&#x662F;&#x4F7F;&#x5B83;&#x4FDD;&#x6301;&#x9694;&#x79BB;&#x3002;&#x60A8;&#x8FD8;&#x9700;&#x8981;&#x8FD9;&#x4E2A;&#x7CFB;&#x7EDF;&#x80FD;&#x591F; <code>&#x81EA;&#x6211;&#x4FEE;&#x590D;&#xFF08;self-repairing&#xFF09;</code>&#xFF0C;&#x800C;&#x4E91;&#x6A21;&#x578B;&#x5B9E;&#x9645;&#x4E0A;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x8FD9;&#x4E00;&#x70B9;&#x3002;</p>
-<p>&#x5728;&#x672C;&#x4E66;&#x4E2D;&#xFF0C;&#x6211;&#x5C06;&#x5411;&#x60A8;&#x5C55;&#x793A;&#x4E00;&#x4E9B;&#x5BB9;&#x9519;&#x6280;&#x5DE7;&#xFF0C;&#x9632;&#x6B62;&#x6545;&#x969C;&#x4F20;&#x64AD;&#x5230;&#x7CFB;&#x7EDF;&#x7684;&#x5176;&#x4ED6;&#x90E8;&#x5206;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x60A8;&#x5C06;&#x5229;&#x7528; Spring Cloud Circuit Breaker &#x548C; Resilience4J &#x6765;&#x5B9E;&#x73B0;&#x65AD;&#x8DEF;&#x5668;&#x3001;&#x91CD;&#x8BD5;&#x548C;&#x5197;&#x4F59;&#x3002;</p>
+<p>故障可能会变成错误，这可能会引发失效，因此您应该将应用程序设计为能够 <code>容错（fault tolerant）</code>。韧性的一个重要部分是确保失效不会波及到其他系统组件，而是使它保持隔离。您还需要这个系统能够 <code>自我修复（self-repairing）</code>，而云模型实际上可以实现这一点。</p>
+<p>在本书中，我将向您展示一些容错技巧，防止故障传播到系统的其他部分。例如，您将利用 Spring Cloud Circuit Breaker 和 Resilience4J 来实现断路器、重试和冗余。</p>
 
-<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
                                 </section>
                             
@@ -1703,49 +1677,65 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.3.3 强适应性","level":"1.3.3.3","depth":3,"next":{"title":"1.3.4 可观测性","level":"1.3.3.4","depth":3,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.4-Observability.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.4-Observability.md","articles":[]},"previous":{"title":"1.3.2 松耦合","level":"1.3.3.2","depth":3,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.2-Loose-coupling.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.2-Loose-coupling.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-search","search-pro","back-to-top-button","chapter-fold","code","copy-code-button","pageview-count","auto-scroll-table","popup","theme-comscore","prism","-highlight","fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/LeonLi0102/cloud-native-spring-in-action-translate.git"},"search-pro":{},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","family":"serif","size":4},"theme-comscore":{},"back-to-top-button":{},"pageview-count":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Craig Walls","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native  Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.3-Resilience.md","mtime":"2021-11-15T06:49:55.500Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-01T08:21:35.273Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.3.3 强适应性","level":"1.3.3.3","depth":3,"next":{"title":"1.3.4 可观测性","level":"1.3.3.4","depth":3,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.4-Observability.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.4-Observability.md","articles":[]},"previous":{"title":"1.3.2 松耦合","level":"1.3.3.2","depth":3,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.2-Loose-coupling.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.2-Loose-coupling.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.3-Resilience.md","mtime":"2026-08-08T10:25:16.840Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T11:32:22.227Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-auto-scroll-table/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
         
     
         
@@ -1757,11 +1747,7 @@
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

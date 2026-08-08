@@ -3,12 +3,11 @@
 <html lang="zh-hans" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>1.3.1 可扩展性 · Cloud Native  Spring In Action</title>
+        <title>1.3.1 可扩展性 · Cloud Native Spring In Action</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        <meta name="author" content="Craig Walls">
+        <meta name="generator" content="HonKit 6.2.2">
+        <meta name="author" content="Thomas Vitale">
         
         
     
@@ -17,39 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-auto-scroll-table/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -90,7 +65,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -1608,8 +1583,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本书使用 GitBook 发布
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
         </a>
     </li>
 </ul>
@@ -1647,22 +1622,21 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="131-&#x6269;&#x5C55;&#x6027;">1.3.1 &#x6269;&#x5C55;&#x6027;</h3>
-<p>&#x4E91;&#x539F;&#x751F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x662F;&#x53EF;&#x6269;&#x5C55;&#x7684;&#xFF0C;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x5982;&#x679C;&#x9700;&#x8981;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x4E3A;&#x4E0D;&#x65AD;&#x589E;&#x52A0;&#x7684;&#x5DE5;&#x4F5C;&#x8D1F;&#x8F7D;&#x63D0;&#x4F9B;&#x989D;&#x5916;&#x7684;&#x8D44;&#x6E90;&#x3002;&#x6839;&#x636E;&#x8FD9;&#x4E9B;&#x989D;&#x5916;&#x8D44;&#x6E90;&#x7684;&#x6027;&#x8D28;&#xFF0C;&#x53EF;&#x5206;&#x4E3A;&#x5782;&#x76F4;&#x6269;&#x5C55;&#x548C;&#x6C34;&#x5E73;&#x6269;&#x5C55;&#x3002;</p>
+                                <h3 id="131-扩展性">1.3.1 扩展性</h3>
+<p>云原生应用程序是可扩展的，这意味着如果需要，它可以为不断增加的工作负载提供额外的资源。根据这些额外资源的性质，可分为垂直扩展和水平扩展。</p>
 <ul>
-<li><p><strong>&#x5782;&#x76F4;&#x6269;&#x5C55;</strong>&#x3002;&#x5782;&#x76F4;&#x7F29;&#x653E;&#x6216;&#x4E0A;&#x4E0B;&#x7F29;&#x653E;&#xFF0C;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x7ED9;&#x8BA1;&#x7B97;&#x8282;&#x70B9;&#x6DFB;&#x52A0;&#x6216;&#x5220;&#x9664;&#x786C;&#x4EF6;&#x8D44;&#x6E90;&#xFF0C;&#x5982; CPU &#x6216; &#x5185;&#x5B58;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x662F;&#x6709;&#x9650;&#x5EA6;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x4E0D;&#x53EF;&#x80FD;&#x65E0;&#x9650;&#x6DFB;&#x52A0;&#x786C;&#x4EF6;&#x8D44;&#x6E90;&#x3002;&#x53E6;&#x4E00;&#x65B9;&#x9762;&#xFF0C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E0D;&#x9700;&#x8981;&#x505A;&#x4EC0;&#x4E48;&#x7279;&#x6B8A;&#x8BBE;&#x8BA1;&#x5C31;&#x53EF;&#x4EE5;&#x7F29;&#x653E;&#x3002;</p>
+<li><p><strong>垂直扩展</strong>。垂直缩放或上下缩放，这意味着给计算节点添加或删除硬件资源，如 CPU 或 内存。这种方法是有限度的，因为不可能无限添加硬件资源。另一方面，应用程序不需要做什么特殊设计就可以缩放。</p>
 </li>
-<li><p><strong>&#x6C34;&#x5E73;&#x6269;&#x5C55;</strong>&#x3002;&#x6C34;&#x5E73;&#x7F29;&#x653E;&#x6216;&#x5185;&#x5916;&#x7F29;&#x653E;&#xFF0C;&#x610F;&#x5473;&#x7740;&#x6DFB;&#x52A0;&#x66F4;&#x591A;&#x8BA1;&#x7B97;&#x8282;&#x70B9;&#x6216;&#x5BB9;&#x5668;&#xFF08;&#x4F8B;&#x5982;&#xFF0C;&#x5F53;&#x4F7F;&#x7528; Kubernetes &#x65F6;&#xFF09;&#x5230;&#x7CFB;&#x7EDF;&#x4E2D;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x4E0E;&#x5782;&#x76F4;&#x6269;&#x5C55;&#x4E0D;&#x540C;&#xFF0C;&#x51E0;&#x4E4E;&#x6CA1;&#x6709;&#x9650;&#x5236;&#xFF0C;&#x4F46;&#x5B83;&#x9700;&#x8981;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8981;&#x7279;&#x522B;&#x5904;&#x7406;&#x4EE5;&#x652F;&#x6301;&#x6C34;&#x5E73;&#x6269;&#x5C55;&#x3002;</p>
+<li><p><strong>水平扩展</strong>。水平缩放或内外缩放，意味着添加更多计算节点或容器（例如，当使用 Kubernetes 时）到系统中。这种方法与垂直扩展不同，几乎没有限制，但它需要应用程序要特别处理以支持水平扩展。</p>
 </li>
 </ul>
-<p>&#x4F20;&#x7EDF;&#x7CFB;&#x7EDF;&#x901A;&#x5E38;&#x4F1A;&#x5728;&#x5DE5;&#x4F5C;&#x8D1F;&#x8F7D;&#x589E;&#x52A0;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x91C7;&#x7528;&#x5782;&#x76F4;&#x6269;&#x5C55;&#x3002;&#x6DFB;&#x52A0; CPU &#x548C;&#x5185;&#x5B58;&#x662F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x652F;&#x6301;&#x66F4;&#x591A;&#x7528;&#x6237;&#xFF0C;&#x800C;&#x65E0;&#x9700;&#xFF08;&#x91CD;&#x65B0;&#xFF09;&#x8BBE;&#x8BA1;&#x4EE5;&#x5B9E;&#x73B0;&#x6269;&#x5C55;&#x7684;&#x5E38;&#x7528;&#x65B9;&#x6CD5;&#x3002;&#x5728;&#x7279;&#x5B9A;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD9;&#x4ECD;&#x7136;&#x662F;&#x4E00;&#x4E2A;&#x4E0D;&#x9519;&#x7684;&#x9009;&#x62E9;&#xFF0C;&#x4F46;&#x662F;&#x4E91;&#x9700;&#x8981;&#x5176;&#x4ED6;&#x4E1C;&#x897F;&#x3002;</p>
-<p>&#x5728;&#x4E91;&#x4E2D;&#xFF0C;&#x4E00;&#x5207;&#x90FD;&#x662F;&#x52A8;&#x6001;&#x4E0D;&#x65AD;&#x53D8;&#x5316;&#x7684;&#xFF0C;&#x6C34;&#x5E73;&#x6269;&#x5C55;&#x662F;&#x9996;&#x9009;&#x3002;&#x57FA;&#x4E8E;&#x4E91;&#x8BA1;&#x7B97;&#x6A21;&#x578B;&#x63D0;&#x4F9B;&#x7684;&#x62BD;&#x8C61;&#x7EA7;&#x522B;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x542F;&#x52A8;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x65B0;&#x5B9E;&#x4F8B;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x589E;&#x52A0;&#x5DF2;&#x7ECF;&#x8FD0;&#x884C;&#x7684;&#x673A;&#x5668;&#x7684;&#x8BA1;&#x7B97;&#x80FD;&#x529B;&#x3002;&#x56E0;&#x4E3A;&#x4E91;&#x662F;&#x6709;&#x5F39;&#x6027;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x5728;&#x77ED;&#x65F6;&#x95F4;&#x5185;&#x52A8;&#x6001;&#x5730;&#x8FDB;&#x884C;&#x7F29;&#x653E;&#x3002;&#x6211;&#x628A;&#x5F39;&#x6027;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x4E3B;&#x8981;&#x7279;&#x6027;&#x6765;&#x8BA8;&#x8BBA;&#xFF1A;&#x6839;&#x636E;&#x9700;&#x6C42;&#x4E3B;&#x52A8;&#x91C7;&#x53D6;&#x884C;&#x52A8;&#xFF0C;&#x8C03;&#x914D;&#x548C;&#x91CA;&#x653E;&#x8BA1;&#x7B97;&#x8D44;&#x6E90;&#x3002;&#x53EF;&#x4F38;&#x7F29;&#x6027;&#x662F;&#x5F39;&#x6027;&#x7684;&#x5148;&#x51B3;&#x6761;&#x4EF6;&#x3002;</p>
-<p>&#x56FE; 1.5 &#x663E;&#x793A;&#x4E86;&#x5782;&#x76F4;&#x6269;&#x5C55;&#x548C;&#x6C34;&#x5E73;&#x6269;&#x5C55;&#x4E4B;&#x95F4;&#x7684;&#x533A;&#x522B;&#x3002;&#x5728;&#x5782;&#x76F4;&#x6269;&#x5C55;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x5411;&#x73B0;&#x6709;&#x865A;&#x62DF;&#x673A;&#x6DFB;&#x52A0;&#x66F4;&#x591A;&#x8D44;&#x6E90;&#x6765;&#x6269;&#x5C55;&#x3002;&#x5728;&#x6C34;&#x5E73;&#x6269;&#x5C55;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x6DFB;&#x52A0;&#x53E6;&#x4E00;&#x4E2A;&#x865A;&#x62DF;&#x673A;&#xFF0C;&#x4EE5;&#x5E2E;&#x52A9;&#x73B0;&#x6709;&#x865A;&#x62DF;&#x673A;&#x5904;&#x7406;&#x989D;&#x5916;&#x7684;&#x5DE5;&#x4F5C;&#x8D1F;&#x8F7D;&#x3002;</p>
-<p><img src="../../assets/1.5.jpg" alt="">
-<strong>&#x56FE;1.5 &#x5F53;&#x60A8;&#x9700;&#x8981;&#x652F;&#x6301;&#x4E0D;&#x65AD;&#x589E;&#x52A0;&#x7684;&#x5DE5;&#x4F5C;&#x8D1F;&#x8F7D;&#x65F6;&#xFF0C;&#x5782;&#x76F4;&#x6269;&#x5C55;&#x6A21;&#x578B;&#x5C06;&#x6DFB;&#x52A0;&#x786C;&#x4EF6;&#x8D44;&#x6E90;&#x7ED9;&#x8BA1;&#x7B97;&#x8282;&#x70B9;&#xFF0C;&#x800C;&#x6C34;&#x5E73;&#x6269;&#x5C55;&#x6A21;&#x578B;&#x5C06;&#x589E;&#x52A0;&#x66F4;&#x591A;&#x8BA1;&#x7B97;&#x8282;&#x70B9;&#x3002;</strong>
- <br></p>
+<p>传统系统通常会在工作负载增加的情况下采用垂直扩展。添加 CPU 和内存是应用程序支持更多用户，而无需（重新）设计以实现扩展的常用方法。在特定情况下，这仍然是一个不错的选择，但是云需要其他东西。</p>
+<p>在云中，一切都是动态不断变化的，水平扩展是首选。基于云计算模型提供的抽象级别，可以直接启动应用程序的新实例，而不是增加已经运行的机器的计算能力。因为云是有弹性的，所以可以在短时间内动态地进行缩放。我把弹性作为一个主要特性来讨论：根据需求主动采取行动，调配和释放计算资源。可伸缩性是弹性的先决条件。</p>
+<p>图 1.5 显示了垂直扩展和水平扩展之间的区别。在垂直扩展情况下，我们通过向现有虚拟机添加更多资源来扩展。在水平扩展情况下，我们添加另一个虚拟机，以帮助现有虚拟机处理额外的工作负载。</p>
+<p><img src="../../assets/1.5.jpg" alt=""></img>
+<strong>图1.5 当您需要支持不断增加的工作负载时，垂直扩展模型将添加硬件资源给计算节点，而水平扩展模型将增加更多计算节点。</strong>
+ <br></br></p>
 
-<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
                                 </section>
                             
@@ -1705,49 +1679,65 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.3.1 可扩展性","level":"1.3.3.1","depth":3,"next":{"title":"1.3.2 松耦合","level":"1.3.3.2","depth":3,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.2-Loose-coupling.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.2-Loose-coupling.md","articles":[]},"previous":{"title":"1.3 云原生应用的特性","level":"1.3.3","depth":2,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/Introduction.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/Introduction.md","articles":[{"title":"1.3.1 可扩展性","level":"1.3.3.1","depth":3,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.1-Scalability.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.1-Scalability.md","articles":[]},{"title":"1.3.2 松耦合","level":"1.3.3.2","depth":3,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.2-Loose-coupling.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.2-Loose-coupling.md","articles":[]},{"title":"1.3.3 强适应性","level":"1.3.3.3","depth":3,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.3-Resilience.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.3-Resilience.md","articles":[]},{"title":"1.3.4 可观测性","level":"1.3.3.4","depth":3,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.4-Observability.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.4-Observability.md","articles":[]},{"title":"1.3.5 可管理性","level":"1.3.3.5","depth":3,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.5-Manageability.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.5-Manageability.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-search","search-pro","back-to-top-button","chapter-fold","code","copy-code-button","pageview-count","auto-scroll-table","popup","theme-comscore","prism","-highlight","fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/LeonLi0102/cloud-native-spring-in-action-translate.git"},"search-pro":{},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","family":"serif","size":4},"theme-comscore":{},"back-to-top-button":{},"pageview-count":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Craig Walls","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native  Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.1-Scalability.md","mtime":"2021-11-15T06:18:05.933Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-01T08:21:35.273Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.3.1 可扩展性","level":"1.3.3.1","depth":3,"next":{"title":"1.3.2 松耦合","level":"1.3.3.2","depth":3,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.2-Loose-coupling.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.2-Loose-coupling.md","articles":[]},"previous":{"title":"1.3 云原生应用的特性","level":"1.3.3","depth":2,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/Introduction.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/Introduction.md","articles":[{"title":"1.3.1 可扩展性","level":"1.3.3.1","depth":3,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.1-Scalability.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.1-Scalability.md","articles":[]},{"title":"1.3.2 松耦合","level":"1.3.3.2","depth":3,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.2-Loose-coupling.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.2-Loose-coupling.md","articles":[]},{"title":"1.3.3 强适应性","level":"1.3.3.3","depth":3,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.3-Resilience.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.3-Resilience.md","articles":[]},{"title":"1.3.4 可观测性","level":"1.3.3.4","depth":3,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.4-Observability.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.4-Observability.md","articles":[]},{"title":"1.3.5 可管理性","level":"1.3.3.5","depth":3,"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.5-Manageability.md","ref":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.5-Manageability.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/1.3.1-Scalability.md","mtime":"2026-08-08T10:25:16.840Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T11:32:22.227Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-auto-scroll-table/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
         
     
         
@@ -1759,11 +1749,7 @@
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 

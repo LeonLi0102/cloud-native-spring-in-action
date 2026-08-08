@@ -3,12 +3,11 @@
 <html lang="zh-hans" >
     <head>
         <meta charset="UTF-8">
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>2.2.1 Spring 全景概览 · Cloud Native  Spring In Action</title>
+        <title>2.2.1 Spring 全景概览 · Cloud Native Spring In Action</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.3">
-        <meta name="author" content="Craig Walls">
+        <meta name="generator" content="HonKit 6.2.2">
+        <meta name="author" content="Thomas Vitale">
         
         
     
@@ -17,39 +16,15 @@
     
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-auto-scroll-table/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
-                
-            
-                
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
                 
             
         
@@ -90,7 +65,7 @@
     </head>
     <body>
         
-<div class="book">
+<div class="book honkit-cloak">
     <div class="book-summary">
         
             
@@ -1608,8 +1583,8 @@
     <li class="divider"></li>
 
     <li>
-        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本书使用 GitBook 发布
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
         </a>
     </li>
 </ul>
@@ -1647,18 +1622,17 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="221-spring-&#x5168;&#x666F;&#x6982;&#x89C8;">2.2.1 Spring &#x5168;&#x666F;&#x6982;&#x89C8;</h3>
-<p>Spring &#x5305;&#x542B;&#x51E0;&#x4E2A;&#x9879;&#x76EE;&#xFF0C;&#x4EE5;&#x89E3;&#x51B3;&#x8F6F;&#x4EF6;&#x5F00;&#x53D1;&#x7684;&#x8BB8;&#x591A;&#x4E0D;&#x540C;&#x9700;&#x6C42;&#xFF1A;web &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3001;&#x5B89;&#x5168;&#x6027;&#x3001;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x3001;&#x96C6;&#x6210;&#x3001;&#x6279;&#x5904;&#x7406;&#x3001;&#x914D;&#x7F6E;&#x3001;&#x6D88;&#x606F;&#x4F20;&#x9012;&#x3001;&#x5927;&#x6570;&#x636E;&#x7B49;&#x7B49;&#x3002;Spring &#x5E73;&#x53F0;&#x7684;&#x7F8E;&#x5999;&#x4E4B;&#x5904;&#x5728;&#x4E8E;&#x5B83;&#x7684;&#x8BBE;&#x8BA1;&#x662F;&#x6A21;&#x5757;&#x5316;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x53EA;&#x4F7F;&#x7528;&#x548C;&#x7EC4;&#x5408;&#x9700;&#x8981;&#x7684;&#x9879;&#x76EE;&#x3002;&#x4E0D;&#x7BA1;&#x60A8;&#x8981;&#x6784;&#x5EFA;&#x4F55;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;Spring &#x57FA;&#x672C;&#x4E0A;&#x90FD;&#x80FD;&#x5E2E;&#x5230;&#x60A8;&#x3002;</p>
-<p>Spring &#x6846;&#x67B6;&#x662F; Spring &#x5E73;&#x53F0;&#x7684;&#x6838;&#x5FC3;&#xFF0C;&#x662F;&#x4E00;&#x5207;&#x9879;&#x76EE;&#x7684;&#x8D77;&#x70B9;&#x3002;&#x5B83;&#x652F;&#x6301;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x3001;&#x4E8B;&#x52A1;&#x7BA1;&#x7406;&#x3001;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x3001;&#x6D88;&#x606F;&#x4F20;&#x9012;&#x3001;web &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7B49;&#x3002;&#x8BE5;&#x6846;&#x67B6;&#x5EFA;&#x7ACB;&#x4E86;&#x4F01;&#x4E1A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x201C;&#x7BA1;&#x9053;&#x201D;&#xFF0C;&#x8BA9;&#x60A8;&#x80FD;&#x591F;&#x4E13;&#x6CE8;&#x4E8E;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x3002;</p>
-<p>Spring &#x6846;&#x67B6;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#xFF08;&#x79F0;&#x4E3A; <code>Spring context</code> &#x6216; <code>container</code>&#xFF09;&#xFF0C;&#x5176;&#x4E2D; bean&#x3001;&#x5C5E;&#x6027;&#x548C;&#x8D44;&#x6E90;&#x5728;&#x6574;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x90FD;&#x5F97;&#x5230;&#x7BA1;&#x7406;&#x3002;&#x6211;&#x5047;&#x8BBE;&#x60A8;&#x5DF2;&#x7ECF;&#x719F;&#x6089;&#x8BE5;&#x6846;&#x67B6;&#x7684;&#x6838;&#x5FC3;&#x529F;&#x80FD;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4E0D;&#x4F1A;&#x5728;&#x8FD9;&#x91CC;&#x82B1;&#x8D39;&#x592A;&#x591A;&#x65F6;&#x95F4;&#x3002;&#x7279;&#x522B;&#x662F;&#xFF0C;&#x60A8;&#x5E94;&#x8BE5;&#x610F;&#x8BC6;&#x5230; Spring &#x4E0A;&#x4E0B;&#x6587;&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x5E76;&#x719F;&#x7EC3;&#x4F7F;&#x7528; Spring bean&#x3001;&#x57FA;&#x4E8E;&#x6CE8;&#x89E3;&#x7684;&#x914D;&#x7F6E;&#x548C;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x4F9D;&#x9760;&#x8FD9;&#x4E9B;&#x7279;&#x6027;&#xFF0C;&#x6240;&#x4EE5;&#x60A8;&#x5E94;&#x8BE5;&#x628A;&#x5B83;&#x4EEC;&#x641E;&#x660E;&#x767D;&#x3002;</p>
-<p>&#x57FA;&#x4E8E;&#x8BE5;&#x6846;&#x67B6;&#xFF0C;Spring Boot &#x4F7F;&#x5FEB;&#x901F;&#x6784;&#x5EFA;&#x72EC;&#x7ACB;&#x7684;&#x548C;&#x751F;&#x4EA7;&#x5C31;&#x7EEA;&#x7684;&#x5E94;&#x7528;&#x6210;&#x4E3A;&#x53EF;&#x80FD;&#x3002;&#x901A;&#x8FC7;&#x5BF9; Spring &#x548C;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#x7684;&#x56FA;&#x5B9A;&#x7EA6;&#x675F;&#xFF0C;Spring Boot &#x9644;&#x5E26;&#x4E86;&#x4E00;&#x4E2A;&#x5408;&#x7406;&#x7684;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#xFF0C;&#x8BA9;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x901A;&#x8FC7;&#x6700;&#x5C11;&#x7684;&#x524D;&#x671F;&#x5DE5;&#x4F5C;&#xFF0C;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x5B83;&#x3002;</p>
-<p>&#x5728;&#x672C;&#x4E66;&#x4E2D;&#xFF0C;&#x60A8;&#x5C06;&#x6709;&#x673A;&#x4F1A;&#x4F7F;&#x7528;&#x51E0;&#x4E2A; Spring &#x9879;&#x76EE;&#xFF0C;&#x6765;&#x5B9E;&#x73B0;&#x5404;&#x79CD;&#x4E0D;&#x540C;&#x6A21;&#x5F0F;&#x53CA;&#x8FDB;&#x884C;&#x5F00;&#x53D1;&#x4E91;&#x539F;&#x751F;&#x5E94;&#x7528;&#x7684;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#xFF0C;&#x5305;&#x62EC; Spring Boot&#x3001;Spring cloud&#x3001;Spring Data &#x3001;Spring Security&#x3001;Spring Session &#x548C; Spring Native&#x3002;</p>
-<p>&#x5982;&#x679C;&#x60A8;&#x6709;&#x5174;&#x8DA3;&#x4E86;&#x89E3;&#x66F4;&#x591A;&#x5173;&#x4E8E; Spring &#x6838;&#x5FC3;&#x7279;&#x6027;&#x7684;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF0C;Manning &#x6709;&#x51E0;&#x672C;&#x76F8;&#x5173;&#x4E66;&#x7C4D;&#xFF1A;Lauren&#x21B;iu Spilc&#x103; &#x7684;&#x300A;Spring Start Here&#x300B;(<a href="http://www.manning.com/books/spring-quickly" target="_blank">http://www.manning.com/books/spring-quickly</a>&#xFF09;&#x548C; Craig Walls &#x7684;&#x300A;Spring in Action&#x300B;(<a href="https://www.manning.com/books/spring-in-action-sixth-edition" target="_blank">https://www.manning.com/books/spring-in-action-sixth-edition</a>&#xFF09;&#x3002;</p>
+                                <h3 id="221-spring-全景概览">2.2.1 Spring 全景概览</h3>
+<p>Spring 包含几个项目，以解决软件开发的许多不同需求：web 应用程序、安全性、数据访问、集成、批处理、配置、消息传递、大数据等等。Spring 平台的美妙之处在于它的设计是模块化的，因此，您可以只使用和组合需要的项目。不管您要构建何种类型的应用程序，Spring 基本上都能帮到您。</p>
+<p>Spring 框架是 Spring 平台的核心，是一切项目的起点。它支持依赖注入、事务管理、数据访问、消息传递、web 应用程序等。该框架建立了企业应用程序的“管道”，让您能够专注于业务逻辑。</p>
+<p>Spring 框架提供了一个执行上下文（称为 <code>Spring context</code> 或 <code>container</code>），其中 bean、属性和资源在整个应用程序生命周期中都得到管理。我假设您已经熟悉该框架的核心功能，所以我不会在这里花费太多时间。特别是，您应该意识到 Spring 上下文的作用，并熟练使用 Spring bean、基于注解的配置和依赖注入。我们将依靠这些特性，所以您应该把它们搞明白。</p>
+<p>基于该框架，Spring Boot 使快速构建独立的和生产就绪的应用成为可能。通过对 Spring 和第三方库的固定约束，Spring Boot 附带了一个合理的默认配置，让开发人员通过最少的前期工作，直接使用它。</p>
+<p>在本书中，您将有机会使用几个 Spring 项目，来实现各种不同模式及进行开发云原生应用的最佳实践，包括 Spring Boot、Spring cloud、Spring Data 、Spring Security、Spring Session 和 Spring Native。</p>
+<p>如果您有兴趣了解更多关于 Spring 核心特性的相关信息，Manning 有几本相关书籍：Laurențiu Spilcă 的《Spring Start Here》(<a href="http://www.manning.com/books/spring-quickly" target="_blank">http://www.manning.com/books/spring-quickly</a>）和 Craig Walls 的《Spring in Action》(<a href="https://www.manning.com/books/spring-in-action-sixth-edition" target="_blank">https://www.manning.com/books/spring-in-action-sixth-edition</a>）。</p>
 <blockquote>
-<p>&#x8BD1;&#x8005;&#x6CE8;&#xFF1A;&#x300A;Spring &#x5B9E;&#x6218;&#x300B;&#x7B2C; 6 &#x7248; MEAP &#x5DF2;&#x7FFB;&#x8BD1;&#x5B8C;&#x6210;&#xFF0C;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/LeonLi0102/spring-in-action-v6-translate" target="_blank">https://github.com/LeonLi0102/spring-in-action-v6-translate</a></p>
+<p>译者注：《Spring 实战》第 6 版 MEAP 已翻译完成，地址：<a href="https://github.com/LeonLi0102/spring-in-action-v6-translate" target="_blank">https://github.com/LeonLi0102/spring-in-action-v6-translate</a></p>
 </blockquote>
 
-<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
                                 </section>
                             
@@ -1701,49 +1675,65 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2.2.1 Spring 全景概览","level":"1.4.2.1","depth":3,"next":{"title":"2.2.2 创建 Spring Boot 应用","level":"1.4.2.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.2-Building-a-Spring-Boot-application.md","ref":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.2-Building-a-Spring-Boot-application.md","articles":[]},"previous":{"title":"2.2 使用 Spring 构建云原生应用","level":"1.4.2","depth":2,"path":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/Introduction.md","ref":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/Introduction.md","articles":[{"title":"2.2.1 Spring 全景概览","level":"1.4.2.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.1-Overview-of-the-Spring-landscape.md","ref":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.1-Overview-of-the-Spring-landscape.md","articles":[]},{"title":"2.2.2 创建 Spring Boot 应用","level":"1.4.2.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.2-Building-a-Spring-Boot-application.md","ref":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.2-Building-a-Spring-Boot-application.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-search","search-pro","back-to-top-button","chapter-fold","code","copy-code-button","pageview-count","auto-scroll-table","popup","theme-comscore","prism","-highlight","fontsettings"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"github":{"url":"https://github.com/LeonLi0102/cloud-native-spring-in-action-translate.git"},"search-pro":{},"auto-scroll-table":{},"popup":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"family":"sans","size":2,"theme":"white"},"fontSettings":{"theme":"white","family":"serif","size":4},"theme-comscore":{},"back-to-top-button":{},"pageview-count":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Craig Walls","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native  Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.1-Overview-of-the-Spring-landscape.md","mtime":"2021-11-25T07:23:17.014Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-01T08:21:35.273Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.2.1 Spring 全景概览","level":"1.4.2.1","depth":3,"next":{"title":"2.2.2 创建 Spring Boot 应用","level":"1.4.2.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.2-Building-a-Spring-Boot-application.md","ref":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.2-Building-a-Spring-Boot-application.md","articles":[]},"previous":{"title":"2.2 使用 Spring 构建云原生应用","level":"1.4.2","depth":2,"path":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/Introduction.md","ref":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/Introduction.md","articles":[{"title":"2.2.1 Spring 全景概览","level":"1.4.2.1","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.1-Overview-of-the-Spring-landscape.md","ref":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.1-Overview-of-the-Spring-landscape.md","articles":[]},{"title":"2.2.2 创建 Spring Boot 应用","level":"1.4.2.2","depth":3,"path":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.2-Building-a-Spring-Boot-application.md","ref":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.2-Building-a-Spring-Boot-application.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/2.2.1-Overview-of-the-Spring-landscape.md","mtime":"2026-08-08T10:25:16.909Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-08T11:32:22.227Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
     <script src="../../gitbook/gitbook.js"></script>
     <script src="../../gitbook/theme.js"></script>
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-auto-scroll-table/plugin.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
         
     
         
@@ -1755,11 +1745,7 @@
         
     
         
-        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
         
     
 
