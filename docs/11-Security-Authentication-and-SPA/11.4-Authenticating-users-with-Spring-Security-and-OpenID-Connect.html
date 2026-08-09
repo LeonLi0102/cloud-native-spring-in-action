@@ -1,0 +1,2635 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <title>11.4 使用 Spring Security 和 OpenID Connect 认证用户 · Cloud Native Spring In Action</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.2.2">
+        <meta name="author" content="Thomas Vitale">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="11.5-Integrating-Spring-Security-with-SPAs.html" />
+    
+    
+    <link rel="prev" href="11.3-Authentication-with-OpenID-Connect-JWT-and-Keycloak.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    云原生 Spring 实战 中文翻译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../Front-matter/">
+            
+                <a href="../Front-matter/">
+            
+                    
+                    序言、前言、关于本书
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../welcome.html">
+            
+                <a href="../welcome.html">
+            
+                    
+                    欢迎
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../01-Introduction-to-cloud-native/Introduction.html">
+            
+                <a href="../01-Introduction-to-cloud-native/Introduction.html">
+            
+                    
+                    第 1 章 云原生简介
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../01-Introduction-to-cloud-native/1.1-What-is-cloud-native/Introduction.html">
+            
+                <a href="../01-Introduction-to-cloud-native/1.1-What-is-cloud-native/Introduction.html">
+            
+                    
+                    1.1 什么是云原生
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/Introduction.html">
+            
+                <a href="../01-Introduction-to-cloud-native/1.2-The-cloud-and-the-cloud-computing-model/Introduction.html">
+            
+                    
+                    1.2 云和云计算模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/Introduction.html">
+            
+                <a href="../01-Introduction-to-cloud-native/1.3-Properties-of-cloud-native-applications/Introduction.html">
+            
+                    
+                    1.3 云原生应用的特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/Introduction.html">
+            
+                <a href="../01-Introduction-to-cloud-native/1.4-Culture-and-practices-supporting-cloud-native/Introduction.html">
+            
+                    
+                    1.4 支持云原生的文化和实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/Introduction.html">
+            
+                <a href="../01-Introduction-to-cloud-native/1.5-Is-the-cloud-your-best-option/Introduction.html">
+            
+                    
+                    1.5 上云是最好的选择吗？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../01-Introduction-to-cloud-native/1.6-Cloud-native-topologies/Introduction.html">
+            
+                <a href="../01-Introduction-to-cloud-native/1.6-Cloud-native-topologies/Introduction.html">
+            
+                    
+                    1.6 云原生拓扑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../01-Introduction-to-cloud-native/1.7-Architectures-for-cloud-native-applications/Introduction.html">
+            
+                <a href="../01-Introduction-to-cloud-native/1.7-Architectures-for-cloud-native-applications/Introduction.html">
+            
+                    
+                    1.7 云原生应用架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../01-Introduction-to-cloud-native/Summary.html">
+            
+                <a href="../01-Introduction-to-cloud-native/Summary.html">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../02-Cloud-native-patterns-and-technologies/Introduction.html">
+            
+                <a href="../02-Cloud-native-patterns-and-technologies/Introduction.html">
+            
+                    
+                    第 2 章 云原生模式和技术
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/Introduction.html">
+            
+                <a href="../02-Cloud-native-patterns-and-technologies/2.1-Cloud-native-development-principles-Twelve-Factors-and-beyond/Introduction.html">
+            
+                    
+                    2.1 云原生开发原则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/Introduction.html">
+            
+                <a href="../02-Cloud-native-patterns-and-technologies/2.2-Building-cloud-native-applications-with-Spring/Introduction.html">
+            
+                    
+                    2.2 使用 Spring 构建云原生应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/Introduction.html">
+            
+                <a href="../02-Cloud-native-patterns-and-technologies/2.3-Containerizing-applications-with-Docker/Introduction.html">
+            
+                    
+                    2.3 使用 Docker 容器化应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../02-Cloud-native-patterns-and-technologies/2.4-Managing-containers-with-Kubernetes/Introduction.html">
+            
+                <a href="../02-Cloud-native-patterns-and-technologies/2.4-Managing-containers-with-Kubernetes/Introduction.html">
+            
+                    
+                    2.4 使用 Kubernetes 管理容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/Introduction.html">
+            
+                <a href="../02-Cloud-native-patterns-and-technologies/2.5-Polar-Bookshop-A-cloud-native-application/Introduction.html">
+            
+                    
+                    2.5 极地书店：云原生应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../02-Cloud-native-patterns-and-technologies/Summary.html">
+            
+                <a href="../02-Cloud-native-patterns-and-technologies/Summary.html">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../03-Getting-started-with-cloud-native-development/Introduction.html">
+            
+                <a href="../03-Getting-started-with-cloud-native-development/Introduction.html">
+            
+                    
+                    第 3 章 进行云原生应用开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../03-Getting-started-with-cloud-native-development/3.1-Bootstrapping-a-cloud-native-project/Introduction.html">
+            
+                <a href="../03-Getting-started-with-cloud-native-development/3.1-Bootstrapping-a-cloud-native-project/Introduction.html">
+            
+                    
+                    3.1 创建云原生项目
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../03-Getting-started-with-cloud-native-development/3.2-Working-with-embedded-servers/Introduction.html">
+            
+                <a href="../03-Getting-started-with-cloud-native-development/3.2-Working-with-embedded-servers/Introduction.html">
+            
+                    
+                    3.2 使用内嵌服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../03-Getting-started-with-cloud-native-development/3.3-Building-a-RESTful-application-with-Spring-MVC/Introduction.html">
+            
+                <a href="../03-Getting-started-with-cloud-native-development/3.3-Building-a-RESTful-application-with-Spring-MVC/Introduction.html">
+            
+                    
+                    3.3 使用 Spring MVC 构建 RESTful 应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../03-Getting-started-with-cloud-native-development/3.4-Testing-a-RESTful-application-with-Spring/Introduction.html">
+            
+                <a href="../03-Getting-started-with-cloud-native-development/3.4-Testing-a-RESTful-application-with-Spring/Introduction.html">
+            
+                    
+                    3.4 使用 Spring 测试 RESTful 应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../03-Getting-started-with-cloud-native-development/3.5-Continuous-integration-pipelines-with-GitHub-Actions/Introduction.html">
+            
+                <a href="../03-Getting-started-with-cloud-native-development/3.5-Continuous-integration-pipelines-with-GitHub-Actions/Introduction.html">
+            
+                    
+                    3.5 使用 GitHub Actions 进行持续集成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../03-Getting-started-with-cloud-native-development/Summary.html">
+            
+                <a href="../03-Getting-started-with-cloud-native-development/Summary.html">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../04-Externalized-configuration-management/Introduction.html">
+            
+                <a href="../04-Externalized-configuration-management/Introduction.html">
+            
+                    
+                    第 4 章 配置管理外部化
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/Introduction.html">
+            
+                <a href="../04-Externalized-configuration-management/4.1-Configuration-in-Spring-properties-and-profiles/Introduction.html">
+            
+                    
+                    4.1 Spring 中的配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../04-Externalized-configuration-management/4.2-Externalized-configuration-one-build-multiple-configurations/Introduction.html">
+            
+                <a href="../04-Externalized-configuration-management/4.2-Externalized-configuration-one-build-multiple-configurations/Introduction.html">
+            
+                    
+                    4.2 外部化配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/Introduction.html">
+            
+                <a href="../04-Externalized-configuration-management/4.3-Centralized-configuration-management-with-Spring-Cloud-Config-Server/Introduction.html">
+            
+                    
+                    4.3 使用 Config Server 进行集中化配置管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../04-Externalized-configuration-management/4.4-Using-a-configuration-server-with-Spring-Cloud-Config-Client/Introduction.html">
+            
+                <a href="../04-Externalized-configuration-management/4.4-Using-a-configuration-server-with-Spring-Cloud-Config-Client/Introduction.html">
+            
+                    
+                    4.4 通过 Config Client 使用配置服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../04-Externalized-configuration-management/Summary.html">
+            
+                <a href="../04-Externalized-configuration-management/Summary.html">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../05-Persisting-and-managing-data-in-the-cloud/Introduction.html">
+            
+                <a href="../05-Persisting-and-managing-data-in-the-cloud/Introduction.html">
+            
+                    
+                    第 5 章 云中的数据持久化和管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../05-Persisting-and-managing-data-in-the-cloud/5.1-Databases-for-cloud-native-systems/Introduction.html">
+            
+                <a href="../05-Persisting-and-managing-data-in-the-cloud/5.1-Databases-for-cloud-native-systems/Introduction.html">
+            
+                    
+                    5.1 云原生系统的数据库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../05-Persisting-and-managing-data-in-the-cloud/5.2-Data-persistence-with-Spring-Data-JDBC/Introduction.html">
+            
+                <a href="../05-Persisting-and-managing-data-in-the-cloud/5.2-Data-persistence-with-Spring-Data-JDBC/Introduction.html">
+            
+                    
+                    5.2 使用 Spring Data JDBC 进行数据持久化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../05-Persisting-and-managing-data-in-the-cloud/5.3-Testing-data-persistence.html">
+            
+                <a href="../05-Persisting-and-managing-data-in-the-cloud/5.3-Testing-data-persistence.html">
+            
+                    
+                    5.3 使用 Spring 和 Testcontainers 测试数据持久化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../05-Persisting-and-managing-data-in-the-cloud/5.4-Managing-databases-with-Flyway.html">
+            
+                <a href="../05-Persisting-and-managing-data-in-the-cloud/5.4-Managing-databases-with-Flyway.html">
+            
+                    
+                    5.4 使用 Flyway 管理生产环境中的数据库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../05-Persisting-and-managing-data-in-the-cloud/Summary.html">
+            
+                <a href="../05-Persisting-and-managing-data-in-the-cloud/Summary.html">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../06-Containerizing-Spring-Boot/Introduction.html">
+            
+                <a href="../06-Containerizing-Spring-Boot/Introduction.html">
+            
+                    
+                    第 6 章 Spring Boot 容器化
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../06-Containerizing-Spring-Boot/6.1-Working-with-container-images-on-Docker/Introduction.html">
+            
+                <a href="../06-Containerizing-Spring-Boot/6.1-Working-with-container-images-on-Docker/Introduction.html">
+            
+                    
+                    6.1 使用 Docker 处理容器镜像
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../06-Containerizing-Spring-Boot/6.2-Packaging-Spring-Boot-applications-as-container-images/Introduction.html">
+            
+                <a href="../06-Containerizing-Spring-Boot/6.2-Packaging-Spring-Boot-applications-as-container-images/Introduction.html">
+            
+                    
+                    6.2 将 Spring Boot 应用打包为容器镜像
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../06-Containerizing-Spring-Boot/6.3-Managing-Spring-Boot-containers-with-Docker-Compose/Introduction.html">
+            
+                <a href="../06-Containerizing-Spring-Boot/6.3-Managing-Spring-Boot-containers-with-Docker-Compose/Introduction.html">
+            
+                    
+                    6.3 使用 Docker Compose 管理容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../06-Containerizing-Spring-Boot/6.4-Deployment-pipeline-Package-and-publish.html">
+            
+                <a href="../06-Containerizing-Spring-Boot/6.4-Deployment-pipeline-Package-and-publish.html">
+            
+                    
+                    6.4 部署流水线：打包和发布
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="../06-Containerizing-Spring-Boot/Summary.html">
+            
+                <a href="../06-Containerizing-Spring-Boot/Summary.html">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/Introduction.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/Introduction.html">
+            
+                    
+                    第 7 章 Kubernetes 基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.1-Moving-from-Docker-to-Kubernetes/Introduction.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.1-Moving-from-Docker-to-Kubernetes/Introduction.html">
+            
+                    
+                    7.1 从 Docker 过渡到 Kubernetes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.1-Moving-from-Docker-to-Kubernetes/7.1.1-Working-with-a-local-Kubernetes-cluster.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.1-Moving-from-Docker-to-Kubernetes/7.1.1-Working-with-a-local-Kubernetes-cluster.html">
+            
+                    
+                    7.1.1 使用本地 Kubernetes 集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.1-Moving-from-Docker-to-Kubernetes/7.1.2-Managing-data-services-in-a-local-cluster.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.1-Moving-from-Docker-to-Kubernetes/7.1.2-Managing-data-services-in-a-local-cluster.html">
+            
+                    
+                    7.1.2 在本地集群中管理数据服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.2-Kubernetes-Deployments-for-Spring-Boot/Introduction.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.2-Kubernetes-Deployments-for-Spring-Boot/Introduction.html">
+            
+                    
+                    7.2 Spring Boot 的 Kubernetes Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.2-Kubernetes-Deployments-for-Spring-Boot/7.2.1-From-containers-to-Pods.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.2-Kubernetes-Deployments-for-Spring-Boot/7.2.1-From-containers-to-Pods.html">
+            
+                    
+                    7.2.1 从容器到 Pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.2-Kubernetes-Deployments-for-Spring-Boot/7.2.2-Controlling-Pods-with-Deployments.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.2-Kubernetes-Deployments-for-Spring-Boot/7.2.2-Controlling-Pods-with-Deployments.html">
+            
+                    
+                    7.2.2 使用 Deployment 控制 Pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.2-Kubernetes-Deployments-for-Spring-Boot/7.2.3-Creating-a-Deployment-for-a-Spring-Boot-application.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.2-Kubernetes-Deployments-for-Spring-Boot/7.2.3-Creating-a-Deployment-for-a-Spring-Boot-application.html">
+            
+                    
+                    7.2.3 为 Spring Boot 应用程序创建 Deployment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.3-Service-discovery-and-load-balancing/Introduction.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.3-Service-discovery-and-load-balancing/Introduction.html">
+            
+                    
+                    7.3 服务发现和负载均衡
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.3-Service-discovery-and-load-balancing/7.3.1-Understanding-service-discovery-and-load-balancing.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.3-Service-discovery-and-load-balancing/7.3.1-Understanding-service-discovery-and-load-balancing.html">
+            
+                    
+                    7.3.1 理解服务发现和负载均衡
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.3-Service-discovery-and-load-balancing/7.3.2-Client-side-service-discovery-and-load-balancing.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.3-Service-discovery-and-load-balancing/7.3.2-Client-side-service-discovery-and-load-balancing.html">
+            
+                    
+                    7.3.2 客户端服务发现和负载均衡
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.3-Service-discovery-and-load-balancing/7.3.3-Server-side-service-discovery-and-load-balancing.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.3-Service-discovery-and-load-balancing/7.3.3-Server-side-service-discovery-and-load-balancing.html">
+            
+                    
+                    7.3.3 服务器端服务发现和负载均衡
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.12" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.3-Service-discovery-and-load-balancing/7.3.4-Exposing-Spring-Boot-applications-with-Kubernetes-Services.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.3-Service-discovery-and-load-balancing/7.3.4-Exposing-Spring-Boot-applications-with-Kubernetes-Services.html">
+            
+                    
+                    7.3.4 使用 Kubernetes Service 暴露 Spring Boot 应用程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.13" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.4-Scalability-and-disposability/Introduction.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.4-Scalability-and-disposability/Introduction.html">
+            
+                    
+                    7.4 可扩展性和可弃置性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.14" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.4-Scalability-and-disposability/7.4.1-Ensuring-disposability-Fast-startup.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.4-Scalability-and-disposability/7.4.1-Ensuring-disposability-Fast-startup.html">
+            
+                    
+                    7.4.1 确保可弃置性：快速启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.15" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.4-Scalability-and-disposability/7.4.2-Ensuring-disposability-Graceful-shutdown.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.4-Scalability-and-disposability/7.4.2-Ensuring-disposability-Graceful-shutdown.html">
+            
+                    
+                    7.4.2 确保可弃置性：优雅关闭
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.16" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.4-Scalability-and-disposability/7.4.3-Scaling-Spring-Boot-applications.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.4-Scalability-and-disposability/7.4.3-Scaling-Spring-Boot-applications.html">
+            
+                    
+                    7.4.3 扩展 Spring Boot 应用程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.17" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.5-Local-Kubernetes-development-with-Tilt/Introduction.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.5-Local-Kubernetes-development-with-Tilt/Introduction.html">
+            
+                    
+                    7.5 使用 Tilt 进行本地 Kubernetes 开发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.18" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.5-Local-Kubernetes-development-with-Tilt/7.5.1-Inner-development-loop-with-Tilt.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.5-Local-Kubernetes-development-with-Tilt/7.5.1-Inner-development-loop-with-Tilt.html">
+            
+                    
+                    7.5.1 使用 Tilt 的内部开发循环
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.19" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.5-Local-Kubernetes-development-with-Tilt/7.5.2-Visualizing-your-Kubernetes-workloads-with-Octant.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.5-Local-Kubernetes-development-with-Tilt/7.5.2-Visualizing-your-Kubernetes-workloads-with-Octant.html">
+            
+                    
+                    7.5.2 使用 Octant 可视化 Kubernetes 工作负载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.20" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.6-Deployment-pipeline-Validate-Kubernetes-manifests/Introduction.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.6-Deployment-pipeline-Validate-Kubernetes-manifests/Introduction.html">
+            
+                    
+                    7.6 部署流水线：验证 Kubernetes 清单
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.21" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.6-Deployment-pipeline-Validate-Kubernetes-manifests/7.6.1-Validating-Kubernetes-manifests-in-the-commit-stage.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.6-Deployment-pipeline-Validate-Kubernetes-manifests/7.6.1-Validating-Kubernetes-manifests-in-the-commit-stage.html">
+            
+                    
+                    7.6.1 在提交阶段验证 Kubernetes 清单
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.22" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/7.6-Deployment-pipeline-Validate-Kubernetes-manifests/7.6.2-Automating-Kubernetes-manifests-validation-with-GitHub-Actions.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/7.6-Deployment-pipeline-Validate-Kubernetes-manifests/7.6.2-Automating-Kubernetes-manifests-validation-with-GitHub-Actions.html">
+            
+                    
+                    7.6.2 使用 GitHub Actions 自动化 Kubernetes 清单验证
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.23" data-path="../07-Kubernetes-fundamentals-for-Spring-Boot/Summary.html">
+            
+                <a href="../07-Kubernetes-fundamentals-for-Spring-Boot/Summary.html">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../08-Reactive-Spring-Resilience-and-scalability/Introduction.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/Introduction.html">
+            
+                    
+                    第 8 章 响应式 Spring
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.1-Asynchronous-and-non-blocking-architectures/Introduction.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.1-Asynchronous-and-non-blocking-architectures/Introduction.html">
+            
+                    
+                    8.1 异步和非阻塞架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.1-Asynchronous-and-non-blocking-architectures/8.1.1-From-thread-per-request-to-event-loop.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.1-Asynchronous-and-non-blocking-architectures/8.1.1-From-thread-per-request-to-event-loop.html">
+            
+                    
+                    8.1.1 从每请求一个线程到事件循环
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.1-Asynchronous-and-non-blocking-architectures/8.1.2-Project-Reactor-Reactive-streams-with-Mono-and-Flux.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.1-Asynchronous-and-non-blocking-architectures/8.1.2-Project-Reactor-Reactive-streams-with-Mono-and-Flux.html">
+            
+                    
+                    8.1.2 Project Reactor：使用 Mono 和 Flux 的响应式流
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.1-Asynchronous-and-non-blocking-architectures/8.1.3-Understanding-the-Spring-reactive-stack.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.1-Asynchronous-and-non-blocking-architectures/8.1.3-Understanding-the-Spring-reactive-stack.html">
+            
+                    
+                    8.1.3 理解 Spring 响应式技术栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.2-Reactive-servers-with-Spring-WebFlux/Introduction.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.2-Reactive-servers-with-Spring-WebFlux/Introduction.html">
+            
+                    
+                    8.2 使用 Spring WebFlux 构建响应式服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.2-Reactive-servers-with-Spring-WebFlux/8.2.1-Bootstrapping-a-reactive-application-with-Spring-Boot.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.2-Reactive-servers-with-Spring-WebFlux/8.2.1-Bootstrapping-a-reactive-application-with-Spring-Boot.html">
+            
+                    
+                    8.2.1 使用 Spring Boot 引导响应式应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.7" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.2-Reactive-servers-with-Spring-WebFlux/8.2.2-Persisting-data-reactively-with-Spring-Data-R2DBC.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.2-Reactive-servers-with-Spring-WebFlux/8.2.2-Persisting-data-reactively-with-Spring-Data-R2DBC.html">
+            
+                    
+                    8.2.2 使用 Spring Data R2DBC 响应式持久化数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.8" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.2-Reactive-servers-with-Spring-WebFlux/8.2.3-Implementing-the-business-logic-with-reactive-streams.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.2-Reactive-servers-with-Spring-WebFlux/8.2.3-Implementing-the-business-logic-with-reactive-streams.html">
+            
+                    
+                    8.2.3 使用响应式流实现业务逻辑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.9" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.2-Reactive-servers-with-Spring-WebFlux/8.2.4-Exposing-a-REST-API-with-Spring-WebFlux.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.2-Reactive-servers-with-Spring-WebFlux/8.2.4-Exposing-a-REST-API-with-Spring-WebFlux.html">
+            
+                    
+                    8.2.4 使用 Spring WebFlux 暴露 REST API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.10" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.3-Reactive-clients-with-Spring-WebClient/Introduction.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.3-Reactive-clients-with-Spring-WebClient/Introduction.html">
+            
+                    
+                    8.3 使用 Spring WebClient 构建响应式客户端
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.11" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.3-Reactive-clients-with-Spring-WebClient/8.3.1-Service-to-service-communication-in-Spring.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.3-Reactive-clients-with-Spring-WebClient/8.3.1-Service-to-service-communication-in-Spring.html">
+            
+                    
+                    8.3.1 Spring 中的服务间通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.12" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.3-Reactive-clients-with-Spring-WebClient/8.3.2-Understanding-how-to-exchange-data.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.3-Reactive-clients-with-Spring-WebClient/8.3.2-Understanding-how-to-exchange-data.html">
+            
+                    
+                    8.3.2 理解如何交换数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.13" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.3-Reactive-clients-with-Spring-WebClient/8.3.3-Implementing-REST-clients-with-WebClient.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.3-Reactive-clients-with-Spring-WebClient/8.3.3-Implementing-REST-clients-with-WebClient.html">
+            
+                    
+                    8.3.3 使用 WebClient 实现 REST 客户端
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.14" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.4-Resilient-applications-with-Reactive-Spring/Introduction.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.4-Resilient-applications-with-Reactive-Spring/Introduction.html">
+            
+                    
+                    8.4 使用响应式 Spring 构建弹性应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.15" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.4-Resilient-applications-with-Reactive-Spring/8.4.1-Timeouts.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.4-Resilient-applications-with-Reactive-Spring/8.4.1-Timeouts.html">
+            
+                    
+                    8.4.1 超时
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.16" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.4-Resilient-applications-with-Reactive-Spring/8.4.2-Retries.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.4-Resilient-applications-with-Reactive-Spring/8.4.2-Retries.html">
+            
+                    
+                    8.4.2 重试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.17" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.4-Resilient-applications-with-Reactive-Spring/8.4.3-Fallbacks.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.4-Resilient-applications-with-Reactive-Spring/8.4.3-Fallbacks.html">
+            
+                    
+                    8.4.3 回退
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.18" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.5-Testing-reactive-applications/Introduction.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.5-Testing-reactive-applications/Introduction.html">
+            
+                    
+                    8.5 测试响应式应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.19" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.5-Testing-reactive-applications/8.5.1-Testing-REST-clients-with-a-mock-web-server.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.5-Testing-reactive-applications/8.5.1-Testing-REST-clients-with-a-mock-web-server.html">
+            
+                    
+                    8.5.1 使用 Mock Web Server 测试 REST 客户端
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.20" data-path="../08-Reactive-Spring-Resilience-and-scalability/8.5-Testing-reactive-applications/8.5.2-Testing-data-persistence-with-DataR2dbcTest-and-Testcontainers.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/8.5-Testing-reactive-applications/8.5.2-Testing-data-persistence-with-DataR2dbcTest-and-Testcontainers.html">
+            
+                    
+                    8.5.2 使用 DataR2dbcTest 和 Testcontainers 测试数据持久化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.21" data-path="../08-Reactive-Spring-Resilience-and-scalability/Summary.html">
+            
+                <a href="../08-Reactive-Spring-Resilience-and-scalability/Summary.html">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../09-API-gateway-and-circuit-breakers/Introduction.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/Introduction.html">
+            
+                    
+                    第 9 章 API 网关和断路器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../09-API-gateway-and-circuit-breakers/9.1-Edge-servers-and-Spring-Cloud-Gateway/Introduction.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/9.1-Edge-servers-and-Spring-Cloud-Gateway/Introduction.html">
+            
+                    
+                    9.1 边缘服务器和 Spring Cloud Gateway
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../09-API-gateway-and-circuit-breakers/9.1-Edge-servers-and-Spring-Cloud-Gateway/9.1.1-Bootstrapping-an-edge-server-with-Spring-Cloud-Gateway.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/9.1-Edge-servers-and-Spring-Cloud-Gateway/9.1.1-Bootstrapping-an-edge-server-with-Spring-Cloud-Gateway.html">
+            
+                    
+                    9.1.1 使用 Spring Cloud Gateway 引导边缘服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../09-API-gateway-and-circuit-breakers/9.1-Edge-servers-and-Spring-Cloud-Gateway/9.1.2-Defining-routes-and-predicates.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/9.1-Edge-servers-and-Spring-Cloud-Gateway/9.1.2-Defining-routes-and-predicates.html">
+            
+                    
+                    9.1.2 定义路由和谓词
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../09-API-gateway-and-circuit-breakers/9.1-Edge-servers-and-Spring-Cloud-Gateway/9.1.3-Processing-requests-and-responses-through-filters.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/9.1-Edge-servers-and-Spring-Cloud-Gateway/9.1.3-Processing-requests-and-responses-through-filters.html">
+            
+                    
+                    9.1.3 通过过滤器处理请求和响应
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker/Introduction.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker/Introduction.html">
+            
+                    
+                    9.2 使用 Circuit Breaker 实现容错
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker/9.2.1-Introducing-circuit-breakers-with-Spring-Cloud-Circuit-Breaker.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker/9.2.1-Introducing-circuit-breakers-with-Spring-Cloud-Circuit-Breaker.html">
+            
+                    
+                    9.2.1 使用 Spring Cloud Circuit Breaker 引入断路器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="../09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker/9.2.2-Configuring-a-circuit-breaker-with-Resilience4J.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker/9.2.2-Configuring-a-circuit-breaker-with-Resilience4J.html">
+            
+                    
+                    9.2.2 使用 Resilience4J 配置断路器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="../09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker/9.2.3-Defining-fallback-REST-APIs-with-Spring-WebFlux.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker/9.2.3-Defining-fallback-REST-APIs-with-Spring-WebFlux.html">
+            
+                    
+                    9.2.3 使用 Spring WebFlux 定义回退 REST API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="../09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker/9.2.4-Combining-circuit-breakers-retries-and-time-limiters.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/9.2-Fault-tolerance-with-Circuit-Breaker/9.2.4-Combining-circuit-breakers-retries-and-time-limiters.html">
+            
+                    
+                    9.2.4 组合断路器、重试和时间限制器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.10" data-path="../09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting/Introduction.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting/Introduction.html">
+            
+                    
+                    9.3 请求限流
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.11" data-path="../09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting/9.3.1-Running-Redis-as-a-container.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting/9.3.1-Running-Redis-as-a-container.html">
+            
+                    
+                    9.3.1 以容器方式运行 Redis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.12" data-path="../09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting/9.3.2-Integrating-Spring-with-Redis.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting/9.3.2-Integrating-Spring-with-Redis.html">
+            
+                    
+                    9.3.2 将 Spring 与 Redis 集成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.13" data-path="../09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting/9.3.3-Configuring-a-request-rate-limiter.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/9.3-Request-rate-limiting/9.3.3-Configuring-a-request-rate-limiter.html">
+            
+                    
+                    9.3.3 配置请求限流器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.14" data-path="../09-API-gateway-and-circuit-breakers/9.4-Distributed-session-management/Introduction.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/9.4-Distributed-session-management/Introduction.html">
+            
+                    
+                    9.4 分布式会话管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.15" data-path="../09-API-gateway-and-circuit-breakers/9.4-Distributed-session-management/9.4.1-Handling-sessions-with-Spring-Session-Data-Redis.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/9.4-Distributed-session-management/9.4.1-Handling-sessions-with-Spring-Session-Data-Redis.html">
+            
+                    
+                    9.4.1 使用 Spring Session Data Redis 处理会话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.16" data-path="../09-API-gateway-and-circuit-breakers/9.5-Managing-external-access-with-Kubernetes-Ingress/Introduction.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/9.5-Managing-external-access-with-Kubernetes-Ingress/Introduction.html">
+            
+                    
+                    9.5 使用 Kubernetes Ingress 管理外部访问
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.17" data-path="../09-API-gateway-and-circuit-breakers/9.5-Managing-external-access-with-Kubernetes-Ingress/9.5.1-Understanding-Ingress-API-and-Ingress-Controller.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/9.5-Managing-external-access-with-Kubernetes-Ingress/9.5.1-Understanding-Ingress-API-and-Ingress-Controller.html">
+            
+                    
+                    9.5.1 理解 Ingress API 和 Ingress Controller
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.18" data-path="../09-API-gateway-and-circuit-breakers/9.5-Managing-external-access-with-Kubernetes-Ingress/9.5.2-Working-with-Ingress-objects.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/9.5-Managing-external-access-with-Kubernetes-Ingress/9.5.2-Working-with-Ingress-objects.html">
+            
+                    
+                    9.5.2 使用 Ingress 对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.19" data-path="../09-API-gateway-and-circuit-breakers/Summary.html">
+            
+                <a href="../09-API-gateway-and-circuit-breakers/Summary.html">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../10-Event-driven-applications-and-functions/Introduction.html">
+            
+                <a href="../10-Event-driven-applications-and-functions/Introduction.html">
+            
+                    
+                    第 10 章 事件驱动应用和函数
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../10-Event-driven-applications-and-functions/10.1-Event-driven-architectures.html">
+            
+                <a href="../10-Event-driven-applications-and-functions/10.1-Event-driven-architectures.html">
+            
+                    
+                    10.1 事件驱动架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../10-Event-driven-applications-and-functions/10.2-Message-brokers-with-RabbitMQ.html">
+            
+                <a href="../10-Event-driven-applications-and-functions/10.2-Message-brokers-with-RabbitMQ.html">
+            
+                    
+                    10.2 使用 RabbitMQ 的消息代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../10-Event-driven-applications-and-functions/10.3-Spring-Cloud-Function.html">
+            
+                <a href="../10-Event-driven-applications-and-functions/10.3-Spring-Cloud-Function.html">
+            
+                    
+                    10.3 Spring Cloud Function
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="../10-Event-driven-applications-and-functions/10.4-Spring-Cloud-Stream.html">
+            
+                <a href="../10-Event-driven-applications-and-functions/10.4-Spring-Cloud-Stream.html">
+            
+                    
+                    10.4 Spring Cloud Stream
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="../10-Event-driven-applications-and-functions/10.5-Spring-Cloud-Stream-producers-and-consumers.html">
+            
+                <a href="../10-Event-driven-applications-and-functions/10.5-Spring-Cloud-Stream-producers-and-consumers.html">
+            
+                    
+                    10.5 Spring Cloud Stream 生产者和消费者
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.6" data-path="../10-Event-driven-applications-and-functions/Summary.html">
+            
+                <a href="../10-Event-driven-applications-and-functions/Summary.html">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="Introduction.html">
+            
+                <a href="Introduction.html">
+            
+                    
+                    第 11 章 安全：认证和 SPA
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="11.1-Understanding-the-Spring-Security-fundamentals.html">
+            
+                <a href="11.1-Understanding-the-Spring-Security-fundamentals.html">
+            
+                    
+                    11.1 理解 Spring Security 基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="11.2-Managing-user-accounts-with-Keycloak.html">
+            
+                <a href="11.2-Managing-user-accounts-with-Keycloak.html">
+            
+                    
+                    11.2 使用 Keycloak 管理用户账户
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="11.3-Authentication-with-OpenID-Connect-JWT-and-Keycloak.html">
+            
+                <a href="11.3-Authentication-with-OpenID-Connect-JWT-and-Keycloak.html">
+            
+                    
+                    11.3 使用 OpenID Connect、JWT 和 Keycloak 进行认证
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.14.4" data-path="11.4-Authenticating-users-with-Spring-Security-and-OpenID-Connect.html">
+            
+                <a href="11.4-Authenticating-users-with-Spring-Security-and-OpenID-Connect.html">
+            
+                    
+                    11.4 使用 Spring Security 和 OpenID Connect 认证用户
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5" data-path="11.5-Integrating-Spring-Security-with-SPAs.html">
+            
+                <a href="11.5-Integrating-Spring-Security-with-SPAs.html">
+            
+                    
+                    11.5 将 Spring Security 与 SPA 集成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.6" data-path="11.6-Testing-Spring-Security-and-OpenID-Connect.html">
+            
+                <a href="11.6-Testing-Spring-Security-and-OpenID-Connect.html">
+            
+                    
+                    11.6 测试 Spring Security 和 OpenID Connect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.7" data-path="Summary.html">
+            
+                <a href="Summary.html">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../12-Security-Authorization-and-auditing/Introduction.html">
+            
+                <a href="../12-Security-Authorization-and-auditing/Introduction.html">
+            
+                    
+                    第 12 章 安全：授权和审计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="../12-Security-Authorization-and-auditing/12.1-Authorization-and-roles-with-Spring-Cloud-Gateway-and-OAuth2.html">
+            
+                <a href="../12-Security-Authorization-and-auditing/12.1-Authorization-and-roles-with-Spring-Cloud-Gateway-and-OAuth2.html">
+            
+                    
+                    12.1 使用 Spring Cloud Gateway 和 OAuth2 实现授权和角色
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="../12-Security-Authorization-and-auditing/12.2-Protecting-APIs-with-Spring-Security-and-OAuth2-imperative.html">
+            
+                <a href="../12-Security-Authorization-and-auditing/12.2-Protecting-APIs-with-Spring-Security-and-OAuth2-imperative.html">
+            
+                    
+                    12.2 使用 Spring Security 和 OAuth2 保护 API（命令式）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.3" data-path="../12-Security-Authorization-and-auditing/12.3-Protecting-APIs-with-Spring-Security-and-OAuth2-reactive.html">
+            
+                <a href="../12-Security-Authorization-and-auditing/12.3-Protecting-APIs-with-Spring-Security-and-OAuth2-reactive.html">
+            
+                    
+                    12.3 使用 Spring Security 和 OAuth2 保护 API（响应式）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.4" data-path="../12-Security-Authorization-and-auditing/12.4-Protecting-and-auditing-data-with-Spring-Security-and-Spring-Data.html">
+            
+                <a href="../12-Security-Authorization-and-auditing/12.4-Protecting-and-auditing-data-with-Spring-Security-and-Spring-Data.html">
+            
+                    
+                    12.4 使用 Spring Security 和 Spring Data 保护和审计数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.5" data-path="../12-Security-Authorization-and-auditing/Summary.html">
+            
+                <a href="../12-Security-Authorization-and-auditing/Summary.html">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="../13-Observability-and-monitoring/Introduction.html">
+            
+                <a href="../13-Observability-and-monitoring/Introduction.html">
+            
+                    
+                    第 13 章 可观测性和监控
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.16.1" data-path="../13-Observability-and-monitoring/13.1-Logging-with-Spring-Boot-Loki-and-Fluent-Bit.html">
+            
+                <a href="../13-Observability-and-monitoring/13.1-Logging-with-Spring-Boot-Loki-and-Fluent-Bit.html">
+            
+                    
+                    13.1 使用 Spring Boot、Loki 和 Fluent Bit 管理日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.2" data-path="../13-Observability-and-monitoring/13.2-Health-probes-with-Spring-Boot-Actuator.html">
+            
+                <a href="../13-Observability-and-monitoring/13.2-Health-probes-with-Spring-Boot-Actuator.html">
+            
+                    
+                    13.2 使用 Spring Boot Actuator 和 Kubernetes 实现健康探针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.3" data-path="../13-Observability-and-monitoring/13.3-Metrics-with-Actuator-Prometheus-and-Grafana.html">
+            
+                <a href="../13-Observability-and-monitoring/13.3-Metrics-with-Actuator-Prometheus-and-Grafana.html">
+            
+                    
+                    13.3 使用 Spring Boot Actuator、Prometheus 和 Grafana 进行指标监控
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.4" data-path="../13-Observability-and-monitoring/13.4-Distributed-tracing-with-OpenTelemetry-and-Tempo.html">
+            
+                <a href="../13-Observability-and-monitoring/13.4-Distributed-tracing-with-OpenTelemetry-and-Tempo.html">
+            
+                    
+                    13.4 使用 OpenTelemetry 和 Tempo 实现分布式追踪
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.5" data-path="../13-Observability-and-monitoring/13.5-Application-management-and-monitoring.html">
+            
+                <a href="../13-Observability-and-monitoring/13.5-Application-management-and-monitoring.html">
+            
+                    
+                    13.5 使用 Spring Boot Actuator 进行应用管理和监控
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.6" data-path="../13-Observability-and-monitoring/Summary.html">
+            
+                <a href="../13-Observability-and-monitoring/Summary.html">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="../14-Configuration-and-secrets-management/Introduction.html">
+            
+                <a href="../14-Configuration-and-secrets-management/Introduction.html">
+            
+                    
+                    第 14 章 配置和密钥管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="../14-Configuration-and-secrets-management/14.1-Configuring-applications-on-Kubernetes.html">
+            
+                <a href="../14-Configuration-and-secrets-management/14.1-Configuring-applications-on-Kubernetes.html">
+            
+                    
+                    14.1 在 Kubernetes 上配置应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.2" data-path="../14-Configuration-and-secrets-management/14.2-Using-ConfigMaps-and-Secrets-in-Kubernetes.html">
+            
+                <a href="../14-Configuration-and-secrets-management/14.2-Using-ConfigMaps-and-Secrets-in-Kubernetes.html">
+            
+                    
+                    14.2 在 Kubernetes 中使用 ConfigMaps 和 Secrets
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.3" data-path="../14-Configuration-and-secrets-management/14.3-Configuration-management-with-Kustomize.html">
+            
+                <a href="../14-Configuration-and-secrets-management/14.3-Configuration-management-with-Kustomize.html">
+            
+                    
+                    14.3 使用 Kustomize 管理配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.4" data-path="../14-Configuration-and-secrets-management/Summary.html">
+            
+                <a href="../14-Configuration-and-secrets-management/Summary.html">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="../15-Continuous-delivery-and-GitOps/Introduction.html">
+            
+                <a href="../15-Continuous-delivery-and-GitOps/Introduction.html">
+            
+                    
+                    第 15 章 持续交付和 GitOps
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.18.1" data-path="../15-Continuous-delivery-and-GitOps/15.1-Deployment-pipeline-acceptance.html">
+            
+                <a href="../15-Continuous-delivery-and-GitOps/15.1-Deployment-pipeline-acceptance.html">
+            
+                    
+                    15.1 部署流水线：验收阶段
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.2" data-path="../15-Continuous-delivery-and-GitOps/15.2-Configuring-Spring-Boot-for-production.html">
+            
+                <a href="../15-Continuous-delivery-and-GitOps/15.2-Configuring-Spring-Boot-for-production.html">
+            
+                    
+                    15.2 为生产环境配置 Spring Boot
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.3" data-path="../15-Continuous-delivery-and-GitOps/15.3-Deployment-pipeline-production.html">
+            
+                <a href="../15-Continuous-delivery-and-GitOps/15.3-Deployment-pipeline-production.html">
+            
+                    
+                    15.3 部署流水线：生产阶段
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.4" data-path="../15-Continuous-delivery-and-GitOps/15.4-GitOps-and-ArgoCD.html">
+            
+                <a href="../15-Continuous-delivery-and-GitOps/15.4-GitOps-and-ArgoCD.html">
+            
+                    
+                    15.4 使用 GitOps 实现持续部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18.5" data-path="../15-Continuous-delivery-and-GitOps/Summary.html">
+            
+                <a href="../15-Continuous-delivery-and-GitOps/Summary.html">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" data-path="../16-Serverless-GraalVM-and-Knative/Introduction.html">
+            
+                <a href="../16-Serverless-GraalVM-and-Knative/Introduction.html">
+            
+                    
+                    第 16 章 Serverless、GraalVM 和 Knative
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.19.1" data-path="../16-Serverless-GraalVM-and-Knative/16.1-GraalVM-native-images.html">
+            
+                <a href="../16-Serverless-GraalVM-and-Knative/16.1-GraalVM-native-images.html">
+            
+                    
+                    16.1 使用 Spring Native 与 GraalVM 构建原生镜像
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19.2" data-path="../16-Serverless-GraalVM-and-Knative/16.2-Serverless-applications.html">
+            
+                <a href="../16-Serverless-GraalVM-and-Knative/16.2-Serverless-applications.html">
+            
+                    
+                    16.2 使用 Spring Cloud Function 构建 Serverless 应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19.3" data-path="../16-Serverless-GraalVM-and-Knative/16.3-Knative.html">
+            
+                <a href="../16-Serverless-GraalVM-and-Knative/16.3-Knative.html">
+            
+                    
+                    16.3 使用 Knative 部署 Serverless 应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19.4" data-path="../16-Serverless-GraalVM-and-Knative/Summary.html">
+            
+                <a href="../16-Serverless-GraalVM-and-Knative/Summary.html">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="../Appendix-A/">
+            
+                <a href="../Appendix-A/">
+            
+                    
+                    附录 A 设置开发环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21" data-path="../Appendix-B/">
+            
+                <a href="../Appendix-B/">
+            
+                    
+                    附录 B 在 DigitalOcean 上生产环境的 Kubernetes
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本书使用 HonKit 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >11.4 使用 Spring Security 和 OpenID Connect 认证用户</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="114-使用-spring-security-和-openid-connect-对用户进行身份验证">11.4 使用 Spring Security 和 OpenID Connect 对用户进行身份验证</h2>
+<p>如前所述，Spring Security 支持多种身份验证策略。Edge Service 的当前安全设置通过应用程序本身提供的登录表单处理用户帐户和身份验证。既然您已经了解了 OpenID Connect，我们可以重构应用程序以通过 OIDC 协议将用户身份验证委托给 Keycloak。</p>
+<p>对 OAuth2 的支持以前位于一个单独的项目中，称为 Spring Security OAuth，您将使用它作为 Spring Cloud Security 的一部分在云原生应用程序中采用 OAuth2。这两个项目现在已被弃用，取而代之的是从版本 5 开始在主 Spring Security 项目中引入的对 OAuth2 和 OpenID Connect 的更全面的原生支持。本章重点介绍如何使用 Spring Security 5 中新的 OIDC/OAuth2 支持来对 Polar Bookshop 的用户进行身份验证。</p>
+<blockquote>
+<p><strong>注意</strong> 如果您发现自己正在处理使用已弃用的 Spring Security OAuth 和 Spring Cloud Security 项目的项目，您可能需要查看 Laurentiu Spilca 的《Spring Security in Action》（Manning，2020）的第 12 至 15 章，其中对此进行了详细说明。</p>
+</blockquote>
+<p>使用 Spring Security 及其 OAuth2/OIDC 支持，本节将向您展示如何为 Edge Service 执行以下操作：</p>
+<ul>
+<li>使用 OpenID Connect 对用户进行身份验证</li>
+<li>配置用户注销</li>
+<li>提取有关经过身份验证的用户的信息</li>
+</ul>
+<p>让我们开始吧！</p>
+<h3 id="1141-添加新依赖">11.4.1 添加新依赖</h3>
+<p>首先，我们需要更新 Edge Service 的依赖。我们可以用更具体的 OAuth2 Client 依赖替换现有的 Spring Security starter 依赖，该依赖添加了对 OIDC/OAuth2 客户端功能的支持。此外，我们可以添加 Spring Security Test 依赖，它为在 Spring 中测试安全场景提供了额外的支持。</p>
+<p>打开 Edge Service 项目的 build.gradle 文件（edge-service）并添加新依赖。添加新依赖后，请记住刷新或重新导入 Gradle 依赖。</p>
+<p><strong>清单 11.5 添加 Spring Security OAuth2 Client 依赖</strong></p>
+<pre><code class="lang-groovy">dependencies {
+ ...
+ implementation <span class="hljs-string">'org.springframework.boot:spring-boot-starter-oauth2-client'</span>
+ testImplementation <span class="hljs-string">'org.springframework.security:spring-security-test'</span>
+}
+</code></pre>
+<h4 id="spring-与-keycloak-的集成">Spring 与 Keycloak 的集成</h4>
+<p>选择 Keycloak 作为授权服务器时，Spring Security 提供的原生 OpenID Connect/OAuth2 支持的替代方案是 Keycloak Spring Adapter。它是 Keycloak 项目本身提供的一个库，用于与 Spring Boot 和 Spring Security 集成，但在 Keycloak 17 发布后已退役。</p>
+<p>如果您发现自己正在处理使用 Keycloak Spring Adapter 的项目，您可能需要查看我关于该主题的文章（<a href="http://www.thomasvitale.com/tag/keycloak" target="_blank">www.thomasvitale.com/tag/keycloak</a>）或 John Carnell 和 Illary Huaylupo Sánchez 的《Spring Microservices in Action》第二版（Manning，2021）的第 9 章。</p>
+<h3 id="1142-配置-spring-security-和-keycloak-之间的集成">11.4.2 配置 Spring Security 和 Keycloak 之间的集成</h3>
+<p>添加对 Spring Security 的相关依赖后，我们需要配置与 Keycloak 的集成。在上一节中，我们在 Keycloak 中将 Edge Service 注册为 OAuth2 客户端，定义了客户端标识符（<code>edge-service</code>）和共享密钥（<code>polar-keycloak-secret</code>）。现在我们将使用该信息来告诉 Spring Security 如何与 Keycloak 交互。</p>
+<p>在 Edge Service 项目中打开 application.yml 文件，并添加以下配置。</p>
+<p><strong>清单 11.6 将 Edge Service 配置为 OAuth2 客户端</strong></p>
+<pre><code class="lang-yaml"><span class="hljs-attr">spring:</span>
+ <span class="hljs-attr">security:</span>
+ <span class="hljs-attr">oauth2:</span>
+ <span class="hljs-attr">client:</span>
+ <span class="hljs-attr">registration:</span>
+ <span class="hljs-attr">keycloak:</span>
+ <span class="hljs-comment"># Spring Security 中标识客户端注册的名称（称为 "registrationId"）。它可以是任何字符串</span>
+ <span class="hljs-attr">client-id:</span> <span class="hljs-string">edge-service</span>
+ <span class="hljs-comment"># 在 Keycloak 中定义的 OAuth2 客户端标识符</span>
+ <span class="hljs-attr">client-secret:</span> <span class="hljs-string">polar-keycloak-secret</span>
+ <span class="hljs-comment"># 客户端用于向 Keycloak 进行身份验证的共享密钥</span>
+ <span class="hljs-attr">scope:</span> <span class="hljs-string">openid</span>
+ <span class="hljs-comment"># 客户端希望访问的范围列表。openid 范围在 OAuth2 之上触发 OIDC 身份验证</span>
+ <span class="hljs-attr">provider:</span>
+ <span class="hljs-attr">keycloak:</span>
+ <span class="hljs-attr">issuer-uri:</span> <span class="hljs-string">http://localhost:8080/realms/PolarBookshop</span>
+ <span class="hljs-comment"># 提供有关特定领域的所有相关 OAuth2 和 OIDC 端点信息的 Keycloak URL</span>
+</code></pre>
+<p>Spring Security 中的每个客户端注册都必须有一个标识符（<code>registrationId</code>）。在本例中，它是 <code>keycloak</code>。注册标识符用于构建 Spring Security 从 Keycloak 接收授权码的 URL。默认 URL 模板为 <code>/login/oauth2/code/{registrationId}</code>。对于 Edge Service，完整 URL 为 <code>http://localhost:9000/login/oauth2/code/keycloak</code>，我们已经在 Keycloak 中将其配置为有效的重定向 URL。</p>
+<p>范围（Scopes）是 OAuth2 的一个概念，用于限制应用程序对用户资源的访问。您可以将它们视为分配给应用程序而非用户的角色。当我们使用 OAuth2 之上的 OpenID Connect 扩展来验证用户身份时，我们需要包含 <code>openid</code> 范围来通知授权服务器并接收包含有关用户身份验证数据的 ID Token。下一章将更详细地解释授权上下文中的范围。</p>
+<p>现在我们已经定义了与 Keycloak 的集成，让我们配置 Spring Security 以应用所需的安全策略。</p>
+<h3 id="1143-基本-spring-security-配置">11.4.3 基本 Spring Security 配置</h3>
+<p>在 Spring Security 中定义和配置安全策略的中心位置是 <code>SecurityWebFilterChain</code> 类。Edge Service 当前配置为要求所有端点都进行用户身份验证，并且它使用基于登录表单的身份验证策略。让我们将其更改为使用 OIDC 身份验证。</p>
+<p><code>ServerHttpSecurity</code> 对象提供了两种在 Spring Security 中配置 OAuth2 客户端的方法。通过 <code>oauth2Login()</code>，您可以配置应用程序作为 OAuth2 客户端，还可以通过 OpenID Connect 对用户进行身份验证。通过 <code>oauth2Client()</code>，应用程序不会对用户进行身份验证，因此由您定义其他身份验证机制。我们要使用 OIDC 身份验证，因此我们将使用 <code>oauth2Login()</code> 和默认配置。按如下所示更新 <code>SecurityConfig</code> 类。</p>
+<p><strong>清单 11.7 要求所有端点通过 OIDC 进行身份验证</strong></p>
+<pre><code class="lang-java"><span class="hljs-meta">@EnableWebFluxSecurity</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SecurityConfig</span> {
+
+ <span class="hljs-meta">@Bean</span>
+ SecurityWebFilterChain <span class="hljs-title function_">springSecurityFilterChain</span><span class="hljs-params">(
+ ServerHttpSecurity http)</span> {
+ <span class="hljs-keyword">return</span> http
+ .authorizeExchange(exchange -&gt;
+ exchange.anyExchange().authenticated())
+ .oauth2Login(Customizer.withDefaults())
+ <span class="hljs-comment">// 启用使用 OAuth2/OpenID Connect 进行用户身份验证</span>
+ .build();
+ }
+}
+</code></pre>
+<p>让我们验证这是否正常工作。首先，启动 Redis 和 Keycloak 容器。打开终端窗口，导航到保存 Docker Compose 文件的文件夹（polar-deployment/docker/docker-compose.yml），然后运行以下命令：</p>
+<pre><code class="lang-bash">$ docker-compose up -d polar-redis polar-keycloak
+</code></pre>
+<p>然后运行 Edge Service 应用程序（<code>./gradlew bootRun</code>），打开浏览器窗口并访问 <a href="http://localhost:9000" target="_blank">http://localhost:9000</a>。您应该会被重定向到 Keycloak 提供的登录页面，您可以在其中以前面创建的用户之一进行身份验证（图 11.4）。</p>
+<p>例如，以 Isabelle（isabelle/password）身份登录，并注意 Keycloak 在验证提供的凭据后如何将您重定向回 Edge Service。由于 Edge Service 不通过根端点暴露任何内容，您将看到一条错误消息（"Whitelabel Error Page"）。但别担心！这就是我们稍后将集成 Angular 前端的地方。此测试的关键点是 Edge Service 要求您在访问其任何端点之前进行身份验证，并且它触发了 OIDC 身份验证流程。</p>
+<p><img src="../assets/ch11/11.4.png" alt=""></img>
+<strong>图 11.4 Edge Service 触发 OIDC 身份验证流程后显示的 Polar Bookshop 领域的 Keycloak 登录页面</strong></p>
+<p>测试完 OIDC 身份验证流程后，使用 Ctrl-C 停止应用程序。</p>
+<p>如果身份验证成功，Spring Security 将与浏览器建立经过身份验证的会话，并保存有关用户的信息。在下一节中，您将看到我们如何检索和使用该信息。</p>
+<h3 id="1144-检查经过身份验证的用户上下文">11.4.4 检查经过身份验证的用户上下文</h3>
+<p>作为身份验证过程的一部分，Spring Security 定义了一个上下文来保存有关用户的信息，并将用户会话映射到 ID Token。在本节中，您将了解更多关于此上下文的信息，涉及哪些类，以及如何检索数据并通过 Edge Service 中新的 <code>/user</code> 端点公开它。</p>
+<p>首先，让我们定义一个 <code>User</code> 模型来收集经过身份验证的用户的用户名、名字、姓氏和角色。这与我们在 Keycloak 中注册两个用户时提供的信息相同，并且是 ID Token 中返回的信息。在新的 <code>com.polarbookshop.edgeservice.user</code> 包中，按如下所示创建一个 <code>User</code> record。</p>
+<p><strong>清单 11.8 创建 User record 以保存有关经过身份验证的用户的信息</strong></p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.polarbookshop.edgeservice.user;
+
+<span class="hljs-keyword">import</span> java.util.List;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">record</span> <span class="hljs-title class_">User</span><span class="hljs-params">(
+ String username,
+ String firstName,
+ String lastName,
+ List&lt;String&gt; roles
+)</span>{}
+<span class="hljs-comment">// 保存用户数据的不可变数据类</span>
+</code></pre>
+<p>无论采用何种身份验证策略（用户名/密码、OpenID Connect/OAuth2 或 SAML2），Spring Security 都会将有关经过身份验证的用户（也称为委托人）的信息保存在 <code>Authentication</code> 对象中。对于 OIDC，委托人对象的类型为 <code>OidcUser</code>，这是 Spring Security 存储 ID Token 的地方。反过来，<code>Authentication</code> 保存在 <code>SecurityContext</code> 对象中。</p>
+<p>访问当前登录用户的 <code>Authentication</code> 对象的一种方法是从 <code>ReactiveSecurityContextHolder</code>（或命令式应用程序的 <code>SecurityContextHolder</code>）检索的相关 <code>SecurityContext</code> 中提取它。图 11.5 说明了所有这些对象如何相互关联。</p>
+<p><img src="../assets/ch11/11.5.png" alt=""></img>
+<strong>图 11.5 用于存储有关当前经过身份验证的用户信息的主要类</strong></p>
+<p>您可以通过执行以下操作来实现：</p>
+<ol>
+<li>在 <code>com.polarbookshop.edgeservice.user</code> 包中创建一个用 <code>@RestController</code> 注解的 <code>UserController</code> 类。</li>
+<li>定义一个方法来处理对新 <code>/user</code> 端点的 GET 请求。</li>
+<li>为当前经过身份验证的用户返回一个 <code>User</code> 对象，从 <code>OidcUser</code> 检索必要的信息。要获取正确的数据，我们可以使用图 11.5 中所示的调用层次结构。</li>
+</ol>
+<p><code>UserController</code> 类中的结果方法将如下所示：</p>
+<pre><code class="lang-java"><span class="hljs-meta">@GetMapping("user")</span>
+<span class="hljs-comment">// 从 ReactiveSecurityContextHolder 获取当前经过身份验证用户的 SecurityContext</span>
+<span class="hljs-keyword">public</span> Mono&lt;User&gt; <span class="hljs-title function_">getUser</span><span class="hljs-params">()</span> {
+ <span class="hljs-keyword">return</span> ReactiveSecurityContextHolder.getContext()
+ .map(SecurityContext::getAuthentication)
+ <span class="hljs-comment">// 从 SecurityContext 获取 Authentication</span>
+ .map(authentication -&gt; (OidcUser) authentication.getPrincipal())
+ <span class="hljs-comment">// 从 Authentication 获取委托人。对于 OIDC，它的类型为 OidcUser</span>
+ .map(oidcUser -&gt; <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>(
+ oidcUser.getPreferredUsername(),
+ oidcUser.getGivenName(),
+ oidcUser.getFamilyName(),
+ List.of(<span class="hljs-string">"employee"</span>, <span class="hljs-string">"customer"</span>)
+ <span class="hljs-comment">// 使用 OidcUser 中的数据构建 User 对象（从 ID Token 中提取）</span>
+ ));
+}
+</code></pre>
+<p>在下一章中，我们将配置 Keycloak 在 ID Token 中包含自定义角色声明，并使用该值在 <code>UserController</code> 类中构建 <code>User</code> 对象。在那之前，我们将使用固定的值列表。</p>
+<p>对于 Spring Web MVC 和 WebFlux 控制器，除了直接使用 <code>ReactiveSecurityContextHolder</code> 之外，我们还可以使用 <code>@CurrentSecurityContext</code> 和 <code>@AuthenticationPrincipal</code> 注解分别注入 <code>SecurityContext</code> 和委托人（在本例中为 <code>OidcUser</code>）。</p>
+<p>让我们通过直接注入 <code>OidcUser</code> 对象作为参数来简化 <code>getUser()</code> 方法的实现。<code>UserController</code> 类的最终结果如下所示。</p>
+<p><strong>清单 11.9 返回有关当前经过身份验证的用户的信息</strong></p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.polarbookshop.edgeservice.user;
+
+<span class="hljs-keyword">import</span> java.util.List;
+<span class="hljs-keyword">import</span> reactor.core.publisher.Mono;
+<span class="hljs-keyword">import</span> org.springframework.security.core.annotation.AuthenticationPrincipal;
+<span class="hljs-keyword">import</span> org.springframework.security.oauth2.core.oidc.user.OidcUser;
+<span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.GetMapping;
+<span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RestController;
+
+<span class="hljs-meta">@RestController</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserController</span> {
+
+ <span class="hljs-meta">@GetMapping("user")</span>
+ <span class="hljs-keyword">public</span> Mono&lt;User&gt; <span class="hljs-title function_">getUser</span><span class="hljs-params">(
+ <span class="hljs-meta">@AuthenticationPrincipal</span> OidcUser oidcUser
+ // 注入包含有关当前经过身份验证的用户信息的 OidcUser 对象
+ )</span> {
+ <span class="hljs-type">var</span> <span class="hljs-variable">user</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">User</span>(
+ oidcUser.getPreferredUsername(),
+ oidcUser.getGivenName(),
+ oidcUser.getFamilyName(),
+ <span class="hljs-comment">// 从 OidcUser 中包含的相关 claims 构建 User 对象</span>
+ List.of(<span class="hljs-string">"employee"</span>, <span class="hljs-string">"customer"</span>)
+ );
+
+ <span class="hljs-keyword">return</span> Mono.just(user);
+ <span class="hljs-comment">// 将 User 对象包装在响应式发布者中，因为 Edge Service 是响应式应用程序</span>
+ }
+}
+</code></pre>
+<p>确保 Keycloak 和 Redis 从前一节继续运行，运行 Edge Service 应用程序（<code>./gradlew bootRun</code>），打开一个隐身浏览器窗口并导航到 <a href="http://localhost:9000/user" target="_blank">http://localhost:9000/user</a>。Spring Security 将您重定向到 Keycloak，Keycloak 会提示您输入用户名和密码。例如，以 Bjorn（bjorn/password）身份进行身份验证。成功身份验证后，您将被重定向回 <code>/user</code> 端点。结果如下：</p>
+<pre><code class="lang-json">{
+ <span class="hljs-string">"username"</span>: <span class="hljs-string">"bjorn"</span>,
+ <span class="hljs-string">"firstName"</span>: <span class="hljs-string">"Bjorn"</span>,
+ <span class="hljs-string">"lastName"</span>: <span class="hljs-string">"Vinterberg"</span>,
+ <span class="hljs-string">"roles"</span>: [
+ <span class="hljs-string">"employee"</span>,
+ <span class="hljs-string">"customer"</span>
+ ]
+}
+</code></pre>
+<blockquote>
+<p><strong>注意</strong> 角色列表包含硬编码的值。在下一章中，我们将更改它以返回在 Keycloak 中分配给每个用户的实际角色。</p>
+</blockquote>
+<p>测试完新端点后，使用 Ctrl-C 停止应用程序，并使用 <code>docker-compose down</code> 停止容器。</p>
+<p>考虑一下当您尝试访问 <code>/user</code> 端点并被重定向到 Keycloak 时发生的情况。成功验证用户凭据后，Keycloak 回调 Edge Service 并发送新经过身份验证的用户的 ID Token。然后 Edge Service 存储令牌，并将浏览器重定向到所需的端点，同时提供会话 cookie。从那时起，浏览器和 Edge Service 之间的任何通信都将使用该会话 cookie 来标识该用户的经过身份验证的上下文。没有令牌暴露给浏览器。</p>
+<p>ID Token 存储在 <code>OidcUser</code> 中，<code>OidcUser</code> 是 <code>Authentication</code> 的一部分，最终包含在 <code>SecurityContext</code> 中。在第 9 章中，我们使用了 Spring Session 项目让 Edge Service 将会话数据存储在外部数据服务（Redis）中，因此它可以保持无状态并能够横向扩展。<code>SecurityContext</code> 对象包含在会话数据中，因此自动存储在 Redis 中，使 Edge Service 能够毫无问题地横向扩展。</p>
+<p>检索当前经过身份验证的用户（委托人）的另一个选项是从与特定 HTTP 请求（称为 exchange）关联的上下文中获取。我们将使用该选项来更新速率限制器配置。在第 9 章中，我们使用 Spring Cloud Gateway 和 Redis 实现了速率限制。当前的速率限制是基于每秒收到的请求总数计算的。我们应该更新它以独立地对每个用户应用速率限制。</p>
+<p>打开 <code>RateLimiterConfig</code> 类并配置如何从请求中提取当前经过身份验证的委托人的用户名。如果未定义用户（即请求未经身份验证、匿名），我们使用默认键对所有未经身份验证的请求整体应用速率限制。</p>
+<p><strong>清单 11.10 为每个用户配置速率限制</strong></p>
+<pre><code class="lang-java"><span class="hljs-meta">@Configuration</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">RateLimiterConfig</span> {
+ <span class="hljs-meta">@Bean</span>
+ <span class="hljs-comment">// 从当前请求（exchange）获取当前经过身份验证的用户（委托人）</span>
+ KeyResolver <span class="hljs-title function_">keyResolver</span><span class="hljs-params">()</span> {
+ <span class="hljs-keyword">return</span> exchange -&gt; exchange.getPrincipal()
+ .map(Principal::getName)
+ <span class="hljs-comment">// 从委托人中提取用户名</span>
+ .defaultIfEmpty(<span class="hljs-string">"anonymous"</span>);
+ <span class="hljs-comment">// 如果请求未经身份验证，它使用 "anonymous" 作为默认键来应用速率限制</span>
+ }
+}
+</code></pre>
+<p>这就完成了使用 OpenID Connect 对 Polar Bookshop 用户进行身份验证的基本配置。下一节将介绍 Spring Security 中的注销工作原理，以及我们如何为 OAuth2/OIDC 场景自定义它。</p>
+<h3 id="1145-在-spring-security-和-keycloak-中配置用户注销">11.4.5 在 Spring Security 和 Keycloak 中配置用户注销</h3>
+<p>到目前为止，我们已经解决了在分布式系统中对用户进行身份验证的挑战和解决方案。不过，我们应该考虑用户注销时会发生什么。</p>
+<p>在 Spring Security 中，注销会导致与用户关联的所有会话数据被删除。使用 OpenID Connect/OAuth2 时，Spring Security 为该用户存储的令牌也会被删除。但是，用户在 Keycloak 中仍会有一个活动会话。正如身份验证过程涉及 Keycloak 和 Edge Service 一样，完全注销用户需要将注销请求传播到这两个组件。</p>
+<p>默认情况下，针对受 Spring Security 保护的应用程序执行的注销不会影响 Keycloak。幸运的是，Spring Security 提供了 "OpenID Connect RP-Initiated Logout" 规范的实现，该规范定义了如何将注销请求从 OAuth2 客户端（依赖方）传播到授权服务器。您将很快看到如何为 Edge Service 配置它。</p>
+<blockquote>
+<p><strong>注意</strong> OpenID Connect 规范包含几种不同的会话管理和注销场景。如果您想了解更多，我建议您查看 OIDC 会话管理（<a href="https://openid.net/specs/openid-connect-session-1_0.html" target="_blank">https://openid.net/specs/openid-connect-session-1_0.html</a>）、OIDC 前端通道注销（<a href="https://openid.net/specs/openid-connect-frontchannel-1_0.html" target="_blank">https://openid.net/specs/openid-connect-frontchannel-1_0.html</a>）、OIDC 后端通道注销（<a href="https://openid.net/specs/openid-connect-backchannel-1_0.html" target="_blank">https://openid.net/specs/openid-connect-backchannel-1_0.html</a>）和 OIDC RP 发起的注销（<a href="https://openid.net/specs/openid-connect-rpinitiated-1_0.html" target="_blank">https://openid.net/specs/openid-connect-rpinitiated-1_0.html</a>）的官方文档。</p>
+</blockquote>
+<p>Spring Security 支持通过向框架默认实现和暴露的 <code>/logout</code> 端点发送 POST 请求来注销。我们要启用 RP 发起的注销场景，以便当用户从应用程序注销时，他们也会从授权服务器注销。Spring Security 完全支持此场景，并提供了一个 <code>OidcClientInitiatedServerLogoutSuccessHandler</code> 对象，您可以使用它来配置如何将注销请求传播到 Keycloak。</p>
+<p>假设 RP 发起的注销功能已启用。在这种情况下，用户成功从 Spring Security 注销后，Edge Service 将通过浏览器（使用重定向）向 Keycloak 发送注销请求。接下来，您可能希望用户在授权服务器上执行注销操作后重定向回应用程序。</p>
+<p>您可以使用 <code>setPostLogoutRedirectUri()</code> 方法配置用户注销后应重定向到的位置，该方法由 <code>OidcClientInitiatedServerLogoutSuccessHandler</code> 类公开。您可以指定一个直接 URL，但这在云环境中效果不佳，因为有许多变量，如主机名、服务名称和协议（http vs. https）。Spring Security 团队知道这一点，他们添加了对在运行时动态解析的占位符的支持。您可以使用 <code>{baseUrl}</code> 占位符，而不是硬编码 URL 值。当您在本地运行 Edge Service 时，占位符将解析为 <code>http://localhost:9000</code>。如果您在云中运行它，在具有 TLS 终止并通过 DNS 名称 <code>polarbookshop.com</code> 访问的代理后面，它将自动替换为 <code>https://polarbookshop.com</code>。</p>
+<p>但是，Keycloak 中的客户端配置需要一个确切的 URL。这就是为什么我们在 Keycloak 中注册 Edge Service 时将 <code>http://localhost:9000</code> 添加到有效重定向 URL 列表中的原因。在生产环境中，您必须更新 Keycloak 中的有效重定向 URL 列表以匹配那里使用的实际 URL。</p>
+<p>图 11.6 说明了我刚才描述的注销场景。</p>
+<p><img src="../assets/ch11/11.6.png" alt=""></img>
+<strong>图 11.6 当用户注销时，请求首先由 Spring Security 处理，然后转发到 Keycloak，最后用户被重定向到应用程序</strong></p>
+<p>由于应用程序的注销功能已默认在 Spring Security 中提供，因此您只需为 Edge Service 启用和配置 RP 发起的注销：</p>
+<ol>
+<li>在 <code>SecurityConfig</code> 类中，定义一个 <code>oidcLogoutSuccessHandler()</code> 方法来构建 <code>OidcClientInitiatedServerLogoutSuccessHandler</code> 对象。</li>
+<li>使用 <code>setPostLogoutRedirectUri()</code> 方法配置注销后重定向 URL。</li>
+<li>从 <code>SecurityWebFilterChain</code> Bean 中定义的 <code>logout()</code> 配置调用 <code>oidcLogoutSuccessHandler()</code> 方法。</li>
+</ol>
+<p><code>SecurityConfig</code> 类中的结果配置如下。</p>
+<p><strong>清单 11.11 配置 RP 发起的注销并在注销时重定向</strong></p>
+<pre><code class="lang-java"><span class="hljs-keyword">package</span> com.polarbookshop.edgeservice.config;
+
+<span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;
+<span class="hljs-keyword">import</span> org.springframework.security.config.Customizer;
+<span class="hljs-keyword">import</span> org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
+<span class="hljs-keyword">import</span> org.springframework.security.config.web.server.ServerHttpSecurity;
+<span class="hljs-keyword">import</span> org.springframework.security.oauth2.client.oidc.web.server.logout.OidcClientInitiatedServerLogoutSuccessHandler;
+<span class="hljs-keyword">import</span> org.springframework.security.oauth2.client.registration.ReactiveClientRegistrationRepository;
+<span class="hljs-keyword">import</span> org.springframework.security.web.server.SecurityWebFilterChain;
+<span class="hljs-keyword">import</span> org.springframework.security.web.server.authentication.logout.ServerLogoutSuccessHandler;
+
+<span class="hljs-meta">@EnableWebFluxSecurity</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SecurityConfig</span> {
+
+ <span class="hljs-meta">@Bean</span>
+ SecurityWebFilterChain <span class="hljs-title function_">springSecurityFilterChain</span><span class="hljs-params">(
+ ServerHttpSecurity http,
+ ReactiveClientRegistrationRepository clientRegistrationRepository)</span> {
+ <span class="hljs-keyword">return</span> http
+ .authorizeExchange(exchange -&gt;
+ exchange.anyExchange().authenticated())
+ .oauth2Login(Customizer.withDefaults())
+ .logout(logout -&gt; logout.logoutSuccessHandler(
+ <span class="hljs-comment">// 定义注销操作成功完成时的自定义处理程序</span>
+ oidcLogoutSuccessHandler(clientRegistrationRepository)))
+ .build();
+ }
+
+ <span class="hljs-keyword">private</span> ServerLogoutSuccessHandler <span class="hljs-title function_">oidcLogoutSuccessHandler</span><span class="hljs-params">(
+ ReactiveClientRegistrationRepository clientRegistrationRepository)</span> {
+ <span class="hljs-type">var</span> <span class="hljs-variable">oidcLogoutSuccessHandler</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">OidcClientInitiatedServerLogoutSuccessHandler</span>(
+ clientRegistrationRepository);
+ oidcLogoutSuccessHandler.setPostLogoutRedirectUri(<span class="hljs-string">"{baseUrl}"</span>);
+ <span class="hljs-comment">// 从 OIDC 提供者注销后，Keycloak 将用户重定向到从 Spring 动态计算的应用程序基础 URL（本地为 http://localhost:9000）</span>
+ <span class="hljs-keyword">return</span> oidcLogoutSuccessHandler;
+ }
+}
+</code></pre>
+<blockquote>
+<p><strong>注意</strong> <code>ReactiveClientRegistrationRepository</code> Bean 由 Spring Boot 自动配置，用于存储有关在 Keycloak 中注册的客户端的信息，并被 Spring Security 用于身份验证/授权目的。在我们的示例中，只有一个客户端：我们之前在 application.yml 文件中配置的那个。</p>
+</blockquote>
+<p>我暂时不会要求您测试注销功能。原因将在我们将 Angular 前端引入 Polar Bookshop 系统后变得明显。</p>
+<p>基于 OpenID Connect/OAuth2 的用户身份验证功能现在已完成，包括注销和可扩展性问题。如果 Edge Service 使用像 Thymeleaf 这样的模板引擎来构建前端，我们到目前为止所做的工作就足够了。但是，当您将安全的后端应用程序与 Angular 等 SPA 集成时，还需要考虑一些其他方面。这将是下一节的重点。</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="11.3-Authentication-with-OpenID-Connect-JWT-and-Keycloak.html" class="navigation navigation-prev " aria-label="Previous page: 11.3 使用 OpenID Connect、JWT 和 Keycloak 进行认证">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="11.5-Integrating-Spring-Security-with-SPAs.html" class="navigation navigation-next " aria-label="Next page: 11.5 将 Spring Security 与 SPA 集成">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"11.4 使用 Spring Security 和 OpenID Connect 认证用户","level":"1.14.4","depth":2,"next":{"title":"11.5 将 Spring Security 与 SPA 集成","level":"1.14.5","depth":2,"path":"11-Security-Authentication-and-SPA/11.5-Integrating-Spring-Security-with-SPAs.md","ref":"11-Security-Authentication-and-SPA/11.5-Integrating-Spring-Security-with-SPAs.md","articles":[]},"previous":{"title":"11.3 使用 OpenID Connect、JWT 和 Keycloak 进行认证","level":"1.14.3","depth":2,"path":"11-Security-Authentication-and-SPA/11.3-Authentication-with-OpenID-Connect-JWT-and-Keycloak.md","ref":"11-Security-Authentication-and-SPA/11.3-Authentication-with-OpenID-Connect-JWT-and-Keycloak.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Thomas Vitale","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Cloud Native Spring In Action","language":"zh-hans","gitbook":"*"},"file":{"path":"11-Security-Authentication-and-SPA/11.4-Authenticating-users-with-Spring-Security-and-OpenID-Connect.md","mtime":"2026-08-09T04:30:21.413Z","type":"markdown"},"gitbook":{"version":"6.2.2","time":"2026-08-09T08:45:26.794Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
